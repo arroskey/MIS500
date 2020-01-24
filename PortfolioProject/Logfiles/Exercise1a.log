@@ -1,0 +1,343 @@
+﻿NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+5          OPTIONS LOCALE=en_US DFLANG=LOCALE VALIDVARNAME=V7 VALIDMEMNAME=EXTEND;
+6          
+7          OPTIONS NOSYNTAXCHECK;
+8          DATA _NULL_;
+9          RC=DLGCDIR('/folders/myfolders/MEPS/PortfolioCode');
+10         RUN;
+
+NOTE: The current working directory is now "/folders/myfolders/MEPS/PortfolioCode".
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+11         OPTIONS NOSYNTAXCHECK;
+12         
+13         FILENAME _HTMLOUT %NRSTR("/folders/myfolders/MEPS/PortfolioCode/Exercise1a.html");
+14         
+15         FILENAME _GSFNAME TEMP;
+16         DATA _NULL_;
+17         CALL SYMPUT("GRAPHINIT","");
+18         CALL SYMPUT("GRAPHTERM","");
+19         RC=TSLVL('SASXGOPT','N');
+20         _ERROR_=0;
+21         IF (RC^=' ') THEN DO;
+22         CALL SYMPUT("GRAPHINIT","GOPTIONS RESET=ALL GSFNAME=_GSFNAME;");
+23         CALL SYMPUT("GRAPHTERM","GOPTIONS NOACCESSIBLE;");
+24         END;
+25         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+26         DATA _NULL_;
+27         RC=SYSPROD("PRODNUM002");
+28         IF (RC^=1) THEN DO;
+29         CALL SYMPUT("GRAPHINIT","");
+30         CALL SYMPUT("GRAPHTERM","");
+31         END;
+32         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+33         %LET SYSCC=0;
+2                                                          The SAS System                       Friday, January 24, 2020 10:03:00 PM
+
+34         %LET _CLIENTAPP='SAS Studio';
+35         %LET _CLIENTAPPABREV=Studio;
+36         %LET _CLIENTAPPVERSION=3.8;
+37         %LET _CLIENTVERSION=3.8;
+38         %LET _CLIENTMODE=background;
+39         %LET _SASSERVERNAME=%BQUOTE(localhost);
+40         %LET _SASHOSTNAME=%BQUOTE(localhost);
+41         %LET _SASPROGRAMFILEHOST=%BQUOTE(localhost);
+42         %LET _CLIENTUSERID=%BQUOTE(sasdemo);
+43         %LET _CLIENTUSERNAME=%BQUOTE(sasdemo);
+44         %LET CLIENTMACHINE=%BQUOTE(10.0.2.2);
+45         %LET _CLIENTMACHINE=%BQUOTE(10.0.2.2);
+46         %let SASWORKLOCATION="%sysfunc(getoption(work))/";
+47         FILENAME _CWD '.';
+ERROR: The path /media/sf_myfolders/MEPS/PortfolioCode is not in the list of accessible paths when SAS is in the lockdown state.
+ERROR: Error in the FILENAME statement.
+48         DATA _NULL_;
+49         CALL SYMPUT('_SASWORKINGDIR',PATHNAME('_CWD'));
+50         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+51         FILENAME _CWD;
+WARNING: No logical assign for filename _CWD.
+52         
+53         %LET _SASPROGRAMFILE = %NRQUOTE(%NRSTR(/folders/myfolders/MEPS/PortfolioCode/Exercise1a.sas));
+54         %LET _EXECENV=SASStudio Background;
+55         %LET _SASWS_ = %BQUOTE(/folders/myfolders);
+56         %LET _SASWSTEMP_=%BQUOTE();
+57         ODS LISTING CLOSE;
+58         ODS AUTONAVIGATE OFF;
+59         ODS GRAPHICS ON;
+60         ODS HTML5 (ID=WEB) DEVICE=PNG GPATH="&_SASWSTEMP_" ENCODING=utf8 FILE=_HTMLOUT (TITLE='Results: Exercise1a.sas')
+60       ! STYLE=Htmlblue OPTIONS(BITMAP_MODE='INLINE' OUTLINE='ON' SVG_MODE='INLINE'
+60       ! CSS_PREFIX='.ods_0f940ba8-c642-45ab-b760-f30c16e92a7c' BODY_ID='div_0f940ba8-c642-45ab-b760-f30c16e92a7c' );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+61         &GRAPHINIT;
+62         OPTIONS FILELOCKS=( '/' FAIL );
+63         /**********************************************************************************
+64         
+65         DESCRIPTION:  THIS PROGRAM GENERATES THE FOLLOWING ESTIMATES ON NATIONAL HEALTH CARE EXPENSES, 2017:
+66         
+67         	           (1) OVERALL EXPENSES
+68         	           (2) PERCENTAGE OF PERSONS WITH AN EXPENSE
+69         	           (3) MEAN EXPENSE PER PERSON WITH AN EXPENSE
+70         
+71         
+72         INPUT FILE:   /folders/myfolders/MEPS/H201.SAS7BDAT (2017 FULL-YEAR FILE)
+73         
+74         *********************************************************************************/;
+75         /* IMPORTANT NOTES: Use the next 6 lines of code, if you want to specify an alternative destination for SAS log and
+76         SAS procedure output.*/
+77         
+78         /*********  Portfolio project will not leverage this functionality
+79         %LET MyFolder= /folders/myfolders/MEPS;
+3                                                          The SAS System                       Friday, January 24, 2020 10:03:00 PM
+
+80         OPTIONS LS=132 PS=79 NODATE FORMCHAR="|----|+|---+=|-/\<>*" PAGENO=1;
+81         FILENAME MYLOG "&MyFolder\Exercise1_log.TXT";
+82         FILENAME MYPRINT "&MyFolder\Exercise1_OUTPUT.TXT";
+83         PROC PRINTTO LOG=MYLOG PRINT=MYPRINT NEW;
+84         RUN;
+85         ************/
+86         
+87         proc datasets lib=work nolist kill;
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASGOPT (memtype=CATALOG).
+NOTE: File WORK.SASGOPT (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMAC1 (memtype=CATALOG).
+NOTE: File WORK.SASMAC1 (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMAC2 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC3 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC4 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC5 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC6 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC7 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC8 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC9 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+87       !                                     quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+87       !                                           /* delete  all files in the WORK library */
+88         libname CDATA "/folders/myfolders/MEPS";
+NOTE: Libref CDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /folders/myfolders/MEPS
+89         
+90         PROC FORMAT;
+91           VALUE AGEF
+92              .      = 'ALL AGES'
+93              0-  64 = '0-64'
+94              65-HIGH = '65+';
+NOTE: Format AGEF has been output.
+95         
+96           VALUE AGECAT
+97               .      = 'ALL AGES'
+98         	   1 = '0-64'
+99         	   2 = '65+';
+NOTE: Format AGECAT has been output.
+100        
+101          VALUE GTZERO
+102             0         = '0'
+103             0 <- HIGH = '>0';
+NOTE: Format GTZERO has been output.
+104        
+105          VALUE FLAG
+106              .         = 'No or any expense'
+107              0         = 'No expense'
+4                                                          The SAS System                       Friday, January 24, 2020 10:03:00 PM
+
+108              1         = 'Any expense';
+NOTE: Format FLAG has been output.
+109        RUN;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.02 seconds
+      
+
+110        
+111        TITLE1 'MIS500 Portfolio Project';
+112        TITLE2 "EXERCISE1.SAS: NATIONAL HEALTH CARE EXPENSES, 2017";
+113        
+114        /* READ IN DATA FROM 2017 CONSOLIDATED DATA FILE (HC-201) */
+115        DATA PUF201;
+116          SET CDATA.H201 (KEEP= TOTEXP17 AGE17X AGE42X AGE31X
+117        	                      VARSTR   VARPSU   PERWT17F );
+118        
+119          TOTAL                = TOTEXP17;
+120        
+121          /* CREATE FLAG (1/0) VARIABLES FOR PERSONS WITH AN EXPENSE */
+122          X_ANYSVCE=0;
+123          IF TOTAL > 0 THEN X_ANYSVCE=1;
+124        
+125          /* CREATE A SUMMARY VARIABLE FROM END OF YEAR, 42, AND 31 VARIABLES*/
+126        
+127               IF AGE17X >= 0 THEN AGE = AGE17X ;
+128          ELSE IF AGE42X >= 0 THEN AGE = AGE42X ;
+129          ELSE IF AGE31X >= 0 THEN AGE = AGE31X ;
+130        
+131               IF 0 LE AGE LE 64 THEN AGECAT=1 ;
+132          ELSE IF      AGE  > 64 THEN AGECAT=2 ;
+133        RUN;
+
+NOTE: There were 31880 observations read from the data set CDATA.H201.
+NOTE: The data set WORK.PUF201 has 31880 observations and 11 variables.
+NOTE: DATA statement used (Total process time):
+      real time           1.62 seconds
+      cpu time            0.67 seconds
+      
+
+134        
+135        TITLE3 "Supporting crosstabs for the flag variables";
+136        PROC FREQ DATA=PUF201;
+137           TABLES X_ANYSVCE*TOTAL
+138                  AGECAT*AGE
+139                  /LIST MISSING;
+140           FORMAT TOTAL        	gtzero.
+141                  AGE            agef.
+142             ;
+143        RUN;
+
+NOTE: There were 31880 observations read from the data set WORK.PUF201.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.07 seconds
+      
+
+5                                                          The SAS System                       Friday, January 24, 2020 10:03:00 PM
+
+144        ods graphics off;
+145        ods exclude all; /* Suppress the printing of output */
+146        TITLE3 'PERCENTAGE OF PERSONS WITH AN EXPENSE & OVERALL EXPENSES';
+147        PROC SURVEYMEANS DATA=PUF201 MEAN NOBS SUMWGT STDERR SUM STD;
+148        	STRATUM VARSTR;
+149        	CLUSTER VARPSU;
+150        	WEIGHT PERWT17F;
+151        	VAR  X_ANYSVCE TOTAL ;
+152        	ods output Statistics=work.Overall_results;
+153        RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: The data set WORK.OVERALL_RESULTS has 2 observations and 7 variables.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.07 seconds
+      
+
+154        
+155        ods exclude none ; /* Unsuppress the printing of output */
+156        TITLE3 'PERCENTAGE OF PERSONS WITH AN EXPENSE';
+157        proc print data=work.Overall_results (firstobs=1 obs=1) noobs split='*';
+158        var  N  SumWgt  mean StdErr  Sum stddev;
+159         label SumWgt = 'Population*Size'
+160               mean = 'Proportion'
+161               StdErr = 'SE of Proportion'
+162               Sum = 'Persons*with Any*Expense '
+163               Stddev = 'SE of*Number*Persons*with*Any Expense';
+164               format N SumWgt Comma12. mean comma7.2 stderr 7.5
+165                      sum Stddev comma17.;
+166        run;
+
+NOTE: There were 1 observations read from the data set WORK.OVERALL_RESULTS.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.01 seconds
+      
+
+167        
+168        TITLE3 'OVERALL EXPENSES';
+169        proc print data=work.Overall_results (firstobs=2) noobs split='*';
+170        var  N  SumWgt  mean StdErr  Sum stddev;
+171         label SumWgt = 'Population*Size'
+172               mean = 'Mean($)'
+173               StdErr = 'SE of Mean($)'
+174               Sum = 'Total*Expense ($)'
+175               Stddev = 'SE of*Total Expense($)';
+176               format N SumWgt Comma12. mean comma9.2 stderr 9.5
+177                      sum Stddev comma17.;
+178        run;
+
+NOTE: There were 1 observations read from the data set WORK.OVERALL_RESULTS.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+
+179        
+6                                                          The SAS System                       Friday, January 24, 2020 10:03:00 PM
+
+180        ods exclude all; /* suspend all destinations */
+181        TITLE3 'MEAN EXPENSE PER PERSON WITH AN EXPENSE, FOR OVERALL, AGE 0-64, AND AGE 65+';
+182        PROC SURVEYMEANS DATA= PUF201 MEAN NOBS SUMWGT STDERR SUM STD;
+183        	STRATUM VARSTR ;
+184        	CLUSTER VARPSU ;
+185        	WEIGHT  PERWT17F ;
+186        	VAR  TOTAL;
+187        	DOMAIN X_ANYSVCE('1')  X_ANYSVCE('1')*AGECAT ;
+188        	FORMAT  AGECAT agecat.;
+189        	ods output domain= work.domain_results;
+190        RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: Only one cluster in a stratum for X_ANYSVCE domains for variable(s) TOTAL. The estimate of variance for TOTAL will omit this 
+      stratum.
+NOTE: Only one cluster in a stratum for X_ANYSVCE*AGECAT domains for variable(s) TOTAL. The estimate of variance for TOTAL will 
+      omit this stratum.
+NOTE: The data set WORK.DOMAIN_RESULTS has 3 observations and 10 variables.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.13 seconds
+      
+
+191        
+192        ods exclude none ; /* Unsuppress the printing of output */
+193        proc print data= work.domain_results noobs split='*';
+194         var AGECAT  N  SumWgt  mean StdErr  Sum stddev;
+195         label AGECAT = 'Age Group'
+196               SumWgt = 'Population*Size'
+197               mean = 'Mean($)'
+198               StdErr = 'SE of Mean($)'
+199               Sum = 'Total*Expense ($)'
+200               Stddev = 'SE of*Total Expense($)';
+201               format AGECAT agecat. N SumWgt Comma12. mean comma9.1 stderr 9.4
+202                      sum Stddev comma17.;
+203        run;
+
+NOTE: There were 3 observations read from the data set WORK.DOMAIN_RESULTS.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+204        ODS _ALL_ CLOSE;
+205        /* THE PROC PRINTTO null step is required to close the PROC PRINTTO */
+206        PROC PRINTTO;
+207        RUN;
+
