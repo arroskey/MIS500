@@ -1,7 +1,3 @@
-"""
-Some data Exploration using Python. Assuming that all the needed packages
- are already installed for your IDE to find them.
-"""
 #############################################################
 #Program name - Data Exploration
 #input - NONE
@@ -9,7 +5,9 @@ Some data Exploration using Python. Assuming that all the needed packages
 ###############################################################
 import pandas as pd
 
-# Create data_frame of array values
+# Create data_frame of array values to use in exploration
+print("*** Begin Execution")
+print("*** Creating dataframe")
 df = pd.DataFrame({
     'name':['matt','lisa','richard','john','Julia','jane','marlon'],
     'age':[23,78,22,19,45,33,20],
@@ -21,6 +19,8 @@ df = pd.DataFrame({
 ########################################################
 # BEGIN extract a 25% sample of data
 ########################################################
+print("*** Extracting sample")
+print()
 rows = df.sample(frac =.25)
 # validate first to check if sample is 0.25 times data or not
 if (0.25*(len(df))== len(rows)):
@@ -32,7 +32,6 @@ print(rows)
 
 #END extract a 25% sample of data
 
-
 ############################################################
 # BEGIN Split categorical variables by gender, Sum, Mean, count,
 # and describe on the data
@@ -40,28 +39,26 @@ print(rows)
 
 #Categorical Variables splitting
 #Group the data by gender
+print("\n*** Grouping data set")
 groupby_gender = df.groupby('gender')
-print()
-print("Mean of iq by Gender")
+print("\nMean of iq by Gender")
 for gender, value in groupby_gender['iq']:
     print((gender, value.mean()))
 
 # Find the Summation of all ages in the data
+print("\n*** Producing analysis and description\n")
 SumofAge=df['age'].sum()
-print()
-print('Sum of Ages:', SumofAge)
+print('\nSum of Ages:', SumofAge)
 
 #Find the mean of Age
 MeanAge = df['age'].mean()
-print()
-print('Average Ages:', MeanAge)
+print('\nAverage Ages:', MeanAge)
 
 # Find the mean of all columns
-print()
-print ('Means of each column:')
+print ('\nMeans of each column:')
 print(df.mean(axis=0))
 
 # Describe the Data
-print()
-print("Python description of iq")
+print("\nPython description of iq")
 print(df['iq'].describe())
+print("*** End Execution")
