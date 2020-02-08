@@ -1,0 +1,172 @@
+﻿NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+5          OPTIONS LOCALE=en_US DFLANG=LOCALE VALIDVARNAME=V7 VALIDMEMNAME=EXTEND;
+6          
+7          OPTIONS NOSYNTAXCHECK;
+8          DATA _NULL_;
+9          RC=DLGCDIR('/folders/myfolders');
+10         RUN;
+
+NOTE: The current working directory is now "/folders/myfolders".
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11         OPTIONS NOSYNTAXCHECK;
+12         
+13         FILENAME _HTMLOUT %NRSTR("/folders/myfolders/Mod4CriticalThink.html");
+14         
+15         FILENAME _GSFNAME TEMP;
+16         DATA _NULL_;
+17         CALL SYMPUT("GRAPHINIT","");
+18         CALL SYMPUT("GRAPHTERM","");
+19         RC=TSLVL('SASXGOPT','N');
+20         _ERROR_=0;
+21         IF (RC^=' ') THEN DO;
+22         CALL SYMPUT("GRAPHINIT","GOPTIONS RESET=ALL GSFNAME=_GSFNAME;");
+23         CALL SYMPUT("GRAPHTERM","GOPTIONS NOACCESSIBLE;");
+24         END;
+25         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+26         DATA _NULL_;
+27         RC=SYSPROD("PRODNUM002");
+28         IF (RC^=1) THEN DO;
+29         CALL SYMPUT("GRAPHINIT","");
+30         CALL SYMPUT("GRAPHTERM","");
+31         END;
+32         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+33         %LET SYSCC=0;
+2                                                          The SAS System                    Saturday, February  8, 2020 07:56:00 PM
+
+34         %LET _CLIENTAPP='SAS Studio';
+35         %LET _CLIENTAPPABREV=Studio;
+36         %LET _CLIENTAPPVERSION=3.8;
+37         %LET _CLIENTVERSION=3.8;
+38         %LET _CLIENTMODE=background;
+39         %LET _SASSERVERNAME=%BQUOTE(localhost);
+40         %LET _SASHOSTNAME=%BQUOTE(localhost);
+41         %LET _SASPROGRAMFILEHOST=%BQUOTE(localhost);
+42         %LET _CLIENTUSERID=%BQUOTE(sasdemo);
+43         %LET _CLIENTUSERNAME=%BQUOTE(sasdemo);
+44         %LET CLIENTMACHINE=%BQUOTE(10.0.2.2);
+45         %LET _CLIENTMACHINE=%BQUOTE(10.0.2.2);
+46         %let SASWORKLOCATION="%sysfunc(getoption(work))/";
+47         FILENAME _CWD '.';
+ERROR: The path /media/sf_myfolders is not in the list of accessible paths when SAS is in the lockdown state.
+ERROR: Error in the FILENAME statement.
+48         DATA _NULL_;
+49         CALL SYMPUT('_SASWORKINGDIR',PATHNAME('_CWD'));
+50         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+51         FILENAME _CWD;
+WARNING: No logical assign for filename _CWD.
+52         
+53         %LET _SASPROGRAMFILE = %NRQUOTE(%NRSTR(/folders/myfolders/Mod4CriticalThink.sas));
+54         %LET _EXECENV=SASStudio Background;
+55         %LET _SASWS_ = %BQUOTE(/folders/myfolders);
+56         %LET _SASWSTEMP_=%BQUOTE();
+57         ODS LISTING CLOSE;
+58         ODS AUTONAVIGATE OFF;
+59         ODS GRAPHICS ON;
+60         ODS HTML5 (ID=WEB) DEVICE=PNG GPATH="&_SASWSTEMP_" ENCODING=utf8 FILE=_HTMLOUT (TITLE='Results: Mod4CriticalThink.sas')
+60       ! STYLE=Htmlblue OPTIONS(BITMAP_MODE='INLINE' OUTLINE='ON' SVG_MODE='INLINE'
+60       ! CSS_PREFIX='.ods_9bb6c2c6-5e25-4021-80a3-71f8959e715e' BODY_ID='div_9bb6c2c6-5e25-4021-80a3-71f8959e715e' );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+61         &GRAPHINIT;
+62         OPTIONS FILELOCKS=( '/' FAIL );
+63         /********************************************************************************************
+64         *
+65         * Module 4 Critical Think - Paired t-test
+66         * Author: Alan Roskey
+67         *
+68         * In this example, tutoring is being examined to determine its effect on students.  Twelve
+69         * students participate in the study.  Each student's score is measured before and after tutoring.
+70         * The t-test is then executed.
+71         *
+72         ********************************************************************************************/
+73         
+74         /* Create the data set for the before and after scores */
+75         
+76         data TestScores;
+77         input TScore_before TScore_after @@;
+78         datalines;
+
+3                                                          The SAS System                    Saturday, February  8, 2020 07:56:00 PM
+
+NOTE: SAS went to a new line when INPUT statement reached past the end of a line.
+NOTE: The data set WORK.TESTSCORES has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+82         ;
+83         run;
+84         
+85         /* Print out the test scores */
+86         proc print data=TestScores;
+87         run;
+
+NOTE: There were 12 observations read from the data set WORK.TESTSCORES.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+88         
+89         /* Get some summary statistics */
+90         proc means data = TestScores;
+91         run;
+
+NOTE: There were 12 observations read from the data set WORK.TESTSCORES.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+92         
+93         /* Execute the t-test */
+94         ods graphics on;
+95         proc ttest data=TestScores;
+96         paired Tscore_before*Tscore_after;
+97         run;
+
+ERROR: The path /media/sf_myfolders/#LN00022 is not in the list of accessible paths when SAS is in the lockdown state.
+ERROR: The path /media/sf_myfolders/#LN00022 is not in the list of accessible paths when SAS is in the lockdown state.
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: PROCEDURE TTEST used (Total process time):
+      real time           3.04 seconds
+      cpu time            0.09 seconds
+      
+98         ods graphics off;
+99         run;
+100        
+101        
+102        
+103        OPTIONS NOSYNTAXCHECK;
+104        &GRAPHTERM; ;*';*";*/;RUN;QUIT;
+105        ODS HTML5 (ID=WEB) CLOSE;
+106        
+4                                                          The SAS System                    Saturday, February  8, 2020 07:56:00 PM
+
+
