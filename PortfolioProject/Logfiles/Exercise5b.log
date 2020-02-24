@@ -1,0 +1,338 @@
+﻿NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+5          OPTIONS LOCALE=en_US DFLANG=LOCALE VALIDVARNAME=V7 VALIDMEMNAME=EXTEND;
+6          
+7          OPTIONS NOSYNTAXCHECK;
+8          DATA _NULL_;
+9          RC=DLGCDIR('/folders/myfolders/MEPS/PortfolioCode');
+10         RUN;
+
+NOTE: The current working directory is now "/folders/myfolders/MEPS/PortfolioCode".
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11         OPTIONS NOSYNTAXCHECK;
+12         
+13         FILENAME _HTMLOUT %NRSTR("/folders/myfolders/MEPS/PortfolioCode/Exercise5b.html");
+14         
+15         FILENAME _GSFNAME TEMP;
+16         DATA _NULL_;
+17         CALL SYMPUT("GRAPHINIT","");
+18         CALL SYMPUT("GRAPHTERM","");
+19         RC=TSLVL('SASXGOPT','N');
+20         _ERROR_=0;
+21         IF (RC^=' ') THEN DO;
+22         CALL SYMPUT("GRAPHINIT","GOPTIONS RESET=ALL GSFNAME=_GSFNAME;");
+23         CALL SYMPUT("GRAPHTERM","GOPTIONS NOACCESSIBLE;");
+24         END;
+25         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+26         DATA _NULL_;
+27         RC=SYSPROD("PRODNUM002");
+28         IF (RC^=1) THEN DO;
+29         CALL SYMPUT("GRAPHINIT","");
+30         CALL SYMPUT("GRAPHTERM","");
+31         END;
+32         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+33         %LET SYSCC=0;
+2                                                          The SAS System                      Monday, February 24, 2020 09:17:00 PM
+
+34         %LET _CLIENTAPP='SAS Studio';
+35         %LET _CLIENTAPPABREV=Studio;
+36         %LET _CLIENTAPPVERSION=3.8;
+37         %LET _CLIENTVERSION=3.8;
+38         %LET _CLIENTMODE=background;
+39         %LET _SASSERVERNAME=%BQUOTE(localhost);
+40         %LET _SASHOSTNAME=%BQUOTE(localhost);
+41         %LET _SASPROGRAMFILEHOST=%BQUOTE(localhost);
+42         %LET _CLIENTUSERID=%BQUOTE(sasdemo);
+43         %LET _CLIENTUSERNAME=%BQUOTE(sasdemo);
+44         %LET CLIENTMACHINE=%BQUOTE(10.0.2.2);
+45         %LET _CLIENTMACHINE=%BQUOTE(10.0.2.2);
+46         %let SASWORKLOCATION="%sysfunc(getoption(work))/";
+47         FILENAME _CWD '.';
+ERROR: The path /media/sf_myfolders/MEPS/PortfolioCode is not in the list of accessible paths when SAS is in the lockdown state.
+ERROR: Error in the FILENAME statement.
+48         DATA _NULL_;
+49         CALL SYMPUT('_SASWORKINGDIR',PATHNAME('_CWD'));
+50         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+51         FILENAME _CWD;
+WARNING: No logical assign for filename _CWD.
+52         
+53         %LET _SASPROGRAMFILE = %NRQUOTE(%NRSTR(/folders/myfolders/MEPS/PortfolioCode/Exercise5b.sas));
+54         %LET _EXECENV=SASStudio Background;
+55         %LET _SASWS_ = %BQUOTE(/folders/myfolders);
+56         %LET _SASWSTEMP_=%BQUOTE();
+57         ODS LISTING CLOSE;
+58         ODS AUTONAVIGATE OFF;
+59         ODS GRAPHICS ON;
+60         ODS HTML5 (ID=WEB) DEVICE=PNG GPATH="&_SASWSTEMP_" ENCODING=utf8 FILE=_HTMLOUT (TITLE='Results: Exercise5b.sas')
+60       ! STYLE=Htmlblue OPTIONS(BITMAP_MODE='INLINE' OUTLINE='ON' SVG_MODE='INLINE'
+60       ! CSS_PREFIX='.ods_1e88b428-07f3-4993-a259-f4f968221de3' BODY_ID='div_1e88b428-07f3-4993-a259-f4f968221de3' );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+61         &GRAPHINIT;
+62         OPTIONS FILELOCKS=( '/' FAIL );
+63         /**********************************************************************************
+64         
+65         DESCRIPTION:  THIS PROGRAM ILLUSTRATES HOW TO CONSTRUCT INSURANCE STATUS VARIABLES FROM
+66                       MONTHLY INSURANCE VARIABLES (see below) IN THE PERSON-LEVEL DATA
+67         
+68         TRImm17X   Covered by TRICARE/CHAMPVA in mm (Ed)
+69         MCRmm17    Covered by Medicare in mm
+70         MCRmm17X   Covered by Medicare in mm (Ed)
+71         MCDmm17    Covered by Medicaid or SCHIP in mm
+72         MCDmm17X   Covered by Medicaid or SCHIP in mm  (Ed)
+73         OPAmm17    Covered by Other Public A Ins in mm
+74         OPBmm17    Covered by Other Public B Ins in mm
+75         PUBmm17X   Covered by Any Public Ins in mm (Ed)
+76         PEGmm17    Covered by Empl Union Ins in mm
+77         PDKmm17    Coverer by Priv Ins (Source Unknown) in mm
+78         PNGmm17    Covered by Nongroup Ins in mm
+79         POGmm17    Covered by Other Group Ins in mm
+3                                                          The SAS System                      Monday, February 24, 2020 09:17:00 PM
+
+80         PRSmm17    Covered by Self-Emp Ins in mm
+81         POUmm17    Covered by Holder Outside of RU in mm
+82         PRImm17    Covered by Private Ins in mm
+83         
+84         where mm = JA-DE  (January - December)
+85         
+86         INPUT FILE:   /folders/myfolders/MEPS/H201.SAS7BDAT (2017 FY PUF DATA)
+87         
+88         *********************************************************************************/;
+89         
+90         LIBNAME CDATA '/folders/myfolders/MEPS';
+NOTE: Libref CDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /folders/myfolders/MEPS
+91         
+92         %LET YR=17;
+93         
+94         TITLE1 'MIS500 Portfolio Project';
+95         TITLE2 "EXERCISE5B.SAS: HOW TO CONSTRUCT INSURANCE STATUS VARIABLES, USING FY &YR DATA";
+96         
+97         PROC FORMAT;
+98         VALUE RACETHX
+99           1 = '1 HISPANIC'
+100          2 = '2 WHITE'
+101          3 = '3 BLACK'
+102          4 = '4 ASIAN'
+103          5 = '5 OTHER RACE'
+104          ;
+NOTE: Format RACETHX has been output.
+105        RUN;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+
+106        
+107        
+108        /*1) COUNT # OF MONTHS WITH INSURANCE*/
+109        
+110        DATA FY1;
+111          SET CDATA.H201;
+112        
+113        ARRAY PEG (12) PEGJA&YR PEGFE&YR PEGMA&YR PEGAP&YR PEGMY&YR PEGJU&YR PEGJL&YR PEGAU&YR PEGSE&YR PEGOC&YR PEGNO&YR
+113      ! PEGDE&YR;
+114        ARRAY POU (12) POUJA&YR POUFE&YR POUMA&YR POUAP&YR POUMY&YR POUJU&YR POUJL&YR POUAU&YR POUSE&YR POUOC&YR POUNO&YR
+114      ! POUDE&YR;
+115        ARRAY PDK (12) PDKJA&YR PDKFE&YR PDKMA&YR PDKAP&YR PDKMY&YR PDKJU&YR PDKJL&YR PDKAU&YR PDKSE&YR PDKOC&YR PDKNO&YR
+115      ! PDKDE&YR;
+116        ARRAY PNG (12) PNGJA&YR PNGFE&YR PNGMA&YR PNGAP&YR PNGMY&YR PNGJU&YR PNGJL&YR PNGAU&YR PNGSE&YR PNGOC&YR PNGNO&YR
+116      ! PNGDE&YR;
+117        ARRAY POG (12) POGJA&YR POGFE&YR POGMA&YR POGAP&YR POGMY&YR POGJU&YR POGJL&YR POGAU&YR POGSE&YR POGOC&YR POGNO&YR
+117      ! POGDE&YR;
+118        ARRAY PRS (12) PRSJA&YR PRSFE&YR PRSMA&YR PRSAP&YR PRSMY&YR PRSJU&YR PRSJL&YR PRSAU&YR PRSSE&YR PRSOC&YR PRSNO&YR
+118      ! PRSDE&YR;
+119        ARRAY PRX (12) PRXJA&YR PRXFE&YR PRXMA&YR PRXAP&YR PRXMY&YR PRXJU&YR PRXJL&YR PRXAU&YR PRXSE&YR PRXOC&YR PRXNO&YR
+119      ! PRXDE&YR;
+120        
+4                                                          The SAS System                      Monday, February 24, 2020 09:17:00 PM
+
+121        ARRAY PRI (12) PRIJA&YR PRIFE&YR PRIMA&YR PRIAP&YR PRIMY&YR PRIJU&YR PRIJL&YR PRIAU&YR PRISE&YR PRIOC&YR PRINO&YR
+121      ! PRIDE&YR;
+122        ARRAY INS (12) INSJA&YR.X INSFE&YR.X INSMA&YR.X INSAP&YR.X INSMY&YR.X INSJU&YR.X INSJL&YR.X INSAU&YR.X INSSE&YR.X
+122      ! INSOC&YR.X INSNO&YR.X INSDE&YR.X;
+123        ARRAY MCD (12) MCDJA&YR.X MCDFE&YR.X MCDMA&YR.X MCDAP&YR.X MCDMY&YR.X MCDJU&YR.X MCDJL&YR.X MCDAU&YR.X MCDSE&YR.X
+123      ! MCDOC&YR.X MCDNO&YR.X MCDDE&YR.X;
+124        ARRAY MCR (12) MCRJA&YR.X MCRFE&YR.X MCRMA&YR.X MCRAP&YR.X MCRMY&YR.X MCRJU&YR.X MCRJL&YR.X MCRAU&YR.X MCRSE&YR.X
+124      ! MCROC&YR.X MCRNO&YR.X MCRDE&YR.X;
+125        ARRAY TRI (12) TRIJA&YR.X TRIFE&YR.X TRIMA&YR.X TRIAP&YR.X TRIMY&YR.X TRIJU&YR.X TRIJL&YR.X TRIAU&YR.X TRISE&YR.X
+125      ! TRIOC&YR.X TRINO&YR.X TRIDE&YR.X;
+126        
+127        ARRAY OPA (12) OPAJA&YR OPAFE&YR OPAMA&YR OPAAP&YR OPAMY&YR OPAJU&YR OPAJL&YR OPAAU&YR OPASE&YR OPAOC&YR OPANO&YR
+127      ! OPADE&YR;
+128        ARRAY OPB (12) OPBJA&YR OPBFE&YR OPBMA&YR OPBAP&YR OPBMY&YR OPBJU&YR OPBJL&YR OPBAU&YR OPBSE&YR OPBOC&YR OPBNO&YR
+128      ! OPBDE&YR;
+129        
+130          PRI_N=0;
+131          INS_N=0;
+132          UNINS_N=0;
+133          MCD_N=0;
+134          MCR_N=0;
+135          TRI_N=0;
+136          OPAB_N=0;
+137          GRP_N=0;
+138          NG_N=0;
+139          PUB_N=0;
+140          REF_N=0;
+141        
+142          DO I=1 TO 12;
+143            IF PRI(I)=1 THEN PRI_N+1;
+144            IF INS(I)=1 THEN INS_N+1;
+145            IF INS(I)=2 THEN UNINS_N+1;
+146            IF MCD(I)=1 THEN MCD_N+1;
+147            IF MCR(I)=1 THEN MCR_N+1;
+148            IF TRI(I)=1 THEN TRI_N+1;
+149            IF OPA(I)=1 OR OPB(I)=1 THEN OPAB_N+1;
+150            IF PEG(I)=1 OR TRI(I)=1 OR POU(I)=1 OR PDK(I)=1 THEN GRP_N + 1;
+151            IF PRX(I)=1 OR PNG(I)=1 OR POG(I)=1 OR PRS(I)=1 THEN NG_N + 1;
+152            IF MCR(I)=1 OR MCD(I)=1 OR OPA(I)=1 OR OPB(I)=1 THEN PUB_N + 1;
+153            IF INS(I)>0 THEN REF_N+1;
+154          END;
+155          DROP I;
+156        
+157        LABEL
+158          PRI_N  ="# OF MONTHS COV BY PRIVATE INSU"
+159          INS_N  ="# OF MONTHS COV BY ANY INSU"
+160          UNINS_N="# OF MONTHS WITHOUT INSU"
+161          MCD_N  ="# OF MONTHS COV BY MEDICAID"
+162          MCR_N  ="# OF MONTHS COV BY MEDICARE"
+163          TRI_N  ="# OF MONTHS COV BY TRICARE"
+164          OPAB_N ="# OF MONTHS COV BY OTHER PUBLIC A OR B INSU"
+165          GRP_N  ="# OF MONTHS COV BY PRIVATE GROUP INSU"
+166          NG_N   ="# OF MONTHS COV BY PRIVATE NON-GROUP INSU"
+167          PUB_N  ="# OF MONTHS COV BY PUBLIC INSU"
+168          REF_N  ="# OF MONTHS IN MEPS SURVEY" ;
+169        RUN;
+
+NOTE: There were 31880 observations read from the data set CDATA.H201.
+5                                                          The SAS System                      Monday, February 24, 2020 09:17:00 PM
+
+NOTE: The data set WORK.FY1 has 31880 observations and 1572 variables.
+NOTE: DATA statement used (Total process time):
+      real time           1.89 seconds
+      cpu time            1.08 seconds
+      
+
+170        
+171        TITLE3 "CREATE COUNT VARIABLES FOR # OF MONTHS WITH INSURANCE";
+172        PROC FREQ DATA=FY1;
+173          TABLES  PRI_N INS_N UNINS_N MCD_N MCR_N TRI_N OPAB_N GRP_N NG_N PUB_N REF_N /LIST MISSING;
+174        RUN;
+
+NOTE: There were 31880 observations read from the data set WORK.FY1.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.30 seconds
+      cpu time            0.30 seconds
+      
+
+175        
+176        TITLE3 'SAMPLE DUMP TO CHECK THE COUNT VARIABLES (USING PRI_N AS EXMAPLE)';
+177        PROC PRINT DATA=FY1 (OBS=30) NOOBS;
+178        VAR DUPERSID PRIJA&YR PRIFE&YR PRIMA&YR PRIAP&YR PRIMY&YR PRIJU&YR PRIJL&YR PRIAU&YR PRISE&YR PRIOC&YR PRINO&YR PRIDE&YR
+178      ! PRI_N;
+179        RUN;
+
+NOTE: There were 30 observations read from the data set WORK.FY1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.08 seconds
+      
+
+180        
+181        /*2) CREATE FLAGS FOR VARIOUS TYPES OF INSU*/
+182        
+183        DATA FY2;
+184          SET FY1;
+185          LABEL
+186          FULL_INSU='INSURED FOR FULL YEAR'
+187          GROUP_INS1='EVER INSURED BY PRIVATE GROUP'
+188          GROUP_INS2='INSURED BY PRIVATE GROUP FOR FULL YEAR'
+189          NG_INS='EVER INSURED BY PRIVATE NON-GROUP';
+190        
+191          FULL_INSU=0;
+192          GROUP_INS1=0;
+193          GROUP_INS2=0;
+194          NG_INS=0;
+195        
+196          IF UNINS_N=0 THEN FULL_INSU=1;
+197          IF GRP_N>0 THEN GROUP_INS1=1;
+198          IF GRP_N>0 AND GRP_N=REF_N THEN GROUP_INS2=1;
+199          IF NG_N>0 THEN NG_INS=1;
+200        RUN;
+
+NOTE: There were 31880 observations read from the data set WORK.FY1.
+NOTE: The data set WORK.FY2 has 31880 observations and 1576 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.47 seconds
+      cpu time            0.39 seconds
+6                                                          The SAS System                      Monday, February 24, 2020 09:17:00 PM
+
+      
+
+201        
+202        TITLE3 "SUPPORTING CROSSTABS TO VERIFY THE CREATION OF THE FLAGS";
+203        PROC FREQ DATA=FY2;
+204          TABLES FULL_INSU FULL_INSU*UNINS_N FULL_INSU*INS_N*REF_N
+205                 GROUP_INS1 GROUP_INS1*GRP_N
+206                 GROUP_INS2 GROUP_INS2*GRP_N*REF_N
+207                 NG_INS NG_INS*NG_N/LIST MISSING;
+208        RUN;
+
+NOTE: There were 31880 observations read from the data set WORK.FY2.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           2.33 seconds
+      cpu time            1.06 seconds
+      
+
+209        
+210        
+211        /*3) CALCULATE % OF PERSONS COVERED BY INSU*/
+212        ODS GRAPHICS OFF;
+213        TITLE3 "% AND POPULATION WITH INSU";
+214        PROC SURVEYMEANS DATA=FY2 NOBS SUMWGT SUM STD MEAN STDERR;
+215        	STRATA  VARSTR;
+216        	CLUSTER VARPSU;
+217        	WEIGHT PERWT17F;
+218        	VAR  FULL_INSU GROUP_INS1 GROUP_INS2 NG_INS;
+219        	DOMAIN RACETHX;
+220          FORMAT RACETHX RACETHX.;
+221        RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: Only one cluster in a stratum for RACE/ETHNICITY (EDITED/IMPUTED) domains for variable(s) FULL_INSU, GROUP_INS1, GROUP_INS2, 
+      NG_INS. The estimate of variance for FULL_INSU, GROUP_INS1, GROUP_INS2, NG_INS will omit this stratum.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           2.89 seconds
+      cpu time            1.34 seconds
+      
+
+222        
+223        PROC PRINTTO;
+224        RUN;
+

@@ -1,0 +1,300 @@
+﻿NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+5          OPTIONS LOCALE=en_US DFLANG=LOCALE VALIDVARNAME=V7 VALIDMEMNAME=EXTEND;
+6          
+7          OPTIONS NOSYNTAXCHECK;
+8          DATA _NULL_;
+9          RC=DLGCDIR('/folders/myfolders/MEPS/PortfolioCode');
+10         RUN;
+
+NOTE: The current working directory is now "/folders/myfolders/MEPS/PortfolioCode".
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11         OPTIONS NOSYNTAXCHECK;
+12         
+13         FILENAME _HTMLOUT %NRSTR("/folders/myfolders/MEPS/PortfolioCode/Exercise3a.html");
+14         
+15         FILENAME _GSFNAME TEMP;
+16         DATA _NULL_;
+17         CALL SYMPUT("GRAPHINIT","");
+18         CALL SYMPUT("GRAPHTERM","");
+19         RC=TSLVL('SASXGOPT','N');
+20         _ERROR_=0;
+21         IF (RC^=' ') THEN DO;
+22         CALL SYMPUT("GRAPHINIT","GOPTIONS RESET=ALL GSFNAME=_GSFNAME;");
+23         CALL SYMPUT("GRAPHTERM","GOPTIONS NOACCESSIBLE;");
+24         END;
+25         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+26         DATA _NULL_;
+27         RC=SYSPROD("PRODNUM002");
+28         IF (RC^=1) THEN DO;
+29         CALL SYMPUT("GRAPHINIT","");
+30         CALL SYMPUT("GRAPHTERM","");
+31         END;
+32         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+33         %LET SYSCC=0;
+2                                                          The SAS System                      Monday, February 24, 2020 08:52:00 PM
+
+34         %LET _CLIENTAPP='SAS Studio';
+35         %LET _CLIENTAPPABREV=Studio;
+36         %LET _CLIENTAPPVERSION=3.8;
+37         %LET _CLIENTVERSION=3.8;
+38         %LET _CLIENTMODE=background;
+39         %LET _SASSERVERNAME=%BQUOTE(localhost);
+40         %LET _SASHOSTNAME=%BQUOTE(localhost);
+41         %LET _SASPROGRAMFILEHOST=%BQUOTE(localhost);
+42         %LET _CLIENTUSERID=%BQUOTE(sasdemo);
+43         %LET _CLIENTUSERNAME=%BQUOTE(sasdemo);
+44         %LET CLIENTMACHINE=%BQUOTE(10.0.2.2);
+45         %LET _CLIENTMACHINE=%BQUOTE(10.0.2.2);
+46         %let SASWORKLOCATION="%sysfunc(getoption(work))/";
+47         FILENAME _CWD '.';
+ERROR: The path /media/sf_myfolders/MEPS/PortfolioCode is not in the list of accessible paths when SAS is in the lockdown state.
+ERROR: Error in the FILENAME statement.
+48         DATA _NULL_;
+49         CALL SYMPUT('_SASWORKINGDIR',PATHNAME('_CWD'));
+50         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+51         FILENAME _CWD;
+WARNING: No logical assign for filename _CWD.
+52         
+53         %LET _SASPROGRAMFILE = %NRQUOTE(%NRSTR(/folders/myfolders/MEPS/PortfolioCode/Exercise3a.sas));
+54         %LET _EXECENV=SASStudio Background;
+55         %LET _SASWS_ = %BQUOTE(/folders/myfolders);
+56         %LET _SASWSTEMP_=%BQUOTE();
+57         ODS LISTING CLOSE;
+58         ODS AUTONAVIGATE OFF;
+59         ODS GRAPHICS ON;
+60         ODS HTML5 (ID=WEB) DEVICE=PNG GPATH="&_SASWSTEMP_" ENCODING=utf8 FILE=_HTMLOUT (TITLE='Results: Exercise3a.sas')
+60       ! STYLE=Htmlblue OPTIONS(BITMAP_MODE='INLINE' OUTLINE='ON' SVG_MODE='INLINE'
+60       ! CSS_PREFIX='.ods_dc9f256c-d75e-4fba-8899-aea210718ad9' BODY_ID='div_dc9f256c-d75e-4fba-8899-aea210718ad9' );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+61         &GRAPHINIT;
+62         OPTIONS FILELOCKS=( '/' FAIL );
+63         /**********************************************************************************
+64         
+65         DESCRIPTION:  THIS PROGRAM ILLUSTRATES HOW TO IDENTIFY PERSONS WITH A CONDITION AND
+66                       CALCULATE ESTIMATES ON USE AND EXPENDITURES FOR PERSONS WITH THE CONDITION
+67         
+68                       THE CONDITION USED IN THIS EXERCISE IS DIABETES (ICD10CDX = 'E11')
+69         
+70         
+71         
+72         INPUT FILES:  1) /folders/myfolders/MEPS/H199.SAS7BDAT (2017 CONDITION PUF DATA)
+73                       2) /folders/myfolders/MEPS/H201.SAS7BDAT (2017 FY PUF DATA)
+74         
+75         *********************************************************************************/;
+76         ods graphics off;
+77         
+78         /* Set the library for the datasets */
+79         LIBNAME CDATA '/folders/myfolders/MEPS';
+3                                                          The SAS System                      Monday, February 24, 2020 08:52:00 PM
+
+NOTE: Libref CDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /folders/myfolders/MEPS
+80         
+81         TITLE1 'MIS500 Portfolio Project';
+82         TITLE2 'EXERCISE3A.SAS: CALCULATE ESTIMATES ON USE AND EXPENDITURES FOR PERSONS WITH A CONDITION (DIABETES)';
+83         
+84         /* set the categories for printing */
+85         PROC FORMAT;
+86           VALUE SEX
+87              . = 'TOTAL'
+88              1 = 'MALE'
+89              2 = 'FEMALE'
+90                ;
+NOTE: Format SEX has been output.
+91         
+92           VALUE YESNO
+93              . = 'TOTAL'
+94              1 = 'YES'
+95              2 = 'NO'
+96                ;
+NOTE: Format YESNO has been output.
+97         RUN;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.05 seconds
+      
+
+98         
+99         
+100        /*1) PULL OUT CONDITIONS WITH DIABETES (ICD10CDX = 'E11') FROM 2017 CONDITION PUF - HC199*/
+101        
+102        DATA DIAB;
+103         SET CDATA.H199;
+104            IF ICD10CDX IN ('E11');
+105        RUN;
+
+NOTE: There were 112630 observations read from the data set CDATA.H199.
+NOTE: The data set WORK.DIAB has 2916 observations and 25 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.22 seconds
+      cpu time            0.13 seconds
+      
+
+106        
+107        TITLE3 "CHECK ICD10CDX CODES FOR DIABETIC CONDITIONS";
+108        PROC FREQ DATA=DIAB;
+109          TABLES ICD10CDX / LIST MISSING;
+110        RUN;
+
+NOTE: There were 2916 observations read from the data set WORK.DIAB.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.04 seconds
+      
+
+111        
+4                                                          The SAS System                      Monday, February 24, 2020 08:52:00 PM
+
+112        
+113        /*2) IDENTIFY PERSONS WHO REPORTED DIABETES*/
+114        
+115        PROC SORT DATA=DIAB OUT=DIABPERS (KEEP=DUPERSID) NODUPKEY;
+116          BY DUPERSID;
+117        RUN;
+
+NOTE: There were 2916 observations read from the data set WORK.DIAB.
+NOTE: 154 observations with duplicate key values were deleted.
+NOTE: The data set WORK.DIABPERS has 2762 observations and 1 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+118        
+119        
+120        /*3) CREATE A FLAG FOR PERSONS WITH DIABETES IN THE 2017 FY DATA*/
+121        
+122        DATA  FY1;
+123        MERGE CDATA.H201 (IN=AA)
+124              DIABPERS   (IN=BB) ;
+125           BY DUPERSID;
+126        
+127              LABEL DIABPERS='PERSONS WHO REPORTED DIABETES';
+128              IF AA AND BB THEN DIABPERS = 1;
+129                           ELSE DIABPERS = 2;
+130        
+131        RUN;
+
+NOTE: There were 31880 observations read from the data set CDATA.H201.
+NOTE: There were 2762 observations read from the data set WORK.DIABPERS.
+NOTE: The data set WORK.FY1 has 31880 observations and 1562 variables.
+NOTE: DATA statement used (Total process time):
+      real time           1.77 seconds
+      cpu time            1.04 seconds
+      
+
+132        TITLE3 "Supporting crosstabs for the flag variables";
+133        TITLE3 "UNWEIGHTED # OF PERSONS WHO REPORTED DIABETES, 2017";
+134        PROC FREQ DATA=FY1;
+135          TABLES DIABPERS
+136                 DIABPERS * SEX / LIST MISSING;
+137          FORMAT SEX      sex.
+138                 DIABPERS yesno.
+139            ;
+140        RUN;
+
+NOTE: There were 31880 observations read from the data set WORK.FY1.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.11 seconds
+      cpu time            0.08 seconds
+      
+
+141        
+142        TITLE3 "WEIGHTED # OF PERSONS WHO REPORTED DIABETES, 2017";
+143        PROC FREQ DATA=FY1;
+144          TABLES DIABPERS
+5                                                          The SAS System                      Monday, February 24, 2020 08:52:00 PM
+
+145                 DIABPERS * SEX /LIST MISSING;
+146          WEIGHT PERWT17F ;
+147          FORMAT SEX      sex.
+148                 DIABPERS yesno.
+149            ;
+150        RUN;
+
+NOTE: There were 31880 observations read from the data set WORK.FY1.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.08 seconds
+      
+
+151        
+152        
+153        /*4) CALCULATE ESTIMATES ON USE AND EXPENDITURES FOR PERSONS WHO REPORTED DIABETES*/
+154        
+155        ODS GRAPHICS OFF;
+156        ODS LISTING CLOSE;
+157        PROC SURVEYMEANS DATA=FY1 NOBS SUMWGT SUM STD MEAN STDERR;
+158        	STRATA  VARSTR ;
+159        	CLUSTER VARPSU ;
+160        	WEIGHT PERWT17F ;
+161        	DOMAIN DIABPERS('1') SEX*DIABPERS('1');
+162        	VAR TOTEXP17 TOTSLF17 OBTOTV17;
+163              ods output domain=work.domain_results;
+164        RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: Only one cluster in a stratum for PERSONS WHO REPORTED DIABETES domains for variable(s) TOTEXP17, TOTSLF17, OBTOTV17. The 
+      estimate of variance for TOTEXP17, TOTSLF17, OBTOTV17 will omit this stratum.
+NOTE: Only one cluster in a stratum for SEX*PERSONS WHO REPORTED DIABETES domains for variable(s) TOTEXP17, TOTSLF17, OBTOTV17. The 
+      estimate of variance for TOTEXP17, TOTSLF17, OBTOTV17 will omit this stratum.
+NOTE: The data set WORK.DOMAIN_RESULTS has 9 observations and 11 variables.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.38 seconds
+      cpu time            0.35 seconds
+      
+
+165        
+166        ODS LISTING;
+167        TITLE3 "ESTIMATES ON USE AND EXPENDITURES FOR PERSONS WHO REPORTED DIABETES, 2017";
+168        PROC PRINT DATA=work.domain_results (DROP=DOMAINLABEL)  NOOBS LABEL BLANKLINE=3 ;
+169        VAR SEX VARNAME N SUMWGT SUM STDDEV MEAN STDERR;
+170        FORMAT N                      comma6.0
+171               SUMWGT   SUM    STDDEV comma17.0
+172               MEAN     STDERR        comma9.2
+173               DIABPERS               yesno.
+174               SEX                    sex.
+175           ;
+176        RUN;
+
+NOTE: There were 9 observations read from the data set WORK.DOMAIN_RESULTS.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+6                                                          The SAS System                      Monday, February 24, 2020 08:52:00 PM
+
+
+177        
+178        PROC PRINTTO;
+179        RUN;
+

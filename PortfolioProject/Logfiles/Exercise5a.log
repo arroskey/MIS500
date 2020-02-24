@@ -1,0 +1,241 @@
+﻿NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+5          OPTIONS LOCALE=en_US DFLANG=LOCALE VALIDVARNAME=V7 VALIDMEMNAME=EXTEND;
+6          
+7          OPTIONS NOSYNTAXCHECK;
+8          DATA _NULL_;
+9          RC=DLGCDIR('/folders/myfolders/MEPS/PortfolioCode');
+10         RUN;
+
+NOTE: The current working directory is now "/folders/myfolders/MEPS/PortfolioCode".
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11         OPTIONS NOSYNTAXCHECK;
+12         
+13         FILENAME _HTMLOUT %NRSTR("/folders/myfolders/MEPS/PortfolioCode/Exercise5a.html");
+14         
+15         FILENAME _GSFNAME TEMP;
+16         DATA _NULL_;
+17         CALL SYMPUT("GRAPHINIT","");
+18         CALL SYMPUT("GRAPHTERM","");
+19         RC=TSLVL('SASXGOPT','N');
+20         _ERROR_=0;
+21         IF (RC^=' ') THEN DO;
+22         CALL SYMPUT("GRAPHINIT","GOPTIONS RESET=ALL GSFNAME=_GSFNAME;");
+23         CALL SYMPUT("GRAPHTERM","GOPTIONS NOACCESSIBLE;");
+24         END;
+25         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+26         DATA _NULL_;
+27         RC=SYSPROD("PRODNUM002");
+28         IF (RC^=1) THEN DO;
+29         CALL SYMPUT("GRAPHINIT","");
+30         CALL SYMPUT("GRAPHTERM","");
+31         END;
+32         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+33         %LET SYSCC=0;
+2                                                          The SAS System                      Monday, February 24, 2020 09:15:00 PM
+
+34         %LET _CLIENTAPP='SAS Studio';
+35         %LET _CLIENTAPPABREV=Studio;
+36         %LET _CLIENTAPPVERSION=3.8;
+37         %LET _CLIENTVERSION=3.8;
+38         %LET _CLIENTMODE=background;
+39         %LET _SASSERVERNAME=%BQUOTE(localhost);
+40         %LET _SASHOSTNAME=%BQUOTE(localhost);
+41         %LET _SASPROGRAMFILEHOST=%BQUOTE(localhost);
+42         %LET _CLIENTUSERID=%BQUOTE(sasdemo);
+43         %LET _CLIENTUSERNAME=%BQUOTE(sasdemo);
+44         %LET CLIENTMACHINE=%BQUOTE(10.0.2.2);
+45         %LET _CLIENTMACHINE=%BQUOTE(10.0.2.2);
+46         %let SASWORKLOCATION="%sysfunc(getoption(work))/";
+47         FILENAME _CWD '.';
+ERROR: The path /media/sf_myfolders/MEPS/PortfolioCode is not in the list of accessible paths when SAS is in the lockdown state.
+ERROR: Error in the FILENAME statement.
+48         DATA _NULL_;
+49         CALL SYMPUT('_SASWORKINGDIR',PATHNAME('_CWD'));
+50         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+51         FILENAME _CWD;
+WARNING: No logical assign for filename _CWD.
+52         
+53         %LET _SASPROGRAMFILE = %NRQUOTE(%NRSTR(/folders/myfolders/MEPS/PortfolioCode/Exercise5a.sas));
+54         %LET _EXECENV=SASStudio Background;
+55         %LET _SASWS_ = %BQUOTE(/folders/myfolders);
+56         %LET _SASWSTEMP_=%BQUOTE();
+57         ODS LISTING CLOSE;
+58         ODS AUTONAVIGATE OFF;
+59         ODS GRAPHICS ON;
+60         ODS HTML5 (ID=WEB) DEVICE=PNG GPATH="&_SASWSTEMP_" ENCODING=utf8 FILE=_HTMLOUT (TITLE='Results: Exercise5a.sas')
+60       ! STYLE=Htmlblue OPTIONS(BITMAP_MODE='INLINE' OUTLINE='ON' SVG_MODE='INLINE'
+60       ! CSS_PREFIX='.ods_559fdf80-f169-4e68-a640-3806e0fdc235' BODY_ID='div_559fdf80-f169-4e68-a640-3806e0fdc235' );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+61         &GRAPHINIT;
+62         OPTIONS FILELOCKS=( '/' FAIL );
+63         /**********************************************************************************
+64         
+65         DESCRIPTION:  THIS PROGRAM ILLUSTRATES HOW TO CONSTRUCT FAMILY-LEVEL VARIABLES FROM PERSON-LEVEL DATA
+66         
+67                       THERE ARE TWO DEFINITIONS OF FAMILY UNIT IN MEPS.
+68                          1) CPS FAMILY:  ID IS DUID + CPSFAMID.  CORRESPONDING WEIGHT IS FAMWT17C.
+69                          2) MEPS FAMILY: ID IS DUID + FAMIDYR.   CORRESPONDING WEIGHT IS FAMWT17F.
+70         
+71                       THE CPS FAMILY IS USED IN THIS EXERCISE.
+72         
+73         INPUT FILE:   /folders/myfolders/MEPS/H201.SAS7BDAT (2017 FY PUF DATA)
+74         
+75         *********************************************************************************/;
+76         
+77         LIBNAME CDATA '/folders/myfolders/MEPS';
+NOTE: Libref CDATA was successfully assigned as follows: 
+      Engine:        V9 
+3                                                          The SAS System                      Monday, February 24, 2020 09:15:00 PM
+
+      Physical Name: /folders/myfolders/MEPS
+78         
+79         TITLE1 'MIS500 Portfolio Project';
+80         TITLE2 "EXERCISE5A.SAS: CALCULATE FAMILY-LEVEL ESTIMATES";
+81         
+82         TITLE3 "SAMPLE DUMP FOR FAMILY IDS";
+83         PROC PRINT DATA=CDATA.H201 (OBS=20);
+84           VAR PID AGE17X SEX CPSFAMID FAMWT17C FAMIDYR FAMWT17F;
+85           BY DUID;
+86         RUN;
+
+NOTE: There were 20 observations read from the data set CDATA.H201.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.07 seconds
+      
+
+87         
+88         PROC SORT DATA=CDATA.H201 (KEEP=DUPERSID DUID CPSFAMID FAMWT17C VARSTR VARPSU TOTSLF17 TTLP17X)
+89                       OUT=PERS;
+90           BY DUID CPSFAMID;
+91         RUN;
+
+NOTE: There were 31880 observations read from the data set CDATA.H201.
+NOTE: The data set WORK.PERS has 31880 observations and 8 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           1.00 seconds
+      cpu time            0.51 seconds
+      
+
+92         
+93         DATA PERS2
+94              FAM (KEEP=DUID CPSFAMID FAMSIZE FAMOOP FAMINC);
+95          SET PERS;
+96           BY DUID CPSFAMID;
+97         
+98              LABEL FAMSIZE = '# OF PERSONS PER CPS FAMILY'
+99                    FAMOOP  = 'TOTAL OUT-OF-POCKET EXP (TOTSLF17) PER CPS FAMILY'
+100                   FAMINC  = 'TOTAL INCOME (TTLP17X) PER CPS FAMILY';
+101        
+102             IF FIRST.CPSFAMID THEN DO;
+103                FAMSIZE = 0 ;
+104                FAMOOP  = 0 ;
+105                FAMINC  = 0 ;
+106             END;
+107        
+108             FAMSIZE + 1        ;
+109             FAMOOP  + TOTSLF17 ;
+110             FAMINC  + TTLP17X  ;
+111        
+112             OUTPUT PERS2;
+113             IF LAST.CPSFAMID THEN OUTPUT FAM;
+114        RUN;
+
+NOTE: There were 31880 observations read from the data set WORK.PERS.
+NOTE: The data set WORK.PERS2 has 31880 observations and 11 variables.
+NOTE: The data set WORK.FAM has 14307 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+4                                                          The SAS System                      Monday, February 24, 2020 09:15:00 PM
+
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+115        TITLE3 "A SAMPLE DUMP TO CHECK THE CREATION OF THE FAMILY-LEVEL VARIABLES";
+116        PROC PRINT DATA=PERS2 (OBS=20);
+117          BY DUID CPSFAMID;
+118        RUN;
+
+NOTE: There were 20 observations read from the data set WORK.PERS2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.08 seconds
+      
+
+119        
+120        /*ADD WEIGHT, VARSTR, AND VARPSU TO THE FAMILY-LEVEL ANALYTIC DATA*/
+121        
+122        PROC SORT DATA=PERS (WHERE=(FAMWT17C>0)) OUT=FAMWT (KEEP=DUID CPSFAMID FAMWT17C VARSTR VARPSU) NODUPKEY;
+123          BY DUID CPSFAMID;
+124        RUN;
+
+NOTE: There were 30299 observations read from the data set WORK.PERS.
+      WHERE FAMWT17C>0;
+NOTE: 16929 observations with duplicate key values were deleted.
+NOTE: The data set WORK.FAMWT has 13370 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.02 seconds
+      
+
+125        
+126        DATA FAM2;
+127          MERGE FAM (IN=AA) FAMWT (IN=BB);
+128          BY DUID CPSFAMID;
+129          IF AA AND BB;
+130        RUN;
+
+NOTE: There were 14307 observations read from the data set WORK.FAM.
+NOTE: There were 13370 observations read from the data set WORK.FAMWT.
+NOTE: The data set WORK.FAM2 has 13370 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.02 seconds
+      
+
+131        
+132        TITLE3 "CPS FAMILY-LEVEL ESTIMATES ON FAMILY SIZE, OUT-OF-POCKET EXP, AND INCOME, 2017";
+133        ods graphics off;
+134        PROC SURVEYMEANS DATA=FAM2 NOBS SUMWGT MEAN STDERR;
+135        	STRATA  VARSTR ;
+136        	CLUSTER VARPSU ;
+137        	WEIGHT  FAMWT17C ;
+138        	VAR FAMSIZE FAMOOP FAMINC;
+139        RUN;
+
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.07 seconds
+5                                                          The SAS System                      Monday, February 24, 2020 09:15:00 PM
+
+      cpu time            0.06 seconds
+      
+
+140        PROC PRINTTO;
+141        RUN;
+

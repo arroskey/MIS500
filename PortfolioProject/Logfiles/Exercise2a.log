@@ -1,0 +1,289 @@
+﻿NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+5          OPTIONS LOCALE=en_US DFLANG=LOCALE VALIDVARNAME=V7 VALIDMEMNAME=EXTEND;
+6          
+7          OPTIONS NOSYNTAXCHECK;
+8          DATA _NULL_;
+9          RC=DLGCDIR('/folders/myfolders/MEPS/PortfolioCode');
+10         RUN;
+
+NOTE: The current working directory is now "/folders/myfolders/MEPS/PortfolioCode".
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11         OPTIONS NOSYNTAXCHECK;
+12         
+13         FILENAME _HTMLOUT %NRSTR("/folders/myfolders/MEPS/PortfolioCode/Exercise2a.html");
+14         
+15         FILENAME _GSFNAME TEMP;
+16         DATA _NULL_;
+17         CALL SYMPUT("GRAPHINIT","");
+18         CALL SYMPUT("GRAPHTERM","");
+19         RC=TSLVL('SASXGOPT','N');
+20         _ERROR_=0;
+21         IF (RC^=' ') THEN DO;
+22         CALL SYMPUT("GRAPHINIT","GOPTIONS RESET=ALL GSFNAME=_GSFNAME;");
+23         CALL SYMPUT("GRAPHTERM","GOPTIONS NOACCESSIBLE;");
+24         END;
+25         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+26         DATA _NULL_;
+27         RC=SYSPROD("PRODNUM002");
+28         IF (RC^=1) THEN DO;
+29         CALL SYMPUT("GRAPHINIT","");
+30         CALL SYMPUT("GRAPHTERM","");
+31         END;
+32         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+33         %LET SYSCC=0;
+2                                                          The SAS System                      Monday, February 24, 2020 08:36:00 PM
+
+34         %LET _CLIENTAPP='SAS Studio';
+35         %LET _CLIENTAPPABREV=Studio;
+36         %LET _CLIENTAPPVERSION=3.8;
+37         %LET _CLIENTVERSION=3.8;
+38         %LET _CLIENTMODE=background;
+39         %LET _SASSERVERNAME=%BQUOTE(localhost);
+40         %LET _SASHOSTNAME=%BQUOTE(localhost);
+41         %LET _SASPROGRAMFILEHOST=%BQUOTE(localhost);
+42         %LET _CLIENTUSERID=%BQUOTE(sasdemo);
+43         %LET _CLIENTUSERNAME=%BQUOTE(sasdemo);
+44         %LET CLIENTMACHINE=%BQUOTE(10.0.2.2);
+45         %LET _CLIENTMACHINE=%BQUOTE(10.0.2.2);
+46         %let SASWORKLOCATION="%sysfunc(getoption(work))/";
+47         FILENAME _CWD '.';
+ERROR: The path /media/sf_myfolders/MEPS/PortfolioCode is not in the list of accessible paths when SAS is in the lockdown state.
+ERROR: Error in the FILENAME statement.
+48         DATA _NULL_;
+49         CALL SYMPUT('_SASWORKINGDIR',PATHNAME('_CWD'));
+50         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+51         FILENAME _CWD;
+WARNING: No logical assign for filename _CWD.
+52         
+53         %LET _SASPROGRAMFILE = %NRQUOTE(%NRSTR(/folders/myfolders/MEPS/PortfolioCode/Exercise2a.sas));
+54         %LET _EXECENV=SASStudio Background;
+55         %LET _SASWS_ = %BQUOTE(/folders/myfolders);
+56         %LET _SASWSTEMP_=%BQUOTE();
+57         ODS LISTING CLOSE;
+58         ODS AUTONAVIGATE OFF;
+59         ODS GRAPHICS ON;
+60         ODS HTML5 (ID=WEB) DEVICE=PNG GPATH="&_SASWSTEMP_" ENCODING=utf8 FILE=_HTMLOUT (TITLE='Results: Exercise2a.sas')
+60       ! STYLE=Htmlblue OPTIONS(BITMAP_MODE='INLINE' OUTLINE='ON' SVG_MODE='INLINE'
+60       ! CSS_PREFIX='.ods_513fda38-08ba-40d6-b762-c670b56c03da' BODY_ID='div_513fda38-08ba-40d6-b762-c670b56c03da' );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+61         &GRAPHINIT;
+62         OPTIONS FILELOCKS=( '/' FAIL );
+63         /*********************************************************************\
+64         
+65         PURPOSE:	THIS PROGRAM GENERATES SELECTED ESTIMATES FOR A 2017 VERSION OF THE
+66                         MEPS STATISTICS BRIEF # 275: "Trends in Antipsychotics Purchases and Expenses for the U.S. Civilian
+67                                                       Noninstitutionalized Population, 1997 and 2007"
+68         
+69             (1) FIGURE 1: TOTAL EXPENSE FOR ANTIPSYCHOTICS
+70         
+71             (2) FIGURE 2: TOTAL NUMBER OF PURCHASES OF ANTIPSYCHOTICS
+72         
+73             (3) FIGURE 3: TOTAL NUMBER OF PERSONS PURCHASING ONE OR MORE ANTIPSYCHOTICS
+74         
+75             (4) FIGURE 4: AVERAGE TOTAL, OUT OF POCKET, AND THIRD PARTY PAYER EXPENSE
+76                           FOR ANTIPSYCHOTICS PER PERSON WITH AN ANTIPSYCHOTIC MEDICINE PURCHASE
+77         
+78         INPUT FILES:  (1) /folders/myfolders/MEPS/H201.SAS7BDAT (2017 FULL-YEAR CONSOLIDATED PUF)
+79                       (2) /folders/myfolders/MEPS/H197A.SAS7BDAT (2017 PRESCRIBED MEDICINES PUF)
+3                                                          The SAS System                      Monday, February 24, 2020 08:36:00 PM
+
+80         
+81         *********************************************************************/
+82         
+83         /* Set the folder for the libary */
+84         LIBNAME CDATA '/folders/myfolders/MEPS';
+NOTE: Libref CDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /folders/myfolders/MEPS
+85         
+86         TITLE1 'MIS500 Portfolio Project';
+87         TITLE2 "EXERCISE2A.SAS: Antipsychtics Purchases and Expenses, 2017";
+88         
+89         /* Create the categories for printing */
+90         PROC FORMAT;
+91           VALUE GTZERO
+92              0         = '0'
+93              0 <- HIGH = '>0'
+94              ;
+NOTE: Format GTZERO has been output.
+95         RUN;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.02 seconds
+      
+
+96         
+97         /*1) IDENTIFY ANTIPSYCHOTIC DRUGS USING THERAPEUTIC CLASSIFICATION (TC) CODES*/
+98         
+99         DATA DRUG;
+100          SET CDATA.H197a;
+101          IF TC1=242 AND TC1S1=251; /*definition of ANTIPSYCHOTIC DRUGS*/
+102        RUN;
+
+NOTE: There were 310487 observations read from the data set CDATA.H197A.
+NOTE: The data set WORK.DRUG has 2987 observations and 63 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.86 seconds
+      cpu time            0.46 seconds
+      
+
+103        TITLE3 "A SAMPLE DUMP FOR PMED RECORDS WITH ANTIPSYCHOTIC DRUGS";
+104        PROC PRINT DATA=DRUG (OBS=30);
+105        VAR RXRECIDX LINKIDX TC1 TC1S1 	RXXP17X RXSF17X;
+106         BY DUPERSID;
+107        RUN;
+
+NOTE: There were 30 observations read from the data set WORK.DRUG.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.06 seconds
+      
+
+108        
+109        
+110        /*2) SUM DATA TO PERSON-LEVEL*/
+111        
+112        PROC SUMMARY DATA=DRUG NWAY;
+4                                                          The SAS System                      Monday, February 24, 2020 08:36:00 PM
+
+113          CLASS DUPERSID;
+114          VAR RXXP17X RXSF17X;
+115          OUTPUT OUT=PERDRUG (DROP=_TYPE_) sum=TOT OOP;
+116        RUN;
+
+NOTE: There were 2987 observations read from the data set WORK.DRUG.
+NOTE: The data set WORK.PERDRUG has 429 observations and 4 variables.
+NOTE: PROCEDURE SUMMARY used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+117        
+118        TITLE3 "A SAMPLE DUMP FOR PERSON-LEVEL EXPENDITURES FOR ANTIPSYCHOTIC DRUGS";
+119        PROC PRINT DATA=PERDRUG (OBS=30);
+120        RUN;
+
+NOTE: There were 30 observations read from the data set WORK.PERDRUG.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+121        
+122        DATA PERDRUG2;
+123         SET PERDRUG;
+124             RENAME _FREQ_ = N_PHRCHASE ;
+125             THIRD_PAYER   = TOT - OOP;
+126        RUN;
+
+NOTE: There were 429 observations read from the data set WORK.PERDRUG.
+NOTE: The data set WORK.PERDRUG2 has 429 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+127        
+128        /*3) MERGE THE PERSON-LEVEL EXPENDITURES TO THE FY PUF*/
+129        
+130        DATA  FY;
+131        MERGE CDATA.H201 (IN=AA KEEP=DUPERSID VARSTR VARPSU PERWT17F)
+132              PERDRUG2  (IN=BB KEEP=DUPERSID N_PHRCHASE TOT OOP THIRD_PAYER);
+133           BY DUPERSID;
+134        
+135              IF AA AND BB THEN DO;
+136                 SUB      = 1 ;
+137              END;
+138        
+139              ELSE IF NOT BB THEN DO;   /*FOR PERSONS WITHOUT ANY PURCHASE OF ANTIPSYCHOTIC DRUGS*/
+140                 SUB         = 2 ;
+141                 N_PHRCHASE  = 0 ;
+142                 THIRD_PAYER = 0 ;
+143                 TOT         = 0 ;
+144                 OOP         = 0 ;
+145              END;
+146        
+147              IF AA;
+5                                                          The SAS System                      Monday, February 24, 2020 08:36:00 PM
+
+148        
+149              LABEL
+150                    THIRD_PAYER = 'TOTAL-OOP'
+151                    N_PHRCHASE  = '# OF PURCHASES PER PERSON'
+152                    SUB         = 'POPULATION FLAG FOR PERSONS WITH 1+ ANTIPSYCHOTIC DRUGS'
+153                                ;
+154        RUN;
+
+NOTE: There were 31880 observations read from the data set CDATA.H201.
+NOTE: There were 429 observations read from the data set WORK.PERDRUG2.
+NOTE: The data set WORK.FY has 31880 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.98 seconds
+      cpu time            0.50 seconds
+      
+
+155        
+156        TITLE3 "SUPPORTING CROSSTABS FOR NEW VARIABLES";
+157        PROC FREQ DATA=FY;
+158          TABLES  SUB * N_PHRCHASE * TOT * OOP * THIRD_PAYER / LIST MISSING ;
+159          FORMAT N_PHRCHASE TOT OOP THIRD_PAYER gtzero. ;
+160        RUN;
+
+NOTE: There were 31880 observations read from the data set WORK.FY.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+
+161        
+162        
+163        /*4) CALCULATE ESTIMATES ON EXPENDITURES AND USE*/
+164        
+165        TITLE3 "PERSON-LEVEL ESTIMATES ON EXPENDITURES AND USE FOR ANTIPSYCHOTIC DRUGS, 2014";
+166        ods graphics off;
+167        PROC SURVEYMEANS DATA=FY NOBS SUMWGT SUM STD MEAN STDERR;
+168          STRATA  VARSTR ;
+169          CLUSTER VARPSU;
+170          WEIGHT  PERWT17F;
+171          DOMAIN  SUB('1');
+172          VAR TOT N_PHRCHASE  OOP THIRD_PAYER ;
+173        RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: Only one cluster in a stratum for POPULATION FLAG FOR PERSONS WITH 1+ ANTIPSYCHOTIC DRUGS domains for variable(s) TOT, 
+      N_PHRCHASE, OOP, THIRD_PAYER. The estimate of variance for TOT, N_PHRCHASE, OOP, THIRD_PAYER will omit this stratum.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.12 seconds
+      
+
+174        PROC PRINTTO;
+175        RUN;
+

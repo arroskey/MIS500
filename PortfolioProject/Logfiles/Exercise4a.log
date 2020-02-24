@@ -1,0 +1,359 @@
+﻿NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+5          OPTIONS LOCALE=en_US DFLANG=LOCALE VALIDVARNAME=V7 VALIDMEMNAME=EXTEND;
+6          
+7          OPTIONS NOSYNTAXCHECK;
+8          DATA _NULL_;
+9          RC=DLGCDIR('/folders/myfolders/MEPS/PortfolioCode');
+10         RUN;
+
+NOTE: The current working directory is now "/folders/myfolders/MEPS/PortfolioCode".
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11         OPTIONS NOSYNTAXCHECK;
+12         
+13         FILENAME _HTMLOUT %NRSTR("/folders/myfolders/MEPS/PortfolioCode/Exercise4a.html");
+14         
+15         FILENAME _GSFNAME TEMP;
+16         DATA _NULL_;
+17         CALL SYMPUT("GRAPHINIT","");
+18         CALL SYMPUT("GRAPHTERM","");
+19         RC=TSLVL('SASXGOPT','N');
+20         _ERROR_=0;
+21         IF (RC^=' ') THEN DO;
+22         CALL SYMPUT("GRAPHINIT","GOPTIONS RESET=ALL GSFNAME=_GSFNAME;");
+23         CALL SYMPUT("GRAPHTERM","GOPTIONS NOACCESSIBLE;");
+24         END;
+25         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+26         DATA _NULL_;
+27         RC=SYSPROD("PRODNUM002");
+28         IF (RC^=1) THEN DO;
+29         CALL SYMPUT("GRAPHINIT","");
+30         CALL SYMPUT("GRAPHTERM","");
+31         END;
+32         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+33         %LET SYSCC=0;
+2                                                          The SAS System                      Monday, February 24, 2020 09:14:00 PM
+
+34         %LET _CLIENTAPP='SAS Studio';
+35         %LET _CLIENTAPPABREV=Studio;
+36         %LET _CLIENTAPPVERSION=3.8;
+37         %LET _CLIENTVERSION=3.8;
+38         %LET _CLIENTMODE=background;
+39         %LET _SASSERVERNAME=%BQUOTE(localhost);
+40         %LET _SASHOSTNAME=%BQUOTE(localhost);
+41         %LET _SASPROGRAMFILEHOST=%BQUOTE(localhost);
+42         %LET _CLIENTUSERID=%BQUOTE(sasdemo);
+43         %LET _CLIENTUSERNAME=%BQUOTE(sasdemo);
+44         %LET CLIENTMACHINE=%BQUOTE(10.0.2.2);
+45         %LET _CLIENTMACHINE=%BQUOTE(10.0.2.2);
+46         %let SASWORKLOCATION="%sysfunc(getoption(work))/";
+47         FILENAME _CWD '.';
+ERROR: The path /media/sf_myfolders/MEPS/PortfolioCode is not in the list of accessible paths when SAS is in the lockdown state.
+ERROR: Error in the FILENAME statement.
+48         DATA _NULL_;
+49         CALL SYMPUT('_SASWORKINGDIR',PATHNAME('_CWD'));
+50         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+51         FILENAME _CWD;
+WARNING: No logical assign for filename _CWD.
+52         
+53         %LET _SASPROGRAMFILE = %NRQUOTE(%NRSTR(/folders/myfolders/MEPS/PortfolioCode/Exercise4a.sas));
+54         %LET _EXECENV=SASStudio Background;
+55         %LET _SASWS_ = %BQUOTE(/folders/myfolders);
+56         %LET _SASWSTEMP_=%BQUOTE();
+57         ODS LISTING CLOSE;
+58         ODS AUTONAVIGATE OFF;
+59         ODS GRAPHICS ON;
+60         ODS HTML5 (ID=WEB) DEVICE=PNG GPATH="&_SASWSTEMP_" ENCODING=utf8 FILE=_HTMLOUT (TITLE='Results: Exercise4a.sas')
+60       ! STYLE=Htmlblue OPTIONS(BITMAP_MODE='INLINE' OUTLINE='ON' SVG_MODE='INLINE'
+60       ! CSS_PREFIX='.ods_589fe591-b13d-4db0-b5e2-c752c38d753b' BODY_ID='div_589fe591-b13d-4db0-b5e2-c752c38d753b' );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+61         &GRAPHINIT;
+62         OPTIONS FILELOCKS=( '/' FAIL );
+63         /**********************************************************************************
+64         
+65         DESCRIPTION:  THIS PROGRAM ILLUSTRATES HOW TO POOL MEPS DATA FILES FROM DIFFERENT YEARS
+66                       THE EXAMPLE USED IS POPULATION AGE 26-30 WHO ARE UNINSURED BUT HAVE HIGH INCOME
+67         
+68         	         DATA FROM 2016 AND 2017 ARE POOLED.
+69         
+70                       VARIABLES WITH YEAR-SPECIFIC NAMES MUST BE RENAMED BEFORE COMBINING FILES.
+71                       IN THIS PROGRAM THE INSURANCE COVERAGE VARIABLES 'INSCOV17' AND 'INSCOV16' ARE RENAMED TO 'INSCOV'.
+72         
+73         	         SEE HC-036 (1996-2015 POOLED ESTIMATION FILE) FOR
+74                       INSTRUCTIONS ON POOOLING AND CONSIDERATIONS FOR VARIANCE
+75         	         ESTIMATION FOR PRE-2002 DATA.
+76         
+77         INPUT FILE:     (1) /folders/myfolders/MEPS/H192.SAS7BDAT (2016 FULL-YEAR FILE)
+78         	            (2) /folders/myfolders/MEPS/H201.SAS7BDAT (2017 FULL-YEAR FILE)
+79         
+3                                                          The SAS System                      Monday, February 24, 2020 09:14:00 PM
+
+80         *********************************************************************************/;
+81         
+82         
+83         proc datasets lib=work nolist kill;
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASGOPT (memtype=CATALOG).
+NOTE: File WORK.SASGOPT (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMAC1 (memtype=CATALOG).
+NOTE: File WORK.SASMAC1 (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMAC2 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC3 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC4 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC5 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC6 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC7 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC8 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC9 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+83       !                                     quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.02 seconds
+      
+
+83       !                                           /* delete  all files in the WORK library */
+84         LIBNAME CDATA '/folders/myfolders/MEPS';
+NOTE: Libref CDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /folders/myfolders/MEPS
+85         
+86         OPTIONS NODATE;
+87         TITLE1 'MIS500 Portfolio Project';
+88         TITLE2 'EXERCISE4A.SAS: POOL MEPS DATA FILES FROM DIFFERENT YEARS (2016 and 2017)';
+89         
+90         PROC FORMAT;
+91         	
+91       !  VALUE POVCAT
+92             1 = '1 POOR/NEGATIVE'
+93             2 = '2 NEAR POOR'
+94             3 = '3 LOW INCOME'
+95             4 = '4 MIDDLE INCOME'
+96             5 = '5 HIGH INCOME'
+97             ;
+NOTE: Format POVCAT has been output.
+98         
+99         	
+99       !  VALUE INSF
+100        	1 = '1 ANY PRIVATE'
+101        	2 = '2 PUBLIC ONLY'
+102        	3 = '3 UNINSURED';
+NOTE: Format INSF has been output.
+103        
+104            VALUE AGE
+105            26-30='26-30'
+106            0-25='0-25'
+4                                                          The SAS System
+
+107            31-HIGH='31+';
+NOTE: Format AGE has been output.
+108        run;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.03 seconds
+      
+
+109        
+110        /* FREQUENCY OF 2016 */
+111        DATA YR1;
+112        	SET CDATA.H192 (KEEP= DUPERSID INSCOV16 PERWT16F VARSTR VARPSU POVCAT16 AGELAST TOTSLF16);
+113             IF PERWT16F>0;
+114        RUN;
+
+NOTE: There were 34655 observations read from the data set CDATA.H192.
+NOTE: The data set WORK.YR1 has 33259 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           1.88 seconds
+      cpu time            0.95 seconds
+      
+
+115        
+116        TITLE3 'UNWEIGHTED FREQUENCY FOR 2016 FY PERSONS WITH AGE 26-30';
+117        PROC FREQ DATA= YR1 (WHERE=(26 LE AGELAST LE 30));
+118        	TABLES POVCAT16*INSCOV16/ LIST MISSING ;
+119        	FORMAT INSCOV16 INSF.  POVCAT16 POVCAT.;
+120        RUN;
+
+NOTE: There were 2095 observations read from the data set WORK.YR1.
+      WHERE (AGELAST>=26 and AGELAST<=30);
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.05 seconds
+      
+
+121        
+122        
+123        /* FREQUENCY OF 2017*/
+124        DATA YR2;
+125        	SET CDATA.H201 (KEEP= DUPERSID INSCOV17 PERWT17F VARSTR VARPSU POVCAT17 AGELAST TOTSLF17);
+126             IF PERWT17F>0;
+127        run;
+
+NOTE: There were 31880 observations read from the data set CDATA.H201.
+NOTE: The data set WORK.YR2 has 30716 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           1.15 seconds
+      cpu time            0.58 seconds
+      
+
+128        
+129        TITLE3 'UNWEIGHTED FREQUENCY FOR 2017 FY PERSONS WITH AGE 26-30';
+130        PROC FREQ DATA= YR2 (WHERE=(26 LE AGELAST LE 30));
+131        	TABLES POVCAT17*INSCOV17/ LIST MISSING ;
+132        	FORMAT INSCOV17 INSF.  POVCAT17 POVCAT.;
+133        RUN;
+5                                                          The SAS System
+
+
+NOTE: There were 1883 observations read from the data set WORK.YR2.
+      WHERE (AGELAST>=26 and AGELAST<=30);
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.04 seconds
+      
+
+134        
+135        
+136        /* RENAME YEAR SPECIFIC VARIABLES PRIOR TO COMBINING FILES */
+137        DATA YR1X;
+138        	SET YR1 (RENAME=(INSCOV16=INSCOV PERWT16F=PERWT POVCAT16=POVCAT TOTSLF16=TOTSLF));
+139        RUN;
+
+NOTE: There were 33259 observations read from the data set WORK.YR1.
+NOTE: The data set WORK.YR1X has 33259 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+140        
+141        DATA YR2X;
+142        	SET YR2 (RENAME=(INSCOV17=INSCOV PERWT17F=PERWT POVCAT17=POVCAT TOTSLF17=TOTSLF));
+143        RUN;
+
+NOTE: There were 30716 observations read from the data set WORK.YR2.
+NOTE: The data set WORK.YR2X has 30716 observations and 8 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+144        
+145        DATA POOL;
+146             LENGTH INSCOV AGELAST POVCAT VARSTR VARPSU 8;
+147        	SET YR1X YR2X;
+148             POOLWT = PERWT/2 ;
+149        
+150             IF 26 LE AGELAST LE 30 AND POVCAT=5 AND INSCOV=3 THEN SUBPOP=1;
+151             ELSE SUBPOP=2;
+152        
+153             LABEL SUBPOP='POPULATION WITH AGE=26-30, UNINSURED WHOLE YEAR, AND HIGH INCOME'
+154                   TOTSLF='TOTAL AMT PAID BY SELF/FAMILY';
+155        RUN;
+
+NOTE: There were 33259 observations read from the data set WORK.YR1X.
+NOTE: There were 30716 observations read from the data set WORK.YR2X.
+NOTE: The data set WORK.POOL has 63975 observations and 10 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+156        
+157        TITLE3 "CHECK MISSING VALUES ON THE COMBINED DATA";
+158        PROC MEANS DATA=POOL N NMISS;
+6                                                          The SAS System
+
+159        RUN;
+
+NOTE: There were 63975 observations read from the data set WORK.POOL.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.06 seconds
+      
+
+160        
+161        TITLE3 'SUPPORTING CROSSTAB FOR THE CREATION OF THE SUBPOP FLAG';
+162        PROC FREQ DATA=POOL;
+163        	TABLES SUBPOP SUBPOP*AGELAST*POVCAT*INSCOV/ LIST MISSING ;
+164        	FORMAT  AGELAST AGE. ;
+165        RUN;
+
+NOTE: There were 63975 observations read from the data set WORK.POOL.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.13 seconds
+      cpu time            0.12 seconds
+      
+
+166        
+167        ODS EXCLUDE ALL; /* Suppress the printing of output */
+168        TITLE3 'WEIGHTED ESTIMATE ON TOTSLF FOR COMBINED DATA W/AGE=26-30, UNINSURED WHOLE YEAR, AND HIGH INCOME';
+169        PROC SURVEYMEANS DATA=POOL NOBS MEAN STDERR;
+170        	STRATUM VARSTR ;
+171        	CLUSTER VARPSU ;
+172        	WEIGHT  POOLWT;
+173        	VAR  TOTSLF;
+174        	DOMAIN  SUBPOP("1");
+175        	ODS OUTPUT DOMAIN=work.domain_results;
+176        RUN;
+
+NOTE: Only one cluster in a stratum for POPULATION WITH AGE=26-30, UNINSURED WHOLE YEAR, AND HIGH INCOME domains for variable(s) 
+      TOTSLF. The estimate of variance for TOTSLF will omit this stratum.
+NOTE: The data set WORK.DOMAIN_RESULTS has 1 observations and 7 variables.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.58 seconds
+      cpu time            0.54 seconds
+      
+
+177        
+178        ODS EXCLUDE NONE; /* Unsuppress the printing of output */
+179        TITLE3 'WEIGHTED ESTIMATE ON TOTSLF FOR COMBINED DATA W/AGE=26-30, UNINSURED WHOLE YEAR, AND HIGH INCOME';
+180        proc print data= work.domain_results noobs split='*';
+181         var   VARLABEL N  mean StdErr  ;
+182         label mean = 'Mean'
+183               StdErr = 'SE of Mean';
+184               format N Comma12. mean comma9.1 stderr 9.4;
+185        run;
+
+NOTE: There were 1 observations read from the data set WORK.DOMAIN_RESULTS.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+186        ODS _ALL_ CLOSE;
+7                                                          The SAS System
+
+187        /* THE PROC PRINTTO null step is required to close the PROC PRINTTO */
+188        PROC PRINTTO;
+189        RUN;
+

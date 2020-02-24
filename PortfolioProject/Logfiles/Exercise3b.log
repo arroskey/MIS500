@@ -1,0 +1,776 @@
+﻿NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+5          OPTIONS LOCALE=en_US DFLANG=LOCALE VALIDVARNAME=V7 VALIDMEMNAME=EXTEND;
+6          
+7          OPTIONS NOSYNTAXCHECK;
+8          DATA _NULL_;
+9          RC=DLGCDIR('/folders/myfolders/MEPS/PortfolioCode');
+10         RUN;
+
+NOTE: The current working directory is now "/folders/myfolders/MEPS/PortfolioCode".
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11         OPTIONS NOSYNTAXCHECK;
+12         
+13         FILENAME _HTMLOUT %NRSTR("/folders/myfolders/MEPS/PortfolioCode/Exercise3b.html");
+14         
+15         FILENAME _GSFNAME TEMP;
+16         DATA _NULL_;
+17         CALL SYMPUT("GRAPHINIT","");
+18         CALL SYMPUT("GRAPHTERM","");
+19         RC=TSLVL('SASXGOPT','N');
+20         _ERROR_=0;
+21         IF (RC^=' ') THEN DO;
+22         CALL SYMPUT("GRAPHINIT","GOPTIONS RESET=ALL GSFNAME=_GSFNAME;");
+23         CALL SYMPUT("GRAPHTERM","GOPTIONS NOACCESSIBLE;");
+24         END;
+25         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+26         DATA _NULL_;
+27         RC=SYSPROD("PRODNUM002");
+28         IF (RC^=1) THEN DO;
+29         CALL SYMPUT("GRAPHINIT","");
+30         CALL SYMPUT("GRAPHTERM","");
+31         END;
+32         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+33         %LET SYSCC=0;
+2                                                          The SAS System                      Monday, February 24, 2020 09:12:00 PM
+
+34         %LET _CLIENTAPP='SAS Studio';
+35         %LET _CLIENTAPPABREV=Studio;
+36         %LET _CLIENTAPPVERSION=3.8;
+37         %LET _CLIENTVERSION=3.8;
+38         %LET _CLIENTMODE=background;
+39         %LET _SASSERVERNAME=%BQUOTE(localhost);
+40         %LET _SASHOSTNAME=%BQUOTE(localhost);
+41         %LET _SASPROGRAMFILEHOST=%BQUOTE(localhost);
+42         %LET _CLIENTUSERID=%BQUOTE(sasdemo);
+43         %LET _CLIENTUSERNAME=%BQUOTE(sasdemo);
+44         %LET CLIENTMACHINE=%BQUOTE(10.0.2.2);
+45         %LET _CLIENTMACHINE=%BQUOTE(10.0.2.2);
+46         %let SASWORKLOCATION="%sysfunc(getoption(work))/";
+47         FILENAME _CWD '.';
+ERROR: The path /media/sf_myfolders/MEPS/PortfolioCode is not in the list of accessible paths when SAS is in the lockdown state.
+ERROR: Error in the FILENAME statement.
+48         DATA _NULL_;
+49         CALL SYMPUT('_SASWORKINGDIR',PATHNAME('_CWD'));
+50         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+51         FILENAME _CWD;
+WARNING: No logical assign for filename _CWD.
+52         
+53         %LET _SASPROGRAMFILE = %NRQUOTE(%NRSTR(/folders/myfolders/MEPS/PortfolioCode/Exercise3b.sas));
+54         %LET _EXECENV=SASStudio Background;
+55         %LET _SASWS_ = %BQUOTE(/folders/myfolders);
+56         %LET _SASWSTEMP_=%BQUOTE();
+57         ODS LISTING CLOSE;
+58         ODS AUTONAVIGATE OFF;
+59         ODS GRAPHICS ON;
+60         ODS HTML5 (ID=WEB) DEVICE=PNG GPATH="&_SASWSTEMP_" ENCODING=utf8 FILE=_HTMLOUT (TITLE='Results: Exercise3b.sas')
+60       ! STYLE=Htmlblue OPTIONS(BITMAP_MODE='INLINE' OUTLINE='ON' SVG_MODE='INLINE'
+60       ! CSS_PREFIX='.ods_4384ffe6-6b98-4bdc-8225-303853f3ef43' BODY_ID='div_4384ffe6-6b98-4bdc-8225-303853f3ef43' );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+61         &GRAPHINIT;
+62         OPTIONS FILELOCKS=( '/' FAIL );
+63         /**********************************************************************************
+64         
+65         DESCRIPTION:  THIS PROGRAM ILLUSTRATES HOW TO CALCULATE EXPENDITURES FOR ALL EVENTS ASSOCIATED WITH A CONDITION
+66         
+67                       THE CONDITION USED IN THIS EXERCISE IS DIABETES (ICD10CDX='E11')
+68         
+69         
+70         
+71         INPUT FILES:  1) /folders/myfolders/MEPS/H201.SAS7BDAT    (2017 FY PUF DATA)
+72                       2) /folders/myfolders/MEPS/H199.SAS7BDAT    (2017 CONDITION PUF DATA)
+73                       3) /folders/myfolders/MEPS/H197A.SAS7BDAT   (2017 PMED PUF DATA)
+74                       4) /folders/myfolders/MEPS/H197D.SAS7BDAT   (2017 INPATIENT VISITS PUF DATA)
+75                       5) /folders/myfolders/MEPS/H197E.SAS7BDAT   (2017 EROM VISITS PUF DATA)
+76                       6) /folders/myfolders/MEPS/H197F.SAS7BDAT   (2017 OUTPATIENT VISITS PUF DATA)
+77                       7) /folders/myfolders/MEPS/H197G.SASBDAT   (2017 OFFICE-BASED VISITS PUF DATA)
+78                       8) /folders/myfolders/MEPS/H197H.SAS7BDAT   (2017 HOME HEALTH PUF DATA)
+79                       9) /folders/myfolders/MEPS/H197IF1.SAS7BDAT  (2017 CONDITI/folder/folder/folders/myfolders/MEPS/ DATA)
+3                                                          The SAS System                      Monday, February 24, 2020 09:12:00 PM
+
+80         
+81         *********************************************************************************/;
+82         
+83         
+84         LIBNAME CDATA '/folders/myfolders/MEPS';
+NOTE: Libref CDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /folders/myfolders/MEPS
+85         
+86         TITLE1 'MIS500 Portfolio Project';
+87         TITLE2 'EXERCISE3B.SAS: CALCULATE EXPENDITURES FOR ALL EVENTS ASSOCIATED WITH A CONDITION (DIABETES)';
+88         
+89         PROC FORMAT;
+90           VALUE GTZERO
+91              0         = '0'
+92              0 <- HIGH = '>0'
+93                        ;
+NOTE: Format GTZERO has been output.
+94           VALUE GEZERO
+95              0 - HIGH = 'GE 0' ;
+NOTE: Format GEZERO has been output.
+96         RUN;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.03 seconds
+      
+
+97         
+98         /*1) PULL OUT CONDITIONS WITH DIABETES (ICD10CDX='E11') FROM 2017 CONDITION PUF - HC199*/
+99         
+100        DATA DIAB;
+101         SET CDATA.H199;
+102         IF ICD10CDX IN ('E11');
+103        RUN;
+
+NOTE: There were 112630 observations read from the data set CDATA.H199.
+NOTE: The data set WORK.DIAB has 2916 observations and 25 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.15 seconds
+      cpu time            0.07 seconds
+      
+
+104        
+105        TITLE3 "CHECK ICD10DX CODES";
+106        PROC FREQ DATA=DIAB;
+107          TABLES ICD10CDX / LIST MISSING;
+108        RUN;
+
+NOTE: There were 2916 observations read from the data set WORK.DIAB.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+109        
+110        
+111        /*2) GET EVENT ID FOR THE DIABETIC CONDITIONS FROM CONDITION-EVENT LINK FILE*/
+4                                                          The SAS System                      Monday, February 24, 2020 09:12:00 PM
+
+112        
+113        DATA  DIAB2 ;
+114        MERGE DIAB          (IN=AA KEEP=DUPERSID CONDIDX ICD10CDX)
+115              CDATA.H197IF1 (IN=BB KEEP=CONDIDX  EVNTIDX );
+116           BY CONDIDX;
+117              IF AA AND BB ;
+118        RUN;
+
+NOTE: There were 2916 observations read from the data set WORK.DIAB.
+NOTE: There were 375173 observations read from the data set CDATA.H197IF1.
+NOTE: The data set WORK.DIAB2 has 21165 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.23 seconds
+      cpu time            0.15 seconds
+      
+
+119        
+120        TITLE3 "SAMPLE DUMP FOR CONDITION-EVEL LINK FILE";
+121        PROC PRINT DATA=DIAB2 (OBS=20);
+122        BY CONDIDX;
+123        RUN;
+
+NOTE: There were 20 observations read from the data set WORK.DIAB2.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.05 seconds
+      
+
+124        
+125        
+126        /*3) DELETE DUPLICATE CASES PER EVENT*/
+127        
+128        PROC SORT DATA=DIAB2 (KEEP=DUPERSID EVNTIDX) OUT=DIAB3 NODUPKEY;
+129          BY EVNTIDX;
+130        RUN;
+
+NOTE: There were 21165 observations read from the data set WORK.DIAB2.
+NOTE: 120 observations with duplicate key values were deleted.
+NOTE: The data set WORK.DIAB3 has 21045 observations and 2 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+131        
+132        TITLE3 "SAMPLE DUMP AFTER DUPLICATE CASES ARE DELETED";
+133        PROC PRINT DATA=DIAB3 (OBS=30);
+134        RUN;
+
+NOTE: There were 30 observations read from the data set WORK.DIAB3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+135        
+136        
+137        /*4) SUM UP PMED PURCHASE-LEVEL DATA TO EVENT-LEVEL */
+5                                                          The SAS System                      Monday, February 24, 2020 09:12:00 PM
+
+138        
+139        PROC SORT DATA=CDATA.H197A  OUT=PMED (KEEP=LINKIDX RXXP17X  RXSF17X--RXOU17X RENAME=(LINKIDX=EVNTIDX));
+140          BY LINKIDX;
+141        RUN;
+
+NOTE: There were 310487 observations read from the data set CDATA.H197A.
+NOTE: The data set WORK.PMED has 310487 observations and 14 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           1.05 seconds
+      cpu time            0.71 seconds
+      
+
+142        
+143        PROC SUMMARY DATA=PMED NWAY;
+144        CLASS EVNTIDX;
+145        VAR RXXP17X  RXSF17X--RXOU17X;
+146        OUTPUT OUT=PMED2 SUM=;
+147        RUN;
+
+NOTE: There were 310487 observations read from the data set WORK.PMED.
+NOTE: The data set WORK.PMED2 has 135326 observations and 16 variables.
+NOTE: PROCEDURE SUMMARY used (Total process time):
+      real time           0.27 seconds
+      cpu time            0.35 seconds
+      
+
+148        
+149        
+150        /*5) ALIGN EXP VARIABLES IN DIFFERENT EVENTS WITH THE SAME NAMES*/
+151        
+152        DATA PMED3 (KEEP=EVNTIDX COUNT  SF MR MD PV VA TR OF SL WC OR OU OT TOTEXP);
+153        SET  PMED2;
+154        
+155             SF     = RXSF17X ;
+156             MR     = RXMR17X ;
+157             MD     = RXMD17X ;
+158             PV     = RXPV17X ;
+159             VA     = RXVA17X ;
+160             TR     = RXTR17X ;
+161             OF     = RXOF17X ;
+162             SL     = RXSL17X ;
+163             WC     = RXWC17X ;
+164             OR     = RXOR17X ;
+165             OU     = RXOU17X ;
+166             OT     = RXOT17X ;
+167             TOTEXP = RXXP17X ;
+168             COUNT = _FREQ_;
+169        
+170             IF TOTEXP GE 0 ;
+171        RUN;
+
+NOTE: There were 135326 observations read from the data set WORK.PMED2.
+NOTE: The data set WORK.PMED3 has 135326 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.05 seconds
+      
+
+6                                                          The SAS System                      Monday, February 24, 2020 09:12:00 PM
+
+172        
+173        /* Get office based events */
+174        DATA OB (KEEP=EVNTIDX SF MR MD PV VA TR OF SL WC OR OU OT TOTEXP);
+175         SET CDATA.H197G ;
+176        
+177             SF     = OBSF17X ;
+178             MR     = OBMR17X ;
+179             MD     = OBMD17X ;
+180             PV     = OBPV17X ;
+181             VA     = OBVA17X ;
+182             TR     = OBTR17X ;
+183             OF     = OBOF17X ;
+184             SL     = OBSL17X ;
+185             WC     = OBWC17X ;
+186             OR     = OBOR17X ;
+187             OU     = OBOU17X ;
+188             OT     = OBOT17X ;
+189             TOTEXP = OBXP17X ;
+190        
+191             IF TOTEXP GE 0 ;
+192        RUN ;
+
+NOTE: There were 170491 observations read from the data set CDATA.H197G.
+NOTE: The data set WORK.OB has 169702 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.33 seconds
+      cpu time            0.18 seconds
+      
+
+193        
+194        
+195        /* Get Emergency room events */
+196        DATA EROM (KEEP=EVNTIDX SF MR MD PV VA TR OF SL WC OR OU OT TOTEXP);
+197        SET  CDATA.H197E;
+198             SF     = ERFSF17X + ERDSF17X ;
+199             MR     = ERFMR17X + ERDMR17X ;
+200             MD     = ERFMD17X + ERDMD17X ;
+201             PV     = ERFPV17X + ERDPV17X ;
+202             VA     = ERFVA17X + ERDVA17X ;
+203             TR     = ERFTR17X + ERDTR17X ;
+204             OF     = ERFOF17X + ERDOF17X ;
+205             SL     = ERFSL17X + ERDSL17X ;
+206             WC     = ERFWC17X + ERDWC17X ;
+207             OR     = ERFOR17X + ERDOR17X ;
+208             OU     = ERFOU17X + ERDOU17X ;
+209             OT     = ERFOT17X + ERDOT17X ;
+210             TOTEXP = ERXP17X ;
+211        
+212             IF TOTEXP GE 0;
+213        RUN;
+
+NOTE: There were 6609 observations read from the data set CDATA.H197E.
+NOTE: The data set WORK.EROM has 6609 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+7                                                          The SAS System                      Monday, February 24, 2020 09:12:00 PM
+
+214        
+215        /* Get Inpatient hospital events */
+216        DATA IPAT (KEEP=EVNTIDX SF MR MD PV VA TR OF SL WC OR OU OT TOTEXP);
+217        SET  CDATA.H197D ;
+218        
+219             SF    = IPFSF17X + IPDSF17X ;
+220             MR    = IPFMR17X + IPDMR17X ;
+221             MD    = IPFMD17X + IPDMD17X ;
+222             PV    = IPFPV17X + IPDPV17X ;
+223             VA    = IPFVA17X + IPDVA17X ;
+224             TR    = IPFTR17X + IPDTR17X ;
+225             OF    = IPFOF17X + IPDOF17X ;
+226             SL    = IPFSL17X + IPDSL17X ;
+227             WC    = IPFWC17X + IPDWC17X ;
+228             OR    = IPFOR17X + IPDOR17X ;
+229             OU    = IPFOU17X + IPDOU17X ;
+230             OT    = IPFOT17X + IPDOT17X ;
+231             TOTEXP= IPXP17X ;
+232        
+233             IF TOTEXP GE 0 ;
+234        RUN;
+
+NOTE: There were 2853 observations read from the data set CDATA.H197D.
+NOTE: The data set WORK.IPAT has 2853 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+235        
+236        /* Get home health visits events */
+237        DATA HVIS (KEEP=EVNTIDX SF MR MD PV VA TR OF SL WC OR OU OT TOTEXP);
+238        SET  CDATA.H197H;
+239        
+240             SF     = HHSF17X ;
+241             MR     = HHMR17X ;
+242             MD     = HHMD17X ;
+243             PV     = HHPV17X ;
+244             VA     = HHVA17X ;
+245             TR     = HHTR17X ;
+246             OF     = HHOF17X ;
+247             SL     = HHSL17X ;
+248             WC     = HHWC17X ;
+249             OR     = HHOR17X ;
+250             OU     = HHOU17X ;
+251             OT     = HHOT17X ;
+252             TOTEXP = HHXP17X ;
+253        
+254             IF TOTEXP GE 0;
+255        RUN;
+
+NOTE: There were 7051 observations read from the data set CDATA.H197H.
+NOTE: The data set WORK.HVIS has 6121 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.01 seconds
+      
+
+8                                                          The SAS System                      Monday, February 24, 2020 09:12:00 PM
+
+256        
+257        /* Get out patient hospital events */
+258        DATA OPAT (KEEP=EVNTIDX SF MR MD PV VA TR OF SL WC OR OU OT TOTEXP);
+259        SET  CDATA.H197F ;
+260        
+261             SF     = OPFSF17X + OPDSF17X ;
+262             MR     = OPFMR17X + OPDMR17X ;
+263             MD     = OPFMD17X + OPDMD17X ;
+264             PV     = OPFPV17X + OPDPV17X ;
+265             VA     = OPFVA17X + OPDVA17X ;
+266             TR     = OPFTR17X + OPDTR17X ;
+267             OF     = OPFOF17X + OPDOF17X ;
+268             SL     = OPFSL17X + OPDSL17X ;
+269             WC     = OPFWC17X + OPDWC17X ;
+270             OR     = OPFOR17X + OPDOR17X ;
+271             OU     = OPFOU17X + OPDOU17X ;
+272             OT     = OPFOT17X + OPDOT17X ;
+273             TOTEXP = OPXP17X ;
+274        
+275             IF TOTEXP GE 0;
+276        RUN;
+
+NOTE: There were 15778 observations read from the data set CDATA.H197F.
+NOTE: The data set WORK.OPAT has 15724 observations and 14 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.04 seconds
+      
+
+277        
+278        
+279        /*6)  COMBINE ALL EVENTS INTO ONE DATASET*/
+280        
+281        DATA ALLEVENT;
+282           SET OB   (IN=MV KEEP=EVNTIDX SF MR MD PV VA TR OF SL WC OR OU OT TOTEXP)
+283               EROM (IN=ER KEEP=EVNTIDX SF MR MD PV VA TR OF SL WC OR OU OT TOTEXP)
+284               IPAT (IN=ST KEEP=EVNTIDX SF MR MD PV VA TR OF SL WC OR OU OT TOTEXP)
+285               HVIS (IN=HH KEEP=EVNTIDX SF MR MD PV VA TR OF SL WC OR OU OT TOTEXP)
+286               OPAT (IN=OP KEEP=EVNTIDX SF MR MD PV VA TR OF SL WC OR OU OT TOTEXP)
+287              PMED3 (IN=RX KEEP=EVNTIDX SF MR MD PV VA TR OF SL WC OR OU OT TOTEXP);
+288           BY EVNTIDX;
+289        
+290              LENGTH EVNTYP $4;
+291        
+292              LABEL  EVNTYP = 'EVENT TYPE'
+293                     TOTEXP = 'TOTAL EXPENDITURE FOR EVENT'
+294                     SF     = "SOURCE OF PAYMENT: FAMILY"
+295                     MR     = "SOURCE OF PAYMENT: MEDICARE"
+296                     MD     = "SOURCE OF PAYMENT: MEDICAID"
+297                     PV     = "SOURCE OF PAYMENT: PRIVATE INSURANCE"
+298                     VA     = "SOURCE OF PAYMENT: VETERANS"
+299                     TR     = "SOURCE OF PAYMENT: TRICARE"
+300                     OF     = "SOURCE OF PAYMENT: OTHER FEDERAL"
+301                     SL     = "SOURCE OF PAYMENT: STATE & LOCAL GOV"
+302                     WC     = "SOURCE OF PAYMENT: WORKERS COMP"
+303                     OR     = "SOURCE OF PAYMENT: OTHER PRIVATE"
+304                     OU     = "SOURCE OF PAYMENT: OTHER PUBLIC"
+305                     OT     = "SOURCE OF PAYMENT: OTHER INSURANCE"
+9                                                          The SAS System                      Monday, February 24, 2020 09:12:00 PM
+
+306                            ;
+307        
+308                   IF MV OR OP THEN EVNTYP = 'AMBU' ;
+309              ELSE IF ER       THEN EVNTYP = 'EROM' ;
+310              ELSE IF ST       THEN EVNTYP = 'IPAT' ;
+311              ELSE IF HH       THEN EVNTYP = 'HVIS' ;
+312              ELSE IF RX       THEN EVNTYP = 'PMED' ;
+313        RUN;
+
+NOTE: There were 169702 observations read from the data set WORK.OB.
+NOTE: There were 6609 observations read from the data set WORK.EROM.
+NOTE: There were 2853 observations read from the data set WORK.IPAT.
+NOTE: There were 6121 observations read from the data set WORK.HVIS.
+NOTE: There were 15724 observations read from the data set WORK.OPAT.
+NOTE: There were 135326 observations read from the data set WORK.PMED3.
+NOTE: The data set WORK.ALLEVENT has 336335 observations and 15 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.31 seconds
+      cpu time            0.31 seconds
+      
+
+314        
+315        TITLE3 "ALL EVENTS ARE COMBINED INTO ONE FILE";
+316        PROC FREQ DATA=ALLEVENT;
+317          TABLES EVNTYP TOTEXP SF MR MD PV VA TR OF SL WC OR OU OT /LIST MISSING;
+318          FORMAT TOTEXP  SF MR MD PV VA TR OF SL WC OR OU OT gtzero. ;
+319        RUN;
+
+NOTE: There were 336335 observations read from the data set WORK.ALLEVENT.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.52 seconds
+      cpu time            0.51 seconds
+      
+
+320        
+321        PROC PRINT DATA=ALLEVENT (OBS=20);
+322        RUN;
+
+NOTE: There were 20 observations read from the data set WORK.ALLEVENT.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.09 seconds
+      
+
+323        
+324        
+325        /*7) SUBSET EVENTS TO THOSE ONLY WITH DIABETES*/
+326        
+327        DATA DIAB4;
+328          MERGE DIAB3(IN=AA) ALLEVENT(IN=BB);
+329          BY EVNTIDX;
+330          IF AA AND BB;
+331        RUN;
+
+NOTE: There were 21045 observations read from the data set WORK.DIAB3.
+NOTE: There were 336335 observations read from the data set WORK.ALLEVENT.
+NOTE: The data set WORK.DIAB4 has 20930 observations and 16 variables.
+NOTE: DATA statement used (Total process time):
+10                                                         The SAS System                      Monday, February 24, 2020 09:12:00 PM
+
+      real time           0.12 seconds
+      cpu time            0.12 seconds
+      
+
+332        
+333        
+334        /*8) CALCULATE ESTIMATES ON EXPENDITURES AND USE, ALL TYPES OF SERVICE*/
+335        
+336        PROC SUMMARY DATA=DIAB4 NWAY;
+337          CLASS DUPERSID;
+338          VAR TOTEXP SF MR MD PV VA TR OF SL WC OR OU OT;
+339          OUTPUT OUT=ALL SUM=;
+340        RUN;
+
+NOTE: There were 20930 observations read from the data set WORK.DIAB4.
+NOTE: The data set WORK.ALL has 2657 observations and 16 variables.
+NOTE: PROCEDURE SUMMARY used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+341        
+342        
+343        DATA  FY1;
+344        MERGE CDATA.H201 (IN=AA KEEP=DUPERSID VARPSU VARSTR PERWT17F /*ADD MORE VARIABLES*/)
+345              ALL        (IN=BB KEEP=DUPERSID TOTEXP SF MR MD PV VA TR OF SL WC OR OU OT);
+346           BY DUPERSID;
+347        
+348              LABEL SUB = 'PERSONS WHO HAVE AT LEAST 1 EVENT ASSOCIATED WITH DIABETES';
+349        
+350                   IF AA AND     BB THEN SUB=1;
+351              ELSE IF AA AND NOT BB THEN DO ;  /*PERSONS WITHOUT EVENTS WITH DIABETES*/
+352                   SUB   = 2 ;
+353                   TOTEXP= 0 ;
+354                   SF    = 0 ;
+355                   MR    = 0 ;
+356                   MD    = 0 ;
+357                   PV    = 0 ;
+358                   VA    = 0 ;
+359                   TR    = 0 ;
+360                   OF    = 0 ;
+361                   SL    = 0 ;
+362                   WC    = 0 ;
+363                   OR    = 0 ;
+364                   OU    = 0 ;
+365                   OT    = 0 ;
+366               END;
+367               IF PERWT17F > 0 ;
+368        RUN;
+
+NOTE: There were 31880 observations read from the data set CDATA.H201.
+NOTE: There were 2657 observations read from the data set WORK.ALL.
+NOTE: The data set WORK.FY1 has 30716 observations and 18 variables.
+NOTE: DATA statement used (Total process time):
+      real time           1.00 seconds
+      cpu time            0.51 seconds
+      
+
+11                                                         The SAS System                      Monday, February 24, 2020 09:12:00 PM
+
+369        ODS GRAPHICS OFF;
+370        ODS LISTING CLOSE;
+371        PROC SURVEYMEANS DATA=FY1 NOBS SUMWGT SUM STD MEAN STDERR;
+372        	STRATA  VARSTR ;
+373        	CLUSTER VARPSU ;
+374        	WEIGHT PERWT17F ;
+375        	DOMAIN  SUB('1') ;
+376        	VAR TOTEXP SF MR MD PV VA TR OF SL WC OR OU OT;
+377            ODS OUTPUT DOMAIN=OUT1;
+378        RUN;
+
+NOTE: Only one cluster in a stratum for PERSONS WHO HAVE AT LEAST 1 EVENT ASSOCIATED WITH DIABETES domains for variable(s) TOTEXP, 
+      SF, MR, MD, PV, VA, TR, OF, SL, WC, OR, OU, OT. The estimate of variance for TOTEXP, SF, MR, MD, PV, VA, TR, OF, SL, WC, OR, 
+      OU, OT will omit this stratum.
+NOTE: The data set WORK.OUT1 has 13 observations and 10 variables.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.42 seconds
+      cpu time            0.41 seconds
+      
+
+379        ODS LISTING;
+380        
+381        TITLE3 "ESTIMATES ON USE AND EXPENDITURES FOR ALL EVENTS ASSOCIATED WITH DIABETES, 2017";
+382        PROC PRINT DATA=OUT1 NOOBS LABEL;
+383        VAR  VARNAME /*VARLABEL*/ N SUMWGT SUM STDDEV MEAN STDERR;
+384        FORMAT N                    comma6.0
+385               SUMWGT SUM    STDDEV comma17.0
+386               MEAN   STDERR        comma9.2
+387            ;
+388        RUN;
+
+NOTE: There were 13 observations read from the data set WORK.OUT1.
+NOTE: The PROCEDURE PRINT printed page 1.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+389        
+390        
+391        /*9) CALCULATE ESTIMATES ON EXPENDITURES AND USE BY TYPE OF SERVICE */
+392        
+393        PROC SUMMARY DATA=DIAB4 NWAY;
+394          CLASS DUPERSID EVNTYP;
+395          VAR TOTEXP SF MR MD PV VA TR OF SL WC OR OU OT;
+396          OUTPUT OUT=TOS SUM=;
+397        RUN;
+
+NOTE: There were 20930 observations read from the data set WORK.DIAB4.
+NOTE: The data set WORK.TOS has 4560 observations and 17 variables.
+NOTE: PROCEDURE SUMMARY used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+398        
+399        DATA TOS2;
+400          SET TOS (DROP=_TYPE_ RENAME=(_FREQ_=N_VISITS));
+12                                                         The SAS System                      Monday, February 24, 2020 09:12:00 PM
+
+401          LABEL N_VISITS = '# OF VISITS PER PERSON FOR EACH TYPE OF SERVICE' ;
+402        RUN;
+
+NOTE: There were 4560 observations read from the data set WORK.TOS.
+NOTE: The data set WORK.TOS2 has 4560 observations and 16 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+403        
+404        TITLE3 "SAMPLE DUMP AFTER DATA IS SUMMED UP TO PERSON-EVENT TYPE-LEVEL";
+405        PROC PRINT DATA=TOS2 (OBS=20);
+406          BY DUPERSID;
+407        RUN;
+
+NOTE: There were 20 observations read from the data set WORK.TOS2.
+NOTE: The PROCEDURE PRINT printed pages 2-3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.18 seconds
+      cpu time            0.18 seconds
+      
+
+408        
+409        DATA  FYTOS;
+410        MERGE CDATA.H201 (IN=AA KEEP=DUPERSID VARPSU VARSTR PERWT17F /*ADD MORE VARIABLES*/)
+411              TOS2       (IN=BB);
+412          BY DUPERSID;
+413        
+414                  IF AA AND     BB THEN SUB=1;
+415             ELSE IF AA AND NOT BB THEN DO ;   /*PERSONS WITHOUT EVENTS WITH DIABETES*/
+416                  SUB=2;
+417                  EVNTYP   = 'NA';
+418                  N_VISITS = 0 ;
+419                  TOTEXP   = 0 ;
+420                  SF       = 0 ;
+421                  MR       = 0 ;
+422                  MD       = 0 ;
+423                  PV       = 0 ;
+424                  VA       = 0 ;
+425                  TR       = 0 ;
+426                  OF       = 0 ;
+427                  SL       = 0 ;
+428                  WC       = 0 ;
+429                  OR       = 0 ;
+430                  OU       = 0 ;
+431                  OT       = 0 ;
+432             END;
+433        
+434             LABEL SUB = 'PERSONS WHO HAVE AT LEAST 1 EVENT ASSOCIATED WITH DIABETES';
+435        
+436             IF PERWT17F > 0 ;
+437        RUN;
+
+NOTE: There were 31880 observations read from the data set CDATA.H201.
+NOTE: There were 4560 observations read from the data set WORK.TOS2.
+NOTE: The data set WORK.FYTOS has 32597 observations and 20 variables.
+NOTE: DATA statement used (Total process time):
+13                                                         The SAS System                      Monday, February 24, 2020 09:12:00 PM
+
+      real time           1.15 seconds
+      cpu time            0.59 seconds
+      
+
+438        
+439        ODS GRAPHICS OFF;
+440        ODS LISTING CLOSE;
+441        PROC SURVEYMEANS DATA=FYTOS NOBS SUMWGT SUM STD MEAN STDERR;
+442        	STRATA  VARSTR ;
+443        	CLUSTER VARPSU ;
+444        	WEIGHT  PERWT17F ;
+445        	DOMAIN SUB('1') * EVNTYP ;
+446        	VAR N_VISITS TOTEXP  SF  MR  MD PV VA TR OF SL WC OR OU OT;
+447            ODS OUTPUT DOMAIN=OUT2 ;
+448        RUN;
+
+NOTE: Only one cluster in a stratum for PERSONS WHO HAVE AT LEAST 1 EVENT ASSOCIATED WITH DIABETES*EVENT TYPE domains for 
+      variable(s) N_VISITS, TOTEXP, SF, MR, MD, PV, VA, TR, OF, SL, WC, OR, OU, OT. The estimate of variance for N_VISITS, TOTEXP, 
+      SF, MR, MD, PV, VA, TR, OF, SL, WC, OR, OU, OT will omit this stratum.
+NOTE: The data set WORK.OUT2 has 70 observations and 11 variables.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.66 seconds
+      cpu time            0.64 seconds
+      
+
+449        ODS LISTING;
+450        
+451        PROC SORT DATA=OUT2;
+452          BY EVNTYP;
+453        RUN;
+
+NOTE: There were 70 observations read from the data set WORK.OUT2.
+NOTE: The data set WORK.OUT2 has 70 observations and 11 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+454        
+455        TITLE3 "ESTIMATES ON USE AND EXPENDITURES FOR EVENTS ASSOCIATED WITH DIABETES, BY TYPE OF SERVICE, 2017";
+456        PROC PRINT DATA=OUT2 NOOBS LABEL;
+457        BY EVNTYP;
+458        VAR  VARNAME /*VARLABEL*/ N SUMWGT SUM STDDEV MEAN STDERR;
+459        FORMAT N                    comma6.0
+460               SUMWGT SUM    STDDEV comma17.0
+461               MEAN   STDERR        comma9.2
+462         ;
+463        RUN;
+
+NOTE: There were 70 observations read from the data set WORK.OUT2.
+NOTE: The PROCEDURE PRINT printed pages 4-5.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.12 seconds
+      
+
+464        PROC PRINTTO;
+465        RUN;
+14                                                         The SAS System                      Monday, February 24, 2020 09:12:00 PM
+
+

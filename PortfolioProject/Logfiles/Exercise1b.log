@@ -1,0 +1,483 @@
+﻿NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+5          OPTIONS LOCALE=en_US DFLANG=LOCALE VALIDVARNAME=V7 VALIDMEMNAME=EXTEND;
+6          
+7          OPTIONS NOSYNTAXCHECK;
+8          DATA _NULL_;
+9          RC=DLGCDIR('/folders/myfolders/MEPS/PortfolioCode');
+10         RUN;
+
+NOTE: The current working directory is now "/folders/myfolders/MEPS/PortfolioCode".
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+11         OPTIONS NOSYNTAXCHECK;
+12         
+13         FILENAME _HTMLOUT %NRSTR("/folders/myfolders/MEPS/PortfolioCode/Exercise1b.html");
+14         
+15         FILENAME _GSFNAME TEMP;
+16         DATA _NULL_;
+17         CALL SYMPUT("GRAPHINIT","");
+18         CALL SYMPUT("GRAPHTERM","");
+19         RC=TSLVL('SASXGOPT','N');
+20         _ERROR_=0;
+21         IF (RC^=' ') THEN DO;
+22         CALL SYMPUT("GRAPHINIT","GOPTIONS RESET=ALL GSFNAME=_GSFNAME;");
+23         CALL SYMPUT("GRAPHTERM","GOPTIONS NOACCESSIBLE;");
+24         END;
+25         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+26         DATA _NULL_;
+27         RC=SYSPROD("PRODNUM002");
+28         IF (RC^=1) THEN DO;
+29         CALL SYMPUT("GRAPHINIT","");
+30         CALL SYMPUT("GRAPHTERM","");
+31         END;
+32         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+33         %LET SYSCC=0;
+2                                                          The SAS System                      Monday, February 24, 2020 08:33:00 PM
+
+34         %LET _CLIENTAPP='SAS Studio';
+35         %LET _CLIENTAPPABREV=Studio;
+36         %LET _CLIENTAPPVERSION=3.8;
+37         %LET _CLIENTVERSION=3.8;
+38         %LET _CLIENTMODE=background;
+39         %LET _SASSERVERNAME=%BQUOTE(localhost);
+40         %LET _SASHOSTNAME=%BQUOTE(localhost);
+41         %LET _SASPROGRAMFILEHOST=%BQUOTE(localhost);
+42         %LET _CLIENTUSERID=%BQUOTE(sasdemo);
+43         %LET _CLIENTUSERNAME=%BQUOTE(sasdemo);
+44         %LET CLIENTMACHINE=%BQUOTE(10.0.2.2);
+45         %LET _CLIENTMACHINE=%BQUOTE(10.0.2.2);
+46         %let SASWORKLOCATION="%sysfunc(getoption(work))/";
+47         FILENAME _CWD '.';
+ERROR: The path /media/sf_myfolders/MEPS/PortfolioCode is not in the list of accessible paths when SAS is in the lockdown state.
+ERROR: Error in the FILENAME statement.
+48         DATA _NULL_;
+49         CALL SYMPUT('_SASWORKINGDIR',PATHNAME('_CWD'));
+50         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+51         FILENAME _CWD;
+WARNING: No logical assign for filename _CWD.
+52         
+53         %LET _SASPROGRAMFILE = %NRQUOTE(%NRSTR(/folders/myfolders/MEPS/PortfolioCode/Exercise1b.sas));
+54         %LET _EXECENV=SASStudio Background;
+55         %LET _SASWS_ = %BQUOTE(/folders/myfolders);
+56         %LET _SASWSTEMP_=%BQUOTE();
+57         ODS LISTING CLOSE;
+58         ODS AUTONAVIGATE OFF;
+59         ODS GRAPHICS ON;
+60         ODS HTML5 (ID=WEB) DEVICE=PNG GPATH="&_SASWSTEMP_" ENCODING=utf8 FILE=_HTMLOUT (TITLE='Results: Exercise1b.sas')
+60       ! STYLE=Htmlblue OPTIONS(BITMAP_MODE='INLINE' OUTLINE='ON' SVG_MODE='INLINE'
+60       ! CSS_PREFIX='.ods_c2f7c76e-a168-42aa-a179-263557f6f864' BODY_ID='div_c2f7c76e-a168-42aa-a179-263557f6f864' );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+61         &GRAPHINIT;
+62         OPTIONS FILELOCKS=( '/' FAIL );
+63         /**********************************************************************************
+64         
+65         DESCRIPTION:  THIS PROGRAM GENERATES THE FOLLOWING ESTIMATES ON NATIONAL HEALTH CARE EXPENSES BY TYPE OF SERVICE, 2017:
+66         
+67                        (1) PERCENTAGE DISTRIBUTION OF EXPENSES BY TYPE OF SERVICE
+68                        (2) PERCENTAGE OF PERSONS WITH AN EXPENSE, BY TYPE OF SERVICE
+69                        (3) MEAN EXPENSE PER PERSON WITH AN EXPENSE, BY TYPE OF SERVICE
+70         
+71                       DEFINED SERVICE CATEGORIES ARE:
+72                          HOSPITAL INPATIENT
+73                          AMBULATORY SERVICE: OFFICE-BASED & HOSPITAL OUTPATIENT VISITS
+74                          PRESCRIBED MEDICINES
+75                          DENTAL VISITS
+76                          EMERGENCY ROOM
+77                          HOME HEALTH CARE (AGENCY & NON-AGENCY) AND OTHER (TOTAL EXPENDITURES - ABOVE EXPENDITURE CATEGORIES)
+78         
+79                      NOTE: EXPENSES INCLUDE BOTH FACILITY AND PHYSICIAN EXPENSES.
+3                                                          The SAS System                      Monday, February 24, 2020 08:33:00 PM
+
+80         
+81          INPUT FILE:   /folders/myfolders/H201.SAS7BDAT (2017 FULL-YEAR FILE)
+82         
+83          *********************************************************************************/
+84         
+85         /* set the folder name for the datasets */
+86         LIBNAME CDATA '/folders/myfolders/MEPS';
+NOTE: Libref CDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /folders/myfolders/MEPS
+87         
+88         /* Create the categories for printing into */
+89          PROC FORMAT;
+90           VALUE AGEF
+91               0-  64 = '0-64'
+92              65-HIGH = '65+';
+NOTE: Format AGEF has been output.
+93         
+94           VALUE AGECAT
+95               .  = 'All Ages'
+96                1 = '0-64'
+97                2 = '65+';
+NOTE: Format AGECAT has been output.
+98         
+99             VALUE GTZERO
+100              0         = '$0'
+101              0 <- HIGH = '>$0';
+NOTE: Format GTZERO has been output.
+102        
+103            VALUE FLAG
+104              .         = 'No or any expense'
+105              0         = 'No expense'
+106              1         = 'Any expense';
+NOTE: Format FLAG has been output.
+107        
+108         RUN;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.04 seconds
+      
+
+109        
+110        TITLE1 'MIS500 Portfolio Project';
+111        TITLE2 "EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017";
+112        
+113        
+114        
+115         /* READ IN DATA FROM 2017 CONSOLIDATED DATA FILE (HC-201) */
+116         DATA PUF201;
+117           SET CDATA.H201 (KEEP= TOTEXP17 IPDEXP17 IPFEXP17 OBVEXP17 RXEXP17
+118                                  OPDEXP17 OPFEXP17 DVTEXP17 ERDEXP17 ERFEXP17
+119                                  HHAEXP17 HHNEXP17 OTHEXP17 VISEXP17 AGE17X AGE42X AGE31X
+120                                  VARSTR   VARPSU   PERWT17f );
+121        
+122        
+123           /* Define expenditure variables by type of service  */
+124        
+4                                                          The SAS System                      Monday, February 24, 2020 08:33:00 PM
+
+125        
+126           TOTAL                = TOTEXP17;
+127           HOSPITAL_INPATIENT   = IPDEXP17 + IPFEXP17;
+128           AMBULATORY           = OBVEXP17 + OPDEXP17 + OPFEXP17 + ERDEXP17 + ERFEXP17;
+129           PRESCRIBED_MEDICINES = RXEXP17;
+130           DENTAL               = DVTEXP17;
+131           HOME_HEALTH_OTHER    = HHAEXP17 + HHNEXP17 + OTHEXP17 + VISEXP17;
+132        
+133        
+134          /*QC CHECK IF THE SUM OF EXPENDITURES BY TYPE OF SERVICE IS EQUAL TO TOTAL*/
+135        
+136        
+137           DIFF = TOTAL-HOSPITAL_INPATIENT - AMBULATORY   - PRESCRIBED_MEDICINES
+138                      - DENTAL            - HOME_HEALTH_OTHER        ;
+139        
+140        
+141          /* CREATE FLAG (1/0) VARIABLES FOR PERSONS WITH AN EXPENSE, BY TYPE OF SERVICE  */
+142           ARRAY EXX  (6) TOTAL     HOSPITAL_INPATIENT   AMBULATORY     PRESCRIBED_MEDICINES
+143                          DENTAL    HOME_HEALTH_OTHER      ;
+144        
+145        
+146           ARRAY ANYX (6) X_ANYSVCE X_HOSPITAL_INPATIENT X_AMBULATORY    X_PRESCRIBED_MEDICINES
+147                          X_DENTAL  X_HOME_HEALTH_OTHER    ;
+148        
+149        
+150           DO II=1 TO 6;
+151             ANYX(II) = 0;
+152             IF EXX(II) > 0 THEN ANYX(II) = 1;
+153           END;
+154           DROP II;
+155        
+156           /* CREATE A SUMMARY VARIABLE FROM END OF YEAR, 42, AND 31 VARIABLES*/
+157        
+158        
+159                IF AGE17X >= 0 THEN AGE = AGE17X ;
+160           ELSE IF AGE42X >= 0 THEN AGE = AGE42X ;
+161           ELSE IF AGE31X >= 0 THEN AGE = AGE31X ;
+162        
+163                IF 0 LE AGE LE 64 THEN AGECAT=1 ;
+164           ELSE IF      AGE  > 64 THEN AGECAT=2 ;
+165          ;
+166        
+167        
+168         RUN;
+
+NOTE: There were 31880 observations read from the data set CDATA.H201.
+NOTE: The data set WORK.PUF201 has 31880 observations and 35 variables.
+NOTE: DATA statement used (Total process time):
+      real time           1.04 seconds
+      cpu time            0.55 seconds
+      
+
+169        
+170         /* Create the frequency tables by categories of how many have any service vs. none.  NOte
+171          * Use the total amounts to determine this */
+172         TITLE3 "Supporting crosstabs for the flag variables";
+173         PROC FREQ DATA=PUF201;
+174            TABLES X_ANYSVCE              * TOTAL
+5                                                          The SAS System                      Monday, February 24, 2020 08:33:00 PM
+
+175                   X_HOSPITAL_INPATIENT   * HOSPITAL_INPATIENT
+176                   X_AMBULATORY           * AMBULATORY
+177                   X_PRESCRIBED_MEDICINES * PRESCRIBED_MEDICINES
+178                   X_DENTAL               * DENTAL
+179                   X_HOME_HEALTH_OTHER    * HOME_HEALTH_OTHER
+180                   AGECAT*AGE
+181                   DIFF/LIST MISSING;
+182        
+183            FORMAT TOTAL
+184                   HOSPITAL_INPATIENT
+185                   AMBULATORY
+186                   PRESCRIBED_MEDICINES
+187                   DENTAL
+188                   HOME_HEALTH_OTHER   gtzero.
+189                   AGE  agef.
+190                   X_ANYSVCE
+191                   X_HOSPITAL_INPATIENT
+192                   X_AMBULATORY
+193                   X_PRESCRIBED_MEDICINES
+194                   X_DENTAL
+195                   X_HOME_HEALTH_OTHER flag.
+196                   AGECAT agecat.
+197          ;
+198        RUN;
+
+NOTE: There were 31880 observations read from the data set WORK.PUF201.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.14 seconds
+      
+
+199        
+200        /* Get the the expenses by type of service */
+201         ods graphics off;
+202          TITLE3 'PERCENTAGE DISTRIBUTION OF EXPENSES BY TYPE OF SERVICE (STAT BRIEF #491 FIGURE 1)';
+203         PROC SURVEYMEANS DATA=PUF201 sum ;
+204            STRATUM VARSTR;
+205            CLUSTER VARPSU;
+206            WEIGHT PERWT17f;
+207            VAR   HOSPITAL_INPATIENT
+208                 AMBULATORY
+209                 PRESCRIBED_MEDICINES
+210                  DENTAL
+211                 HOME_HEALTH_OTHER
+212                 TOTAL ;
+213            RATIO  HOSPITAL_INPATIENT
+214                  AMBULATORY
+215                  PRESCRIBED_MEDICINES
+216                  DENTAL
+217                  HOME_HEALTH_OTHER   / TOTAL ;
+218         RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.24 seconds
+      cpu time            0.24 seconds
+      
+
+6                                                          The SAS System                      Monday, February 24, 2020 08:33:00 PM
+
+219        
+220         /* Get the percentage of people that have an expense in a type of service */
+221        TITLE3 'PERCENTAGE OF PERSONS WITH AN EXPENSE, BY TYPE OF SERVICE';
+222        PROC SURVEYMEANS DATA= PUF201 NOBS MEAN STDERR SUM;
+223            STRATUM VARSTR ;
+224            CLUSTER VARPSU ;
+225            WEIGHT  PERWT17f ;
+226            VAR X_ANYSVCE
+227                X_HOSPITAL_INPATIENT
+228                X_AMBULATORY
+229                X_PRESCRIBED_MEDICINES
+230                X_DENTAL
+231                X_HOME_HEALTH_OTHER;
+232                RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.07 seconds
+      
+
+233        
+234        
+235        /* Use proc surveymeans to create datasets that will be merged and prited with better labels. */
+236        
+237         TITLE3 'MEAN TOTAL EXPENSE PER PERSON WITH AN EXPENSE, AGE 0-64, AND AGE 65+ (via ODS Output)';
+238          *ods trace on;
+239         PROC SURVEYMEANS DATA= PUF201 MEAN NOBS SUMWGT STDERR SUM;
+240            STRATUM VARSTR ;
+241            CLUSTER VARPSU ;
+242            VAR  TOTAL;
+243            DOMAIN  AGECAT AGECAT*X_ANYSVCE('1');
+244            WEIGHT  PERWT17f ;
+245            FORMAT  AGECAT agecat.;
+246            ods output Statistics=work.Overall_results
+247                       domain= work.domain_results;
+248        RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: Only one cluster in a stratum for AGECAT*X_ANYSVCE domains for variable(s) TOTAL. The estimate of variance for TOTAL will 
+      omit this stratum.
+NOTE: The data set WORK.DOMAIN_RESULTS has 4 observations and 10 variables.
+NOTE: The data set WORK.OVERALL_RESULTS has 1 observations and 7 variables.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.17 seconds
+      
+
+249        
+250        /* combine the output of proc surverymeans to be printed in next step */
+251        data combine;
+252          set work.Overall_results
+253              work.domain_results;
+254        run;
+
+NOTE: There were 1 observations read from the data set WORK.OVERALL_RESULTS.
+NOTE: There were 4 observations read from the data set WORK.DOMAIN_RESULTS.
+NOTE: The data set WORK.COMBINE has 5 observations and 10 variables.
+7                                                          The SAS System                      Monday, February 24, 2020 08:33:00 PM
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+255        proc print data= combine noobs split='*';
+256         var AGECAT  X_ANYSVCE N  SumWgt  mean StdErr  Sum stddev;
+257         label AGECAT = 'Age Group'
+258               X_ANYSVCE = 'Expense*Category*(Flag)'
+259               SumWgt = 'Population*Size'
+260               mean = 'Mean($)'
+261               StdErr = 'SE of Mean($)'
+262               Sum = 'Total*Expense ($)'
+263               Stddev = 'SE of*Total Expense($)';
+264               format N SumWgt Comma12. mean comma7. stderr 7.3 sum Stddev comma17.
+265                X_ANYSVCE flag.;
+266        run;
+
+NOTE: There were 5 observations read from the data set WORK.COMBINE.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+267        
+268        TITLE3 'MEAN HOSPITAL INPATIENT EXPENSE PER PERSON WITH AN INPATIENT EXPENSE, AGE 0-64, AND AGE 65+';
+269        PROC SURVEYMEANS DATA= PUF201 NOBS MEAN SUMWGT STDERR SUM ;
+270            STRATUM VARSTR ;
+271            CLUSTER VARPSU ;
+272            WEIGHT  PERWT17f ;
+273            VAR  HOSPITAL_INPATIENT;
+274            DOMAIN  X_HOSPITAL_INPATIENT('1') AGECAT*X_HOSPITAL_INPATIENT ('1');
+275            FORMAT  AGECAT agecat. ;
+276        RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: Only one cluster in a stratum for X_HOSPITAL_INPATIENT domains for variable(s) HOSPITAL_INPATIENT. The estimate of variance 
+      for HOSPITAL_INPATIENT will omit this stratum.
+NOTE: Only one cluster in a stratum for AGECAT*X_HOSPITAL_INPATIENT domains for variable(s) HOSPITAL_INPATIENT. The estimate of 
+      variance for HOSPITAL_INPATIENT will omit this stratum.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.16 seconds
+      
+
+277        
+278        TITLE3 'MEAN AMBULATORY EXPENSE PER PERSON WITH AN AMBULATORY EXPENSE, AGE 0-64, AND AGE 65+';
+279        PROC SURVEYMEANS DATA= PUF201 NOBS MEAN SUMWGT STDERR SUM ;
+280            STRATUM VARSTR ;
+281            CLUSTER VARPSU ;
+282            WEIGHT  PERWT17f ;
+283            VAR  AMBULATORY;
+284            DOMAIN  X_AMBULATORY('1')  AGECAT*X_AMBULATORY('1') ;
+285            FORMAT  AGECAT agecat.;
+286         RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: Only one cluster in a stratum for AGECAT*X_AMBULATORY domains for variable(s) AMBULATORY. The estimate of variance for 
+8                                                          The SAS System                      Monday, February 24, 2020 08:33:00 PM
+
+      AMBULATORY will omit this stratum.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.16 seconds
+      
+
+287        
+288         TITLE3 'MEAN PRESCRIPTION MEDICINE EXPENSE PER PERSON WITH A PRESCRIPTION MEDICINE EXPENSE, AGE 0-64, AND AGE 65+';
+289        PROC SURVEYMEANS DATA= PUF201 MEAN NOBS SUMWGT STDERR SUM ;
+290            STRATUM VARSTR ;
+291            CLUSTER VARPSU ;
+292            WEIGHT  PERWT17f ;
+293            VAR  PRESCRIBED_MEDICINES;
+294            DOMAIN  X_PRESCRIBED_MEDICINES('1') AGECAT*X_PRESCRIBED_MEDICINES('1');
+295            FORMAT  AGECAT agecat.;
+296         RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: Only one cluster in a stratum for AGECAT*X_PRESCRIBED_MEDICINES domains for variable(s) PRESCRIBED_MEDICINES. The estimate of 
+      variance for PRESCRIBED_MEDICINES will omit this stratum.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.16 seconds
+      cpu time            0.15 seconds
+      
+
+297        
+298         TITLE3 'MEAN DENTAL EXPENSE PER PERSON WITH A DENATL EXPENSE, AGE 0-64, AND AGE 65+';
+299        PROC SURVEYMEANS DATA= PUF201 MEAN NOBS SUMWGT STDERR SUM ;
+300            STRATUM VARSTR ;
+301            CLUSTER VARPSU ;
+302            WEIGHT  PERWT17f ;
+303            VAR  DENTAL;
+304            DOMAIN   X_DENTAL('1') AGECAT*X_DENTAL('1') ;
+305            FORMAT  AGECAT agecat.;
+306         RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: Only one cluster in a stratum for AGECAT*X_DENTAL domains for variable(s) DENTAL. The estimate of variance for DENTAL will 
+      omit this stratum.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.20 seconds
+      cpu time            0.19 seconds
+      
+
+307        
+308        TITLE3 'MEAN  OTHER EXPENSE (INCLUDING HOME HEALTH EXPENSE) PER PERSON WITH AN OTHER  EXPENSE, AGE 0-64, AND AGE 65+';
+309         PROC SURVEYMEANS DATA= PUF201 MEAN NOBS SUMWGT STDERR SUM ;
+310            STRATUM VARSTR ;
+311            CLUSTER VARPSU ;
+312            WEIGHT  PERWT17f ;
+313            VAR  HOME_HEALTH_OTHER;
+314            DOMAIN  X_HOME_HEALTH_OTHER('1') AGECAT*X_HOME_HEALTH_OTHER('1') ;
+315            FORMAT  AGECAT agecat.;
+316         RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: Only one cluster in a stratum for AGECAT*X_HOME_HEALTH_OTHER domains for variable(s) HOME_HEALTH_OTHER. The estimate of 
+      variance for HOME_HEALTH_OTHER will omit this stratum.
+9                                                          The SAS System                      Monday, February 24, 2020 08:33:00 PM
+
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           0.16 seconds
+      cpu time            0.16 seconds
+      
+
+317         PROC PRINTTO;
+318         RUN;
+

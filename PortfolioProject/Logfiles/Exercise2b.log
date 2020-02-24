@@ -1,0 +1,343 @@
+﻿NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+5          OPTIONS LOCALE=en_US DFLANG=LOCALE VALIDVARNAME=V7 VALIDMEMNAME=EXTEND;
+6          
+7          OPTIONS NOSYNTAXCHECK;
+8          DATA _NULL_;
+9          RC=DLGCDIR('/folders/myfolders/MEPS/PortfolioCode');
+10         RUN;
+
+NOTE: The current working directory is now "/folders/myfolders/MEPS/PortfolioCode".
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+11         OPTIONS NOSYNTAXCHECK;
+12         
+13         FILENAME _HTMLOUT %NRSTR("/folders/myfolders/MEPS/PortfolioCode/Exercise2b.html");
+14         
+15         FILENAME _GSFNAME TEMP;
+16         DATA _NULL_;
+17         CALL SYMPUT("GRAPHINIT","");
+18         CALL SYMPUT("GRAPHTERM","");
+19         RC=TSLVL('SASXGOPT','N');
+20         _ERROR_=0;
+21         IF (RC^=' ') THEN DO;
+22         CALL SYMPUT("GRAPHINIT","GOPTIONS RESET=ALL GSFNAME=_GSFNAME;");
+23         CALL SYMPUT("GRAPHTERM","GOPTIONS NOACCESSIBLE;");
+24         END;
+25         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+26         DATA _NULL_;
+27         RC=SYSPROD("PRODNUM002");
+28         IF (RC^=1) THEN DO;
+29         CALL SYMPUT("GRAPHINIT","");
+30         CALL SYMPUT("GRAPHTERM","");
+31         END;
+32         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+33         %LET SYSCC=0;
+2                                                          The SAS System                      Monday, February 24, 2020 08:44:00 PM
+
+34         %LET _CLIENTAPP='SAS Studio';
+35         %LET _CLIENTAPPABREV=Studio;
+36         %LET _CLIENTAPPVERSION=3.8;
+37         %LET _CLIENTVERSION=3.8;
+38         %LET _CLIENTMODE=background;
+39         %LET _SASSERVERNAME=%BQUOTE(localhost);
+40         %LET _SASHOSTNAME=%BQUOTE(localhost);
+41         %LET _SASPROGRAMFILEHOST=%BQUOTE(localhost);
+42         %LET _CLIENTUSERID=%BQUOTE(sasdemo);
+43         %LET _CLIENTUSERNAME=%BQUOTE(sasdemo);
+44         %LET CLIENTMACHINE=%BQUOTE(10.0.2.2);
+45         %LET _CLIENTMACHINE=%BQUOTE(10.0.2.2);
+46         %let SASWORKLOCATION="%sysfunc(getoption(work))/";
+47         FILENAME _CWD '.';
+ERROR: The path /media/sf_myfolders/MEPS/PortfolioCode is not in the list of accessible paths when SAS is in the lockdown state.
+ERROR: Error in the FILENAME statement.
+48         DATA _NULL_;
+49         CALL SYMPUT('_SASWORKINGDIR',PATHNAME('_CWD'));
+50         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+51         FILENAME _CWD;
+WARNING: No logical assign for filename _CWD.
+52         
+53         %LET _SASPROGRAMFILE = %NRQUOTE(%NRSTR(/folders/myfolders/MEPS/PortfolioCode/Exercise2b.sas));
+54         %LET _EXECENV=SASStudio Background;
+55         %LET _SASWS_ = %BQUOTE(/folders/myfolders);
+56         %LET _SASWSTEMP_=%BQUOTE();
+57         ODS LISTING CLOSE;
+58         ODS AUTONAVIGATE OFF;
+59         ODS GRAPHICS ON;
+60         ODS HTML5 (ID=WEB) DEVICE=PNG GPATH="&_SASWSTEMP_" ENCODING=utf8 FILE=_HTMLOUT (TITLE='Results: Exercise2b.sas')
+60       ! STYLE=Htmlblue OPTIONS(BITMAP_MODE='INLINE' OUTLINE='ON' SVG_MODE='INLINE'
+60       ! CSS_PREFIX='.ods_52d75e9f-5cd7-4444-93e8-cd18b0c4af73' BODY_ID='div_52d75e9f-5cd7-4444-93e8-cd18b0c4af73' );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+61         &GRAPHINIT;
+62         OPTIONS FILELOCKS=( '/' FAIL );
+63         /*********************************************************************\
+64         
+65         PURPOSE:	THIS PROGRAM GENERATES SELECTED ESTIMATES FOR A 2017 VERSION OF THE Purchases and Expenses for Narcotic
+65       ! analgesics or Narcotic analgesic combos
+66         
+67         
+68             (1) FIGURE 1: TOTAL EXPENSE FOR Narcotic analgesics or Narcotic analgesic combos
+69         
+70             (2) FIGURE 2: TOTAL NUMBER OF PURCHASES OF Narcotic analgesics or Narcotic analgesic combos
+71         
+72             (3) FIGURE 3: TOTAL NUMBER OF PERSONS PURCHASING ONE OR MORE Narcotic analgesics or Narcotic analgesic combos
+73         
+74             (4) FIGURE 4: AVERAGE TOTAL, OUT OF POCKET, AND THIRD PARTY PAYER EXPENSE
+75                           FOR Narcotic analgesics or Narcotic analgesic combos PER PERSON WITH AN Narcotic analgesics or Narcotic
+75       !  analgesic combos MEDICINE PURCHASE
+76         
+77         INPUT FILES:  (1) /folders/myfolders/MEPS/H201.SAS7BDAT (2017 FULL-YEAR CONSOLIDATED PUF)
+3                                                          The SAS System                      Monday, February 24, 2020 08:44:00 PM
+
+78                       (2) /folders/myfolders/MEPS/H197A.SAS7BDAT (2017 PRESCRIBED MEDICINES PUF)
+79         
+80         *********************************************************************/
+81         
+82         /* Set the library for the datasets */
+83         proc datasets lib=work nolist kill;
+NOTE: Deleting WORK.REGSTRY (memtype=ITEMSTOR).
+NOTE: File WORK.REGSTRY (memtype=ITEMSTOR) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASGOPT (memtype=CATALOG).
+NOTE: File WORK.SASGOPT (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMAC1 (memtype=CATALOG).
+NOTE: File WORK.SASMAC1 (memtype=CATALOG) cannot be deleted because it is in use.
+NOTE: Deleting WORK.SASMAC2 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC3 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC4 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC5 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC6 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC7 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC8 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMAC9 (memtype=CATALOG).
+NOTE: Deleting WORK.SASMACR (memtype=CATALOG).
+NOTE: File WORK.SASMACR (memtype=CATALOG) cannot be deleted because it is in use.
+83       !                                     quit;
+
+NOTE: PROCEDURE DATASETS used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.02 seconds
+      
+
+83       !                                           /* delete  all files in the WORK library */
+84         LIBNAME CDATA '/folders/myfolders/MEPS';
+NOTE: Libref CDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /folders/myfolders/MEPS
+85         
+86         TITLE1 'MIS500 Portfolio Project';
+87         TITLE2 "EXERCISE2B.SAS: Narcotic analgesics or Narcotic analgesic combos, 2017";
+88         
+89         /* Set the categories for printing */
+90         PROC FORMAT;
+91           VALUE GTZERO
+92              0         = '0'
+93              0 <- HIGH = '>0'
+94              ;
+NOTE: Format GTZERO has been output.
+95         RUN;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.03 seconds
+      
+
+96         
+97         /*1) IDENTIFY Narcotic analgesics or Narcotic analgesic combos USING THERAPEUTIC CLASSIFICATION (TC) CODES*/
+98         
+99         DATA DRUG;
+100          SET CDATA.H197A;
+101          IF TC1S1_1 IN (60, 191) ; /*definition of Narcotic analgesics or Narcotic analgesic combos*/
+4                                                          The SAS System                      Monday, February 24, 2020 08:44:00 PM
+
+102        RUN;
+
+NOTE: There were 310487 observations read from the data set CDATA.H197A.
+NOTE: The data set WORK.DRUG has 11915 observations and 63 variables.
+NOTE: DATA statement used (Total process time):
+      real time           2.32 seconds
+      cpu time            1.24 seconds
+      
+
+103        
+104        TITLE3 "A SAMPLE DUMP FOR PMED RECORDS WITH Narcotic analgesics or Narcotic analgesic combos";
+105        PROC PRINT DATA=DRUG (OBS=30);
+106        VAR RXRECIDX LINKIDX TC1S1_1 RXXP17X RXSF17X;
+107         BY DUPERSID;
+108        RUN;
+
+NOTE: There were 30 observations read from the data set WORK.DRUG.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.14 seconds
+      
+
+109        
+110        
+111        /*2) SUM DATA TO PERSON-LEVEL*/
+112        
+113        PROC SUMMARY DATA=DRUG NWAY;
+114          CLASS DUPERSID;
+115          VAR RXXP17X RXSF17X;
+116          OUTPUT OUT=PERDRUG (DROP=_TYPE_) sum=TOT OOP;
+117        RUN;
+
+NOTE: There were 11915 observations read from the data set WORK.DRUG.
+NOTE: The data set WORK.PERDRUG has 2833 observations and 4 variables.
+NOTE: PROCEDURE SUMMARY used (Total process time):
+      real time           0.05 seconds
+      cpu time            0.07 seconds
+      
+
+118        
+119        TITLE3 "A SAMPLE DUMP FOR PERSON-LEVEL EXPENDITURES FOR Narcotic analgesics or Narcotic analgesic combos";
+120        PROC PRINT DATA=PERDRUG (OBS=30);
+121        RUN;
+
+NOTE: There were 30 observations read from the data set WORK.PERDRUG.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.07 seconds
+      
+
+122        
+123        DATA PERDRUG2;
+124         SET PERDRUG;
+125             RENAME _FREQ_ = N_PHRCHASE ;
+126             THIRD_PAYER   = TOT - OOP;
+127        RUN;
+
+NOTE: There were 2833 observations read from the data set WORK.PERDRUG.
+5                                                          The SAS System                      Monday, February 24, 2020 08:44:00 PM
+
+NOTE: The data set WORK.PERDRUG2 has 2833 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+128        
+129        /*3) MERGE THE PERSON-LEVEL EXPENDITURES TO THE FY PUF*/
+130        
+131        DATA  FY;
+132        MERGE CDATA.H201 (IN=AA KEEP=DUPERSID VARSTR VARPSU PERWT17F)
+133              PERDRUG2  (IN=BB KEEP=DUPERSID N_PHRCHASE TOT OOP THIRD_PAYER);
+134           BY DUPERSID;
+135        
+136              IF AA AND BB THEN DO;
+137                 SUB      = 1 ;
+138              END;
+139        
+140              ELSE IF NOT BB THEN DO;   /*FOR PERSONS WITHOUT ANY PURCHASE OF Narcotic analgesics or Narcotic analgesic combos*/
+141                 SUB         = 2 ;
+142                 N_PHRCHASE  = 0 ;
+143                 THIRD_PAYER = 0 ;
+144                 TOT         = 0 ;
+145                 OOP         = 0 ;
+146              END;
+147        
+148              IF AA;
+149        
+150              LABEL
+151                    THIRD_PAYER = 'TOTAL-OOP'
+152                    N_PHRCHASE  = '# OF PURCHASES PER PERSON'
+153                    SUB         = 'POPULATION FLAG FOR PERSONS WITH 1+ Narcotic analgesics or Narcotic analgesic combos'
+154                                ;
+155        RUN;
+
+NOTE: There were 31880 observations read from the data set CDATA.H201.
+NOTE: There were 2833 observations read from the data set WORK.PERDRUG2.
+NOTE: The data set WORK.FY has 31880 observations and 9 variables.
+NOTE: DATA statement used (Total process time):
+      real time           1.68 seconds
+      cpu time            0.88 seconds
+      
+
+156        
+157        TITLE3 "SUPPORTING CROSSTABS FOR NEW VARIABLES";
+158        PROC FREQ DATA=FY;
+159          TABLES  SUB * N_PHRCHASE * TOT * OOP * THIRD_PAYER / LIST MISSING ;
+160          FORMAT N_PHRCHASE TOT OOP THIRD_PAYER gtzero. ;
+161        RUN;
+
+NOTE: There were 31880 observations read from the data set WORK.FY.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.12 seconds
+      
+
+162        
+163        
+6                                                          The SAS System                      Monday, February 24, 2020 08:44:00 PM
+
+164        /*4) CALCULATE ESTIMATES ON USE AND EXPENDITURES*/
+165        
+166        ODS EXCLUDE ALL; /* Suppress the printing of output */
+167        TITLE3 "PERSON-LEVEL ESTIMATES ON EXPENDITURES AND USE FOR Narcotic analgesics or Narcotic analgesic combos, 2017";
+168        PROC SURVEYMEANS DATA=FY NOBS SUMWGT SUM STD MEAN STDERR;
+169          STRATA  VARSTR ;
+170          CLUSTER VARPSU;
+171          WEIGHT  PERWT17F;
+172           VAR TOT N_PHRCHASE  OOP THIRD_PAYER ;
+173           DOMAIN  SUB('1');
+174          ODS OUTPUT DOMAIN=work.domain_results;
+175        RUN;
+
+NOTE: Due to nonpositive weights, 1164 observation(s) were deleted.
+NOTE: Only one cluster in a stratum for POPULATION FLAG FOR PERSONS WITH 1+ Narcotic analgesics or Narcotic analgesic combos 
+      domains for variable(s) TOT, N_PHRCHASE, OOP, THIRD_PAYER. The estimate of variance for TOT, N_PHRCHASE, OOP, THIRD_PAYER 
+      will omit this stratum.
+NOTE: The data set WORK.DOMAIN_RESULTS has 4 observations and 10 variables.
+NOTE: PROCEDURE SURVEYMEANS used (Total process time):
+      real time           1.34 seconds
+      cpu time            1.25 seconds
+      
+
+176        
+177        ODS EXCLUDE NONE; /* Unsuppress the printing of output */
+178        TITLE4 "SUBSET THE ESTIMATES FOR PERSONS ONLY WITH 1+ Narcotic analgesics or Narcotic analgesic combos";
+179        proc print data= work.domain_results noobs split='*';
+180         var   VARLABEL N  SumWgt  mean StdErr  Sum stddev;
+181         label SumWgt = 'Population*Size'
+182               mean = 'Mean'
+183               StdErr = 'SE of Mean'
+184               Sum = 'Total'
+185               Stddev = 'SE of*Total';
+186               format N SumWgt Comma12. mean comma9.1 stderr 9.4
+187                      sum Stddev comma17.;
+188        run;
+
+NOTE: There were 4 observations read from the data set WORK.DOMAIN_RESULTS.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+      
+
+189        ODS _ALL_ CLOSE;
+190        /* THE PROC PRINTTO null step is required to close the PROC PRINTTO */
+191        PROC PRINTTO;
+192        RUN;
+
