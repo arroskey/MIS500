@@ -1,0 +1,5208 @@
+<!DOCTYPE html>
+<html class="ods_1e88b428-07f3-4993-a259-f4f968221de3" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<meta content="SAS 9.4" name="generator"/>
+<title>Results: Exercise5b.sas</title>
+<style>
+/*<![CDATA[*/
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.c section > table, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.c section > pre, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.c div > table,
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.c div > pre, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.c article > table, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.c article > pre,
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.j section > table, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.j section > pre, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.j div > table,
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.j div > pre, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.j article > table, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.j article > pre,
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.c p.note, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.c p.warning, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.c p.error, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.c p.fatal,
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.j p.note, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.j p.warning, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.j p.error, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.j p.fatal,
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.c > table.layoutcontainer, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .body.j > table.layoutcontainer { margin-left: auto; margin-right: auto }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.l table, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.l pre, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.l p.note,
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.l p.warning, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.l p.error, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.l p.fatal { margin-left: 0 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.c table, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.c pre, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.c p.note,
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.c p.warning, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.c p.error, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.c p.fatal { margin-left: auto; margin-right: auto }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.r table, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.r pre, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.r p.note,
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.r table, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.r pre, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.r p.note,
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.r p.warning, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.r p.error, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion.r p.fatal { margin-right: 0 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 article, .ods_1e88b428-07f3-4993-a259-f4f968221de3 aside, .ods_1e88b428-07f3-4993-a259-f4f968221de3 details, .ods_1e88b428-07f3-4993-a259-f4f968221de3 figcaption, .ods_1e88b428-07f3-4993-a259-f4f968221de3 figure, .ods_1e88b428-07f3-4993-a259-f4f968221de3 footer, .ods_1e88b428-07f3-4993-a259-f4f968221de3 header, .ods_1e88b428-07f3-4993-a259-f4f968221de3 hgroup, .ods_1e88b428-07f3-4993-a259-f4f968221de3 nav, .ods_1e88b428-07f3-4993-a259-f4f968221de3 section { display: block }
+html.ods_1e88b428-07f3-4993-a259-f4f968221de3 { font-size: 100% }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .body { margin: 1em; font-size: 13px; line-height: 1.231 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 sup { position: relative; vertical-align: baseline; bottom: 0.25em; font-size: 0.8em }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 sub { position: relative; vertical-align: baseline; top: 0.25em; font-size: 0.8em }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 ul, .ods_1e88b428-07f3-4993-a259-f4f968221de3 ol { margin: 1em 0; padding: 0 0 0 40px }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 dd { margin: 0 0 0 40px }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 nav ul, .ods_1e88b428-07f3-4993-a259-f4f968221de3 nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 img { border: 0; vertical-align: middle }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 svg:not(:root) { overflow: hidden }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 figure { margin: 0 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 table { border-collapse: collapse; border-spacing: 0 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutcontainer { border-collapse: separate; border-spacing: 0 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 p { margin-top: 0; text-align: left }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 h1.heading1 { text-align: left }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 h2.heading2 { text-align: left }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 h3.heading3 { text-align: left }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 h4.heading4 { text-align: left }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 h5.heading5 { text-align: left }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 h6.heading6 { text-align: left }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 span { text-align: left }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 table { margin-bottom: 1em }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 td, .ods_1e88b428-07f3-4993-a259-f4f968221de3 th { text-align: left; padding: 3px 6px; vertical-align: top }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 td[class$="fixed"], .ods_1e88b428-07f3-4993-a259-f4f968221de3 th[class$="fixed"] { white-space: pre }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 section, .ods_1e88b428-07f3-4993-a259-f4f968221de3 article { padding-top: 1px; padding-bottom: 8px }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 hr.pagebreak { height: 0px; border: 0; border-bottom: 1px solid #c0c0c0; margin: 1em 0 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .stacked-value { text-align: left; display: block }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .stacked-cell > .stacked-value, .ods_1e88b428-07f3-4993-a259-f4f968221de3 td.data > td.data, .ods_1e88b428-07f3-4993-a259-f4f968221de3 th.data > td.data, .ods_1e88b428-07f3-4993-a259-f4f968221de3 th.data > th.data, .ods_1e88b428-07f3-4993-a259-f4f968221de3 td.data > th.data, .ods_1e88b428-07f3-4993-a259-f4f968221de3 th.header > th.header { border: 0 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .stacked-cell > div.data { border-width: 0 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .systitleandfootercontainer { white-space: nowrap; margin-bottom: 1em }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .systitleandfootercontainer > p { margin: 0 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .systitleandfootercontainer > p > span { display: inline-block; width: 100%; white-space: normal }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .batch { display: table }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .toc { display: none }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .proc_note_group, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .proc_title_group { margin-bottom: 1em }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 p.proctitle { margin: 0 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 p.note, .ods_1e88b428-07f3-4993-a259-f4f968221de3 p.warning, .ods_1e88b428-07f3-4993-a259-f4f968221de3 p.error, .ods_1e88b428-07f3-4993-a259-f4f968221de3 p.fatal { display: table }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .notebanner, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .warnbanner, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .errorbanner, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .fatalbanner,
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .notecontent, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .warncontent, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .errorcontent, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .fatalcontent { display: table-cell; padding: 0.5em }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .notebanner, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .warnbanner, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .errorbanner, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .fatalbanner { padding-right: 0 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .body > div > ol li { text-align: left }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .beforecaption > h4 { margin-top: 0; margin-bottom: 0 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .c { text-align: center }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .r { text-align: right }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .l { text-align: left }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .j { text-align: justify }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .d { text-align: right }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .b { vertical-align: bottom }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .m { vertical-align: middle }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .t { vertical-align: top }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .accessiblecaption {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 a:active { color: #800080 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .aftercaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 4pt;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .batch > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .batch > tbody, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .batch > thead, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .batch > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .batch { border: hidden; }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .batch {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: 'SAS Monospace', 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    padding: 7px;
+    }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .beforecaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .body {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .bodydate {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+    width: 100%;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .bycontentfolder {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .byline {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .bylinecontainer > col, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .bylinecontainer > colgroup > col, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .bylinecontainer > colgroup, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .bylinecontainer > tr, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .bylinecontainer > * > tr, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .bylinecontainer > thead, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .bylinecontainer > tbody, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .bylinecontainer > tfoot { border: none; }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .bylinecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .caption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .cell, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .container {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .contentfolder, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .contentitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .contentproclabel, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .contentprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .contents {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .contentsdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .contenttitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .continued {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    width: 100%;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .data, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .dataemphasis {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .dataemphasisfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .dataempty {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .datafixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .datastrong {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .datastrongfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .date {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .document {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .errorbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .errorcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .errorcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .extendedpage {
+    background-color: #fafbfe;
+    border-style: solid;
+    border-width: 1pt;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+    text-align: center;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .fatalbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .fatalcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .fatalcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .folderaction {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .footer {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .footeremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .footeremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .footerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .footerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .footerstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .footerstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .frame {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .graph > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .graph > tbody, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .graph > thead, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .graph > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .graph { border: hidden; }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .graph {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .header {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .headeremphasis {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .headeremphasisfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .headerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .headerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .headersandfooters {
+    background-color: #edf2f9;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .headerstrong {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .headerstrongfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .heading1, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .heading2, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .heading3, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .heading4, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .heading5, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .heading6 { font-family: Arial, Helvetica, sans-serif }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .index {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .indexaction, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .indexitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .indexprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .indextitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutcontainer, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .layoutregion {
+    border-width: 0;
+    border-spacing: 30px;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .linecontent {
+    background-color: #fafbfe;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 a:link { color: #0000ff }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .list {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .list10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .list2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .list3, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .list4, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .list5, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .list6, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .list7, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .list8, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .list9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .listitem {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .listitem10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .listitem2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .listitem3, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .listitem4, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .listitem5, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .listitem6, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .listitem7, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .listitem8, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .listitem9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .note {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .notebanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .notecontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .notecontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .output > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .output > tbody, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .output > thead, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .output > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .output { border: hidden; }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .output {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .pageno {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    vertical-align: top;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .pages {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .pagesdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .pagesitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .pagesproclabel, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .pagesprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .pagestitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .paragraph {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .parskip > col, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .parskip > colgroup > col, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .parskip > colgroup, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .parskip > tr, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .parskip > * > tr, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .parskip > thead, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .parskip > tbody, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .parskip > tfoot { border: none; }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .parskip {
+    border: none;
+    border-spacing: 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .prepage {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .proctitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .proctitlefixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowfooter {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowfooteremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowfooteremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowfooterempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowfooterfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowfooterstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowfooterstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowheader {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowheaderemphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowheaderemphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowheaderempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowheaderfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowheaderstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .rowheaderstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemfooter, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemfooter10, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemfooter2, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemfooter3, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemfooter4, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemfooter5, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemfooter6, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemfooter7, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemfooter8, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemfooter9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemtitle, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemtitle10, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemtitle2, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemtitle3, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemtitle4, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemtitle5, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemtitle6, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemtitle7, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemtitle8, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systemtitle9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .systitleandfootercontainer > col, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systitleandfootercontainer > colgroup > col, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systitleandfootercontainer > colgroup, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systitleandfootercontainer > tr, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systitleandfootercontainer > * > tr, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systitleandfootercontainer > thead, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systitleandfootercontainer > tbody, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .systitleandfootercontainer > tfoot { border: none; }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .systitleandfootercontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .table > col, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .table > colgroup > col {
+    border-left: 1px solid #c1c1c1;
+    border-right: 0 solid #c1c1c1;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .table > tr, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .table > * > tr {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 0 solid #c1c1c1;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .table { border: hidden; }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .table {
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .titleandnotecontainer > col, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .titleandnotecontainer > colgroup > col, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .titleandnotecontainer > colgroup, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .titleandnotecontainer > tr, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .titleandnotecontainer > * > tr, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .titleandnotecontainer > thead, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .titleandnotecontainer > tbody, .ods_1e88b428-07f3-4993-a259-f4f968221de3 .titleandnotecontainer > tfoot { border: none; }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .titleandnotecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .titlesandfooters {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .usertext {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 a:visited { color: #800080 }
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .warnbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .warncontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_1e88b428-07f3-4993-a259-f4f968221de3 .warncontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+/*]]>*/
+</style>
+</head>
+<body class="body">
+<div id="div_1e88b428-07f3-4993-a259-f4f968221de3" class="c body">
+<h1 class="body toc">Results: Exercise5b.sas</h1>
+<section data-name="Freq" data-sec-type="proc">
+<div id="IDX" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE5B.SAS: HOW TO CONSTRUCT INSURANCE STATUS VARIABLES, USING FY 17 DATA</span> </p>
+<p><span class="c systemtitle3">CREATE COUNT VARIABLES FOR # OF MONTHS WITH INSURANCE</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The FREQ Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Freq Procedure</h1>
+<section>
+<h1 class="contentfolder toc">Table PRI_N</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup"># OF MONTHS COV BY PRIVATE INSU</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">PRI_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">14408</td>
+<td class="r data">45.19</td>
+<td class="r data">14408</td>
+<td class="r data">45.19</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">169</td>
+<td class="r data">0.53</td>
+<td class="r data">14577</td>
+<td class="r data">45.72</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">165</td>
+<td class="r data">0.52</td>
+<td class="r data">14742</td>
+<td class="r data">46.24</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">207</td>
+<td class="r data">0.65</td>
+<td class="r data">14949</td>
+<td class="r data">46.89</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">296</td>
+<td class="r data">0.93</td>
+<td class="r data">15245</td>
+<td class="r data">47.82</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">430</td>
+<td class="r data">1.35</td>
+<td class="r data">15675</td>
+<td class="r data">49.17</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">372</td>
+<td class="r data">1.17</td>
+<td class="r data">16047</td>
+<td class="r data">50.34</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">239</td>
+<td class="r data">0.75</td>
+<td class="r data">16286</td>
+<td class="r data">51.09</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">273</td>
+<td class="r data">0.86</td>
+<td class="r data">16559</td>
+<td class="r data">51.94</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">248</td>
+<td class="r data">0.78</td>
+<td class="r data">16807</td>
+<td class="r data">52.72</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">346</td>
+<td class="r data">1.09</td>
+<td class="r data">17153</td>
+<td class="r data">53.80</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">344</td>
+<td class="r data">1.08</td>
+<td class="r data">17497</td>
+<td class="r data">54.88</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">14383</td>
+<td class="r data">45.12</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX1">
+<h1 class="contentfolder toc">Table INS_N</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup"># OF MONTHS COV BY ANY INSU</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">INS_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">2851</td>
+<td class="r data">8.94</td>
+<td class="r data">2851</td>
+<td class="r data">8.94</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">187</td>
+<td class="r data">0.59</td>
+<td class="r data">3038</td>
+<td class="r data">9.53</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">219</td>
+<td class="r data">0.69</td>
+<td class="r data">3257</td>
+<td class="r data">10.22</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">241</td>
+<td class="r data">0.76</td>
+<td class="r data">3498</td>
+<td class="r data">10.97</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">324</td>
+<td class="r data">1.02</td>
+<td class="r data">3822</td>
+<td class="r data">11.99</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">453</td>
+<td class="r data">1.42</td>
+<td class="r data">4275</td>
+<td class="r data">13.41</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">432</td>
+<td class="r data">1.36</td>
+<td class="r data">4707</td>
+<td class="r data">14.76</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">409</td>
+<td class="r data">1.28</td>
+<td class="r data">5116</td>
+<td class="r data">16.05</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">386</td>
+<td class="r data">1.21</td>
+<td class="r data">5502</td>
+<td class="r data">17.26</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">425</td>
+<td class="r data">1.33</td>
+<td class="r data">5927</td>
+<td class="r data">18.59</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">516</td>
+<td class="r data">1.62</td>
+<td class="r data">6443</td>
+<td class="r data">20.21</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">512</td>
+<td class="r data">1.61</td>
+<td class="r data">6955</td>
+<td class="r data">21.82</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">24925</td>
+<td class="r data">78.18</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX2">
+<h1 class="contentfolder toc">Table UNINS_N</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup"># OF MONTHS WITHOUT INSU</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">UNINS_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">25732</td>
+<td class="r data">80.72</td>
+<td class="r data">25732</td>
+<td class="r data">80.72</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">506</td>
+<td class="r data">1.59</td>
+<td class="r data">26238</td>
+<td class="r data">82.30</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">474</td>
+<td class="r data">1.49</td>
+<td class="r data">26712</td>
+<td class="r data">83.79</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">405</td>
+<td class="r data">1.27</td>
+<td class="r data">27117</td>
+<td class="r data">85.06</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">351</td>
+<td class="r data">1.10</td>
+<td class="r data">27468</td>
+<td class="r data">86.16</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">369</td>
+<td class="r data">1.16</td>
+<td class="r data">27837</td>
+<td class="r data">87.32</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">361</td>
+<td class="r data">1.13</td>
+<td class="r data">28198</td>
+<td class="r data">88.45</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">361</td>
+<td class="r data">1.13</td>
+<td class="r data">28559</td>
+<td class="r data">89.58</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">218</td>
+<td class="r data">0.68</td>
+<td class="r data">28777</td>
+<td class="r data">90.27</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">166</td>
+<td class="r data">0.52</td>
+<td class="r data">28943</td>
+<td class="r data">90.79</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">155</td>
+<td class="r data">0.49</td>
+<td class="r data">29098</td>
+<td class="r data">91.27</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">106</td>
+<td class="r data">0.33</td>
+<td class="r data">29204</td>
+<td class="r data">91.61</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">2676</td>
+<td class="r data">8.39</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX3">
+<h1 class="contentfolder toc">Table MCD_N</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup"># OF MONTHS COV BY MEDICAID</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">MCD_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">21862</td>
+<td class="r data">68.58</td>
+<td class="r data">21862</td>
+<td class="r data">68.58</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">140</td>
+<td class="r data">0.44</td>
+<td class="r data">22002</td>
+<td class="r data">69.02</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">196</td>
+<td class="r data">0.61</td>
+<td class="r data">22198</td>
+<td class="r data">69.63</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">210</td>
+<td class="r data">0.66</td>
+<td class="r data">22408</td>
+<td class="r data">70.29</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">245</td>
+<td class="r data">0.77</td>
+<td class="r data">22653</td>
+<td class="r data">71.06</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">334</td>
+<td class="r data">1.05</td>
+<td class="r data">22987</td>
+<td class="r data">72.10</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">311</td>
+<td class="r data">0.98</td>
+<td class="r data">23298</td>
+<td class="r data">73.08</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">318</td>
+<td class="r data">1.00</td>
+<td class="r data">23616</td>
+<td class="r data">74.08</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">351</td>
+<td class="r data">1.10</td>
+<td class="r data">23967</td>
+<td class="r data">75.18</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">300</td>
+<td class="r data">0.94</td>
+<td class="r data">24267</td>
+<td class="r data">76.12</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">280</td>
+<td class="r data">0.88</td>
+<td class="r data">24547</td>
+<td class="r data">77.00</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">270</td>
+<td class="r data">0.85</td>
+<td class="r data">24817</td>
+<td class="r data">77.85</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">7063</td>
+<td class="r data">22.15</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX4">
+<h1 class="contentfolder toc">Table MCR_N</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup"># OF MONTHS COV BY MEDICARE</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">MCR_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">26078</td>
+<td class="r data">81.80</td>
+<td class="r data">26078</td>
+<td class="r data">81.80</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">29</td>
+<td class="r data">0.09</td>
+<td class="r data">26107</td>
+<td class="r data">81.89</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">27</td>
+<td class="r data">0.08</td>
+<td class="r data">26134</td>
+<td class="r data">81.98</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">32</td>
+<td class="r data">0.10</td>
+<td class="r data">26166</td>
+<td class="r data">82.08</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">49</td>
+<td class="r data">0.15</td>
+<td class="r data">26215</td>
+<td class="r data">82.23</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">56</td>
+<td class="r data">0.18</td>
+<td class="r data">26271</td>
+<td class="r data">82.41</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">63</td>
+<td class="r data">0.20</td>
+<td class="r data">26334</td>
+<td class="r data">82.60</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">36</td>
+<td class="r data">0.11</td>
+<td class="r data">26370</td>
+<td class="r data">82.72</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">38</td>
+<td class="r data">0.12</td>
+<td class="r data">26408</td>
+<td class="r data">82.84</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">32</td>
+<td class="r data">0.10</td>
+<td class="r data">26440</td>
+<td class="r data">82.94</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">53</td>
+<td class="r data">0.17</td>
+<td class="r data">26493</td>
+<td class="r data">83.10</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">44</td>
+<td class="r data">0.14</td>
+<td class="r data">26537</td>
+<td class="r data">83.24</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">5343</td>
+<td class="r data">16.76</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX5">
+<h1 class="contentfolder toc">Table TRI_N</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup"># OF MONTHS COV BY TRICARE</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">TRI_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">30843</td>
+<td class="r data">96.75</td>
+<td class="r data">30843</td>
+<td class="r data">96.75</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">12</td>
+<td class="r data">0.04</td>
+<td class="r data">30855</td>
+<td class="r data">96.78</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">11</td>
+<td class="r data">0.03</td>
+<td class="r data">30866</td>
+<td class="r data">96.82</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">20</td>
+<td class="r data">0.06</td>
+<td class="r data">30886</td>
+<td class="r data">96.88</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">30</td>
+<td class="r data">0.09</td>
+<td class="r data">30916</td>
+<td class="r data">96.98</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">48</td>
+<td class="r data">0.15</td>
+<td class="r data">30964</td>
+<td class="r data">97.13</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">28</td>
+<td class="r data">0.09</td>
+<td class="r data">30992</td>
+<td class="r data">97.21</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">64</td>
+<td class="r data">0.20</td>
+<td class="r data">31056</td>
+<td class="r data">97.42</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">71</td>
+<td class="r data">0.22</td>
+<td class="r data">31127</td>
+<td class="r data">97.64</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">33</td>
+<td class="r data">0.10</td>
+<td class="r data">31160</td>
+<td class="r data">97.74</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">27</td>
+<td class="r data">0.08</td>
+<td class="r data">31187</td>
+<td class="r data">97.83</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">14</td>
+<td class="r data">0.04</td>
+<td class="r data">31201</td>
+<td class="r data">97.87</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">679</td>
+<td class="r data">2.13</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX6">
+<h1 class="contentfolder toc">Table OPAB_N</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup"># OF MONTHS COV BY OTHER PUBLIC A OR B INSU</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">OPAB_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">31435</td>
+<td class="r data">98.60</td>
+<td class="r data">31435</td>
+<td class="r data">98.60</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">23</td>
+<td class="r data">0.07</td>
+<td class="r data">31458</td>
+<td class="r data">98.68</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">31</td>
+<td class="r data">0.10</td>
+<td class="r data">31489</td>
+<td class="r data">98.77</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">48</td>
+<td class="r data">0.15</td>
+<td class="r data">31537</td>
+<td class="r data">98.92</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">39</td>
+<td class="r data">0.12</td>
+<td class="r data">31576</td>
+<td class="r data">99.05</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">48</td>
+<td class="r data">0.15</td>
+<td class="r data">31624</td>
+<td class="r data">99.20</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">24</td>
+<td class="r data">0.08</td>
+<td class="r data">31648</td>
+<td class="r data">99.27</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">15</td>
+<td class="r data">0.05</td>
+<td class="r data">31663</td>
+<td class="r data">99.32</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">27</td>
+<td class="r data">0.08</td>
+<td class="r data">31690</td>
+<td class="r data">99.40</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">15</td>
+<td class="r data">0.05</td>
+<td class="r data">31705</td>
+<td class="r data">99.45</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">23</td>
+<td class="r data">0.07</td>
+<td class="r data">31728</td>
+<td class="r data">99.52</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">22</td>
+<td class="r data">0.07</td>
+<td class="r data">31750</td>
+<td class="r data">99.59</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">130</td>
+<td class="r data">0.41</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX7">
+<h1 class="contentfolder toc">Table GRP_N</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup"># OF MONTHS COV BY PRIVATE GROUP INSU</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">GRP_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">15818</td>
+<td class="r data">49.62</td>
+<td class="r data">15818</td>
+<td class="r data">49.62</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">154</td>
+<td class="r data">0.48</td>
+<td class="r data">15972</td>
+<td class="r data">50.10</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">152</td>
+<td class="r data">0.48</td>
+<td class="r data">16124</td>
+<td class="r data">50.58</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">190</td>
+<td class="r data">0.60</td>
+<td class="r data">16314</td>
+<td class="r data">51.17</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">253</td>
+<td class="r data">0.79</td>
+<td class="r data">16567</td>
+<td class="r data">51.97</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">372</td>
+<td class="r data">1.17</td>
+<td class="r data">16939</td>
+<td class="r data">53.13</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">326</td>
+<td class="r data">1.02</td>
+<td class="r data">17265</td>
+<td class="r data">54.16</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">251</td>
+<td class="r data">0.79</td>
+<td class="r data">17516</td>
+<td class="r data">54.94</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">267</td>
+<td class="r data">0.84</td>
+<td class="r data">17783</td>
+<td class="r data">55.78</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">223</td>
+<td class="r data">0.70</td>
+<td class="r data">18006</td>
+<td class="r data">56.48</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">298</td>
+<td class="r data">0.93</td>
+<td class="r data">18304</td>
+<td class="r data">57.42</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">288</td>
+<td class="r data">0.90</td>
+<td class="r data">18592</td>
+<td class="r data">58.32</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">13288</td>
+<td class="r data">41.68</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX8">
+<h1 class="contentfolder toc">Table NG_N</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup"># OF MONTHS COV BY PRIVATE NON-GROUP INSU</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">NG_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">29477</td>
+<td class="r data">92.46</td>
+<td class="r data">29477</td>
+<td class="r data">92.46</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">59</td>
+<td class="r data">0.19</td>
+<td class="r data">29536</td>
+<td class="r data">92.65</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">56</td>
+<td class="r data">0.18</td>
+<td class="r data">29592</td>
+<td class="r data">92.82</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">79</td>
+<td class="r data">0.25</td>
+<td class="r data">29671</td>
+<td class="r data">93.07</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">95</td>
+<td class="r data">0.30</td>
+<td class="r data">29766</td>
+<td class="r data">93.37</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">150</td>
+<td class="r data">0.47</td>
+<td class="r data">29916</td>
+<td class="r data">93.84</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">100</td>
+<td class="r data">0.31</td>
+<td class="r data">30016</td>
+<td class="r data">94.15</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">68</td>
+<td class="r data">0.21</td>
+<td class="r data">30084</td>
+<td class="r data">94.37</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">74</td>
+<td class="r data">0.23</td>
+<td class="r data">30158</td>
+<td class="r data">94.60</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">64</td>
+<td class="r data">0.20</td>
+<td class="r data">30222</td>
+<td class="r data">94.80</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">112</td>
+<td class="r data">0.35</td>
+<td class="r data">30334</td>
+<td class="r data">95.15</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">78</td>
+<td class="r data">0.24</td>
+<td class="r data">30412</td>
+<td class="r data">95.40</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">1468</td>
+<td class="r data">4.60</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX9">
+<h1 class="contentfolder toc">Table PUB_N</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup"># OF MONTHS COV BY PUBLIC INSU</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">PUB_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">17141</td>
+<td class="r data">53.77</td>
+<td class="r data">17141</td>
+<td class="r data">53.77</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">155</td>
+<td class="r data">0.49</td>
+<td class="r data">17296</td>
+<td class="r data">54.25</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">201</td>
+<td class="r data">0.63</td>
+<td class="r data">17497</td>
+<td class="r data">54.88</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">212</td>
+<td class="r data">0.66</td>
+<td class="r data">17709</td>
+<td class="r data">55.55</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">272</td>
+<td class="r data">0.85</td>
+<td class="r data">17981</td>
+<td class="r data">56.40</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">337</td>
+<td class="r data">1.06</td>
+<td class="r data">18318</td>
+<td class="r data">57.46</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">322</td>
+<td class="r data">1.01</td>
+<td class="r data">18640</td>
+<td class="r data">58.47</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">311</td>
+<td class="r data">0.98</td>
+<td class="r data">18951</td>
+<td class="r data">59.44</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">338</td>
+<td class="r data">1.06</td>
+<td class="r data">19289</td>
+<td class="r data">60.51</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">295</td>
+<td class="r data">0.93</td>
+<td class="r data">19584</td>
+<td class="r data">61.43</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">315</td>
+<td class="r data">0.99</td>
+<td class="r data">19899</td>
+<td class="r data">62.42</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">284</td>
+<td class="r data">0.89</td>
+<td class="r data">20183</td>
+<td class="r data">63.31</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">11697</td>
+<td class="r data">36.69</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX10">
+<h1 class="contentfolder toc">Table REF_N</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup"># OF MONTHS IN MEPS SURVEY</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">REF_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">108</td>
+<td class="r data">0.34</td>
+<td class="r data">108</td>
+<td class="r data">0.34</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">79</td>
+<td class="r data">0.25</td>
+<td class="r data">187</td>
+<td class="r data">0.59</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">102</td>
+<td class="r data">0.32</td>
+<td class="r data">289</td>
+<td class="r data">0.91</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">130</td>
+<td class="r data">0.41</td>
+<td class="r data">419</td>
+<td class="r data">1.31</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">108</td>
+<td class="r data">0.34</td>
+<td class="r data">527</td>
+<td class="r data">1.65</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">105</td>
+<td class="r data">0.33</td>
+<td class="r data">632</td>
+<td class="r data">1.98</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">99</td>
+<td class="r data">0.31</td>
+<td class="r data">731</td>
+<td class="r data">2.29</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">91</td>
+<td class="r data">0.29</td>
+<td class="r data">822</td>
+<td class="r data">2.58</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">78</td>
+<td class="r data">0.24</td>
+<td class="r data">900</td>
+<td class="r data">2.82</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">106</td>
+<td class="r data">0.33</td>
+<td class="r data">1006</td>
+<td class="r data">3.16</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">87</td>
+<td class="r data">0.27</td>
+<td class="r data">1093</td>
+<td class="r data">3.43</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">30787</td>
+<td class="r data">96.57</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Print" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX11" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE5B.SAS: HOW TO CONSTRUCT INSURANCE STATUS VARIABLES, USING FY 17 DATA</span> </p>
+<p><span class="c systemtitle3">SAMPLE DUMP TO CHECK THE COUNT VARIABLES (USING PRI_N AS EXMAPLE)</span> </p>
+</div>
+<h1 class="contentprocname toc">The Print Procedure</h1>
+<article aria-label="Data Set WORK.FY1">
+<h1 class="contentitem toc">Data Set WORK.FY1</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Set WORK.FY1">
+<caption aria-label="Data Set WORK.FY1"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="header" scope="col">DUPERSID</th>
+<th class="r header" scope="col">PRIJA17</th>
+<th class="r header" scope="col">PRIFE17</th>
+<th class="r header" scope="col">PRIMA17</th>
+<th class="r header" scope="col">PRIAP17</th>
+<th class="r header" scope="col">PRIMY17</th>
+<th class="r header" scope="col">PRIJU17</th>
+<th class="r header" scope="col">PRIJL17</th>
+<th class="r header" scope="col">PRIAU17</th>
+<th class="r header" scope="col">PRISE17</th>
+<th class="r header" scope="col">PRIOC17</th>
+<th class="r header" scope="col">PRINO17</th>
+<th class="r header" scope="col">PRIDE17</th>
+<th class="r header" scope="col">PRI_N</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="data">10001101</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">12</td>
+</tr>
+<tr>
+<td class="data">10001102</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">12</td>
+</tr>
+<tr>
+<td class="data">10001103</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">12</td>
+</tr>
+<tr>
+<td class="data">10001104</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">12</td>
+</tr>
+<tr>
+<td class="data">10002101</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10002102</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10004101</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10005101</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10005102</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">12</td>
+</tr>
+<tr>
+<td class="data">10005103</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">12</td>
+</tr>
+<tr>
+<td class="data">10006101</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10008101</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10008102</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10008104</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10008105</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10008106</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10008107</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10008108</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10008201</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10008202</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10008203</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10009101</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">12</td>
+</tr>
+<tr>
+<td class="data">10009102</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">12</td>
+</tr>
+<tr>
+<td class="data">10009103</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">12</td>
+</tr>
+<tr>
+<td class="data">10009104</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data" style="white-space: nowrap">-1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">6</td>
+</tr>
+<tr>
+<td class="data">10010101</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">12</td>
+</tr>
+<tr>
+<td class="data">10010102</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">12</td>
+</tr>
+<tr>
+<td class="data">10014101</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">1</td>
+<td class="r data">12</td>
+</tr>
+<tr>
+<td class="data">10016101</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="data">10016102</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">2</td>
+<td class="r data">0</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="Freq" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX12" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE5B.SAS: HOW TO CONSTRUCT INSURANCE STATUS VARIABLES, USING FY 17 DATA</span> </p>
+<p><span class="c systemtitle3">SUPPORTING CROSSTABS TO VERIFY THE CREATION OF THE FLAGS</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The FREQ Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Freq Procedure</h1>
+<section>
+<h1 class="contentfolder toc">Table FULL_INSU</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup">INSURED FOR FULL YEAR</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">FULL_INSU</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">6148</td>
+<td class="r data">19.28</td>
+<td class="r data">6148</td>
+<td class="r data">19.28</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">25732</td>
+<td class="r data">80.72</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX13">
+<h1 class="contentfolder toc">Table FULL_INSU * UNINS_N</h1>
+<article aria-label="LIST Frequencies">
+<h1 class="contentitem toc">LIST Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="LIST Frequencies">
+<caption aria-label="LIST Frequencies"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">FULL_INSU</th>
+<th class="r b header" scope="col">UNINS_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">506</td>
+<td class="r data">1.59</td>
+<td class="r data">506</td>
+<td class="r data">1.59</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">474</td>
+<td class="r data">1.49</td>
+<td class="r data">980</td>
+<td class="r data">3.07</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">405</td>
+<td class="r data">1.27</td>
+<td class="r data">1385</td>
+<td class="r data">4.34</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">351</td>
+<td class="r data">1.10</td>
+<td class="r data">1736</td>
+<td class="r data">5.45</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">369</td>
+<td class="r data">1.16</td>
+<td class="r data">2105</td>
+<td class="r data">6.60</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">361</td>
+<td class="r data">1.13</td>
+<td class="r data">2466</td>
+<td class="r data">7.74</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">361</td>
+<td class="r data">1.13</td>
+<td class="r data">2827</td>
+<td class="r data">8.87</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">218</td>
+<td class="r data">0.68</td>
+<td class="r data">3045</td>
+<td class="r data">9.55</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">166</td>
+<td class="r data">0.52</td>
+<td class="r data">3211</td>
+<td class="r data">10.07</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">155</td>
+<td class="r data">0.49</td>
+<td class="r data">3366</td>
+<td class="r data">10.56</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">106</td>
+<td class="r data">0.33</td>
+<td class="r data">3472</td>
+<td class="r data">10.89</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">2676</td>
+<td class="r data">8.39</td>
+<td class="r data">6148</td>
+<td class="r data">19.28</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">25732</td>
+<td class="r data">80.72</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX14">
+<h1 class="contentfolder toc">Table FULL_INSU * INS_N * REF_N</h1>
+<article aria-label="LIST Frequencies">
+<h1 class="contentitem toc">LIST Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="LIST Frequencies">
+<caption aria-label="LIST Frequencies"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">FULL_INSU</th>
+<th class="r b header" scope="col">INS_N</th>
+<th class="r b header" scope="col">REF_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">24</td>
+<td class="r data">0.08</td>
+<td class="r data">24</td>
+<td class="r data">0.08</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">18</td>
+<td class="r data">0.06</td>
+<td class="r data">42</td>
+<td class="r data">0.13</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">25</td>
+<td class="r data">0.08</td>
+<td class="r data">67</td>
+<td class="r data">0.21</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">28</td>
+<td class="r data">0.09</td>
+<td class="r data">95</td>
+<td class="r data">0.30</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">17</td>
+<td class="r data">0.05</td>
+<td class="r data">112</td>
+<td class="r data">0.35</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">16</td>
+<td class="r data">0.05</td>
+<td class="r data">128</td>
+<td class="r data">0.40</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">13</td>
+<td class="r data">0.04</td>
+<td class="r data">141</td>
+<td class="r data">0.44</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">6</td>
+<td class="r data">0.02</td>
+<td class="r data">147</td>
+<td class="r data">0.46</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">6</td>
+<td class="r data">0.02</td>
+<td class="r data">153</td>
+<td class="r data">0.48</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">12</td>
+<td class="r data">0.04</td>
+<td class="r data">165</td>
+<td class="r data">0.52</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">10</td>
+<td class="r data">0.03</td>
+<td class="r data">175</td>
+<td class="r data">0.55</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">2676</td>
+<td class="r data">8.39</td>
+<td class="r data">2851</td>
+<td class="r data">8.94</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">2853</td>
+<td class="r data">8.95</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">2855</td>
+<td class="r data">8.96</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">2856</td>
+<td class="r data">8.96</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">2857</td>
+<td class="r data">8.96</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">2858</td>
+<td class="r data">8.96</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">96</td>
+<td class="r data">0.30</td>
+<td class="r data">2954</td>
+<td class="r data">9.27</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">6</td>
+<td class="r data">0.02</td>
+<td class="r data">2960</td>
+<td class="r data">9.28</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">2962</td>
+<td class="r data">9.29</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">2963</td>
+<td class="r data">9.29</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">2965</td>
+<td class="r data">9.30</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">3</td>
+<td class="r data">0.01</td>
+<td class="r data">2968</td>
+<td class="r data">9.31</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">2970</td>
+<td class="r data">9.32</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">2971</td>
+<td class="r data">9.32</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">143</td>
+<td class="r data">0.45</td>
+<td class="r data">3114</td>
+<td class="r data">9.77</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">4</td>
+<td class="r data">0.01</td>
+<td class="r data">3118</td>
+<td class="r data">9.78</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">3119</td>
+<td class="r data">9.78</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">3120</td>
+<td class="r data">9.79</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">4</td>
+<td class="r data">0.01</td>
+<td class="r data">3124</td>
+<td class="r data">9.80</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">3126</td>
+<td class="r data">9.81</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">3127</td>
+<td class="r data">9.81</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">159</td>
+<td class="r data">0.50</td>
+<td class="r data">3286</td>
+<td class="r data">10.31</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">4</td>
+<td class="r data">0.01</td>
+<td class="r data">3290</td>
+<td class="r data">10.32</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">3291</td>
+<td class="r data">10.32</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">5</td>
+<td class="r data">0.02</td>
+<td class="r data">3296</td>
+<td class="r data">10.34</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">3297</td>
+<td class="r data">10.34</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">3299</td>
+<td class="r data">10.35</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">3301</td>
+<td class="r data">10.35</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">3303</td>
+<td class="r data">10.36</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">211</td>
+<td class="r data">0.66</td>
+<td class="r data">3514</td>
+<td class="r data">11.02</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">6</td>
+<td class="r data">0.02</td>
+<td class="r data">3520</td>
+<td class="r data">11.04</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">4</td>
+<td class="r data">0.01</td>
+<td class="r data">3524</td>
+<td class="r data">11.05</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">3525</td>
+<td class="r data">11.06</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">3</td>
+<td class="r data">0.01</td>
+<td class="r data">3528</td>
+<td class="r data">11.07</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">7</td>
+<td class="r data">0.02</td>
+<td class="r data">3535</td>
+<td class="r data">11.09</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">3536</td>
+<td class="r data">11.09</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">346</td>
+<td class="r data">1.09</td>
+<td class="r data">3882</td>
+<td class="r data">12.18</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">6</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">5</td>
+<td class="r data">0.02</td>
+<td class="r data">3887</td>
+<td class="r data">12.19</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">6</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">3</td>
+<td class="r data">0.01</td>
+<td class="r data">3890</td>
+<td class="r data">12.20</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">6</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">6</td>
+<td class="r data">0.02</td>
+<td class="r data">3896</td>
+<td class="r data">12.22</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">6</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">3898</td>
+<td class="r data">12.23</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">6</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">338</td>
+<td class="r data">1.06</td>
+<td class="r data">4236</td>
+<td class="r data">13.29</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">7</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">4238</td>
+<td class="r data">13.29</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">7</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">4</td>
+<td class="r data">0.01</td>
+<td class="r data">4242</td>
+<td class="r data">13.31</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">7</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">4243</td>
+<td class="r data">13.31</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">7</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">3</td>
+<td class="r data">0.01</td>
+<td class="r data">4246</td>
+<td class="r data">13.32</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">7</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">335</td>
+<td class="r data">1.05</td>
+<td class="r data">4581</td>
+<td class="r data">14.37</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">8</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">4</td>
+<td class="r data">0.01</td>
+<td class="r data">4585</td>
+<td class="r data">14.38</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">8</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">4586</td>
+<td class="r data">14.39</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">8</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">304</td>
+<td class="r data">0.95</td>
+<td class="r data">4890</td>
+<td class="r data">15.34</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">9</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">4892</td>
+<td class="r data">15.35</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">9</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">368</td>
+<td class="r data">1.15</td>
+<td class="r data">5260</td>
+<td class="r data">16.50</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">10</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">5262</td>
+<td class="r data">16.51</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">10</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">441</td>
+<td class="r data">1.38</td>
+<td class="r data">5703</td>
+<td class="r data">17.89</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">11</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">445</td>
+<td class="r data">1.40</td>
+<td class="r data">6148</td>
+<td class="r data">19.28</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">84</td>
+<td class="r data">0.26</td>
+<td class="r data">6232</td>
+<td class="r data">19.55</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">59</td>
+<td class="r data">0.19</td>
+<td class="r data">6291</td>
+<td class="r data">19.73</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">3</th>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">69</td>
+<td class="r data">0.22</td>
+<td class="r data">6360</td>
+<td class="r data">19.95</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">96</td>
+<td class="r data">0.30</td>
+<td class="r data">6456</td>
+<td class="r data">20.25</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">85</td>
+<td class="r data">0.27</td>
+<td class="r data">6541</td>
+<td class="r data">20.52</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">6</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">78</td>
+<td class="r data">0.24</td>
+<td class="r data">6619</td>
+<td class="r data">20.76</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">7</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">64</td>
+<td class="r data">0.20</td>
+<td class="r data">6683</td>
+<td class="r data">20.96</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">8</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">77</td>
+<td class="r data">0.24</td>
+<td class="r data">6760</td>
+<td class="r data">21.20</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">9</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">55</td>
+<td class="r data">0.17</td>
+<td class="r data">6815</td>
+<td class="r data">21.38</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">10</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">73</td>
+<td class="r data">0.23</td>
+<td class="r data">6888</td>
+<td class="r data">21.61</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">11</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">67</td>
+<td class="r data">0.21</td>
+<td class="r data">6955</td>
+<td class="r data">21.82</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">12</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">24925</td>
+<td class="r data">78.18</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX15">
+<h1 class="contentfolder toc">Table GROUP_INS1</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup">EVER INSURED BY PRIVATE GROUP</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">GROUP_INS1</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">15818</td>
+<td class="r data">49.62</td>
+<td class="r data">15818</td>
+<td class="r data">49.62</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">16062</td>
+<td class="r data">50.38</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX16">
+<h1 class="contentfolder toc">Table GROUP_INS1 * GRP_N</h1>
+<article aria-label="LIST Frequencies">
+<h1 class="contentitem toc">LIST Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="LIST Frequencies">
+<caption aria-label="LIST Frequencies"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">GROUP_INS1</th>
+<th class="r b header" scope="col">GRP_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">15818</td>
+<td class="r data">49.62</td>
+<td class="r data">15818</td>
+<td class="r data">49.62</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">154</td>
+<td class="r data">0.48</td>
+<td class="r data">15972</td>
+<td class="r data">50.10</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">152</td>
+<td class="r data">0.48</td>
+<td class="r data">16124</td>
+<td class="r data">50.58</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">190</td>
+<td class="r data">0.60</td>
+<td class="r data">16314</td>
+<td class="r data">51.17</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">253</td>
+<td class="r data">0.79</td>
+<td class="r data">16567</td>
+<td class="r data">51.97</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">372</td>
+<td class="r data">1.17</td>
+<td class="r data">16939</td>
+<td class="r data">53.13</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">326</td>
+<td class="r data">1.02</td>
+<td class="r data">17265</td>
+<td class="r data">54.16</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">251</td>
+<td class="r data">0.79</td>
+<td class="r data">17516</td>
+<td class="r data">54.94</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">267</td>
+<td class="r data">0.84</td>
+<td class="r data">17783</td>
+<td class="r data">55.78</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">223</td>
+<td class="r data">0.70</td>
+<td class="r data">18006</td>
+<td class="r data">56.48</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">298</td>
+<td class="r data">0.93</td>
+<td class="r data">18304</td>
+<td class="r data">57.42</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">288</td>
+<td class="r data">0.90</td>
+<td class="r data">18592</td>
+<td class="r data">58.32</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">13288</td>
+<td class="r data">41.68</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX17">
+<h1 class="contentfolder toc">Table GROUP_INS2</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup">INSURED BY PRIVATE GROUP FOR FULL YEAR</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">GROUP_INS2</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">18277</td>
+<td class="r data">57.33</td>
+<td class="r data">18277</td>
+<td class="r data">57.33</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">13603</td>
+<td class="r data">42.67</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX18">
+<h1 class="contentfolder toc">Table GROUP_INS2 * GRP_N * REF_N</h1>
+<article aria-label="LIST Frequencies">
+<h1 class="contentitem toc">LIST Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="LIST Frequencies">
+<caption aria-label="LIST Frequencies"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">GROUP_INS2</th>
+<th class="r b header" scope="col">GRP_N</th>
+<th class="r b header" scope="col">REF_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">77</td>
+<td class="r data">0.24</td>
+<td class="r data">77</td>
+<td class="r data">0.24</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">52</td>
+<td class="r data">0.16</td>
+<td class="r data">129</td>
+<td class="r data">0.40</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">71</td>
+<td class="r data">0.22</td>
+<td class="r data">200</td>
+<td class="r data">0.63</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">90</td>
+<td class="r data">0.28</td>
+<td class="r data">290</td>
+<td class="r data">0.91</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">63</td>
+<td class="r data">0.20</td>
+<td class="r data">353</td>
+<td class="r data">1.11</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">67</td>
+<td class="r data">0.21</td>
+<td class="r data">420</td>
+<td class="r data">1.32</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">57</td>
+<td class="r data">0.18</td>
+<td class="r data">477</td>
+<td class="r data">1.50</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">49</td>
+<td class="r data">0.15</td>
+<td class="r data">526</td>
+<td class="r data">1.65</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">50</td>
+<td class="r data">0.16</td>
+<td class="r data">576</td>
+<td class="r data">1.81</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">72</td>
+<td class="r data">0.23</td>
+<td class="r data">648</td>
+<td class="r data">2.03</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">55</td>
+<td class="r data">0.17</td>
+<td class="r data">703</td>
+<td class="r data">2.21</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">15115</td>
+<td class="r data">47.41</td>
+<td class="r data">15818</td>
+<td class="r data">49.62</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">15820</td>
+<td class="r data">49.62</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">15822</td>
+<td class="r data">49.63</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">3</td>
+<td class="r data">0.01</td>
+<td class="r data">15825</td>
+<td class="r data">49.64</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">15826</td>
+<td class="r data">49.64</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">115</td>
+<td class="r data">0.36</td>
+<td class="r data">15941</td>
+<td class="r data">50.00</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">15943</td>
+<td class="r data">50.01</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">15944</td>
+<td class="r data">50.01</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">15945</td>
+<td class="r data">50.02</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">15946</td>
+<td class="r data">50.02</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">15947</td>
+<td class="r data">50.02</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">15949</td>
+<td class="r data">50.03</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">15950</td>
+<td class="r data">50.03</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">118</td>
+<td class="r data">0.37</td>
+<td class="r data">16068</td>
+<td class="r data">50.40</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">16069</td>
+<td class="r data">50.40</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">16071</td>
+<td class="r data">50.41</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">3</td>
+<td class="r data">0.01</td>
+<td class="r data">16074</td>
+<td class="r data">50.42</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">3</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">157</td>
+<td class="r data">0.49</td>
+<td class="r data">16231</td>
+<td class="r data">50.91</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">3</td>
+<td class="r data">0.01</td>
+<td class="r data">16234</td>
+<td class="r data">50.92</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">16236</td>
+<td class="r data">50.93</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">3</td>
+<td class="r data">0.01</td>
+<td class="r data">16239</td>
+<td class="r data">50.94</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">16241</td>
+<td class="r data">50.94</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">16242</td>
+<td class="r data">50.95</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">16243</td>
+<td class="r data">50.95</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">202</td>
+<td class="r data">0.63</td>
+<td class="r data">16445</td>
+<td class="r data">51.58</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">4</td>
+<td class="r data">0.01</td>
+<td class="r data">16449</td>
+<td class="r data">51.60</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">3</td>
+<td class="r data">0.01</td>
+<td class="r data">16452</td>
+<td class="r data">51.61</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">16453</td>
+<td class="r data">51.61</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">16455</td>
+<td class="r data">51.62</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">5</td>
+<td class="r data">0.02</td>
+<td class="r data">16460</td>
+<td class="r data">51.63</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">316</td>
+<td class="r data">0.99</td>
+<td class="r data">16776</td>
+<td class="r data">52.62</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">6</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">16777</td>
+<td class="r data">52.63</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">6</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">16779</td>
+<td class="r data">52.63</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">6</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">3</td>
+<td class="r data">0.01</td>
+<td class="r data">16782</td>
+<td class="r data">52.64</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">6</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">291</td>
+<td class="r data">0.91</td>
+<td class="r data">17073</td>
+<td class="r data">53.55</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">7</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">17075</td>
+<td class="r data">53.56</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">7</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">17077</td>
+<td class="r data">53.57</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">7</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">17078</td>
+<td class="r data">53.57</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">7</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">17079</td>
+<td class="r data">53.57</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">7</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">212</td>
+<td class="r data">0.66</td>
+<td class="r data">17291</td>
+<td class="r data">54.24</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">8</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">4</td>
+<td class="r data">0.01</td>
+<td class="r data">17295</td>
+<td class="r data">54.25</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">8</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">1</td>
+<td class="r data">0.00</td>
+<td class="r data">17296</td>
+<td class="r data">54.25</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">8</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">4</td>
+<td class="r data">0.01</td>
+<td class="r data">17300</td>
+<td class="r data">54.27</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">8</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">227</td>
+<td class="r data">0.71</td>
+<td class="r data">17527</td>
+<td class="r data">54.98</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">9</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">17529</td>
+<td class="r data">54.98</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">9</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">205</td>
+<td class="r data">0.64</td>
+<td class="r data">17734</td>
+<td class="r data">55.63</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">10</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">2</td>
+<td class="r data">0.01</td>
+<td class="r data">17736</td>
+<td class="r data">55.63</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">10</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">276</td>
+<td class="r data">0.87</td>
+<td class="r data">18012</td>
+<td class="r data">56.50</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">11</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">265</td>
+<td class="r data">0.83</td>
+<td class="r data">18277</td>
+<td class="r data">57.33</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">31</td>
+<td class="r data">0.10</td>
+<td class="r data">18308</td>
+<td class="r data">57.43</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">2</th>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">25</td>
+<td class="r data">0.08</td>
+<td class="r data">18333</td>
+<td class="r data">57.51</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">3</th>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">27</td>
+<td class="r data">0.08</td>
+<td class="r data">18360</td>
+<td class="r data">57.59</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">4</th>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">39</td>
+<td class="r data">0.12</td>
+<td class="r data">18399</td>
+<td class="r data">57.71</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">5</th>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">41</td>
+<td class="r data">0.13</td>
+<td class="r data">18440</td>
+<td class="r data">57.84</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">6</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">29</td>
+<td class="r data">0.09</td>
+<td class="r data">18469</td>
+<td class="r data">57.93</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">7</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">33</td>
+<td class="r data">0.10</td>
+<td class="r data">18502</td>
+<td class="r data">58.04</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">8</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">31</td>
+<td class="r data">0.10</td>
+<td class="r data">18533</td>
+<td class="r data">58.13</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">9</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">16</td>
+<td class="r data">0.05</td>
+<td class="r data">18549</td>
+<td class="r data">58.18</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">10</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">20</td>
+<td class="r data">0.06</td>
+<td class="r data">18569</td>
+<td class="r data">58.25</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">11</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">23</td>
+<td class="r data">0.07</td>
+<td class="r data">18592</td>
+<td class="r data">58.32</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">12</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">13288</td>
+<td class="r data">41.68</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX19">
+<h1 class="contentfolder toc">Table NG_INS</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="5" scope="colgroup">EVER INSURED BY PRIVATE NON-GROUP</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">NG_INS</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">29477</td>
+<td class="r data">92.46</td>
+<td class="r data">29477</td>
+<td class="r data">92.46</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">2403</td>
+<td class="r data">7.54</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX20">
+<h1 class="contentfolder toc">Table NG_INS * NG_N</h1>
+<article aria-label="LIST Frequencies">
+<h1 class="contentitem toc">LIST Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="LIST Frequencies">
+<caption aria-label="LIST Frequencies"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">NG_INS</th>
+<th class="r b header" scope="col">NG_N</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">29477</td>
+<td class="r data">92.46</td>
+<td class="r data">29477</td>
+<td class="r data">92.46</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">59</td>
+<td class="r data">0.19</td>
+<td class="r data">29536</td>
+<td class="r data">92.65</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">56</td>
+<td class="r data">0.18</td>
+<td class="r data">29592</td>
+<td class="r data">92.82</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">79</td>
+<td class="r data">0.25</td>
+<td class="r data">29671</td>
+<td class="r data">93.07</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">95</td>
+<td class="r data">0.30</td>
+<td class="r data">29766</td>
+<td class="r data">93.37</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">150</td>
+<td class="r data">0.47</td>
+<td class="r data">29916</td>
+<td class="r data">93.84</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">100</td>
+<td class="r data">0.31</td>
+<td class="r data">30016</td>
+<td class="r data">94.15</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">68</td>
+<td class="r data">0.21</td>
+<td class="r data">30084</td>
+<td class="r data">94.37</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">74</td>
+<td class="r data">0.23</td>
+<td class="r data">30158</td>
+<td class="r data">94.60</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">64</td>
+<td class="r data">0.20</td>
+<td class="r data">30222</td>
+<td class="r data">94.80</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">112</td>
+<td class="r data">0.35</td>
+<td class="r data">30334</td>
+<td class="r data">95.15</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">11</th>
+<td class="r data">78</td>
+<td class="r data">0.24</td>
+<td class="r data">30412</td>
+<td class="r data">95.40</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<th class="r rowheader" scope="row">12</th>
+<td class="r data">1468</td>
+<td class="r data">4.60</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Surveymeans" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX21" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE5B.SAS: HOW TO CONSTRUCT INSURANCE STATUS VARIABLES, USING FY 17 DATA</span> </p>
+<p><span class="c systemtitle3">% AND POPULATION WITH INSU</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Surveymeans Procedure</h1>
+<article aria-label="Data Summary">
+<h1 class="contentitem toc">Data Summary</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Summary">
+<caption aria-label="Data Summary"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Data Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Number of Strata</th>
+<td class="r data">282</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Clusters</th>
+<td class="r data">621</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations</th>
+<td class="r data">31880</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations Used</th>
+<td class="r data">30716</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Obs with Nonpositive Weights</th>
+<td class="r data">1164</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Sum of Weights</th>
+<td class="r data">324779909</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX22" aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics">
+<caption aria-label="Statistics"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="8" scope="colgroup">Statistics</th>
+</tr>
+<tr>
+<th class="b header" scope="col">Variable</th>
+<th class="b header" scope="col">Label</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">FULL_INSU</th>
+<td class="data">INSURED FOR FULL YEAR</td>
+<td class="r data">30716</td>
+<td class="r data">324779909</td>
+<td class="r data">0.840985</td>
+<td class="r data">0.003831</td>
+<td class="r data">273135100</td>
+<td class="r data">4732165</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">GROUP_INS1</th>
+<td class="data">EVER INSURED BY PRIVATE GROUP</td>
+<td class="r data">30716</td>
+<td class="r data">324779909</td>
+<td class="r data">0.609629</td>
+<td class="r data">0.006544</td>
+<td class="r data">197995212</td>
+<td class="r data">4339953</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">GROUP_INS2</th>
+<td class="data">INSURED BY PRIVATE GROUP FOR FULL YEAR</td>
+<td class="r data">30716</td>
+<td class="r data">324779909</td>
+<td class="r data">0.528527</td>
+<td class="r data">0.006350</td>
+<td class="r data">171654975</td>
+<td class="r data">3935305</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">NG_INS</th>
+<td class="data">EVER INSURED BY PRIVATE NON-GROUP</td>
+<td class="r data">30716</td>
+<td class="r data">324779909</td>
+<td class="r data">0.084028</td>
+<td class="r data">0.002945</td>
+<td class="r data">27290465</td>
+<td class="r data">1039529</td>
+</tr>
+</tbody>
+</table>
+</article>
+<hr class="pagebreak"/>
+<div id="IDX23" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE5B.SAS: HOW TO CONSTRUCT INSURANCE STATUS VARIABLES, USING FY 17 DATA</span> </p>
+<p><span class="c systemtitle3">% AND POPULATION WITH INSU</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<section>
+<h1 class="contentfolder toc">Domain Analysis for RACETHX</h1>
+<article aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics for RACETHX Domains">
+<caption aria-label="Statistics for RACETHX Domains"></caption>
+<colgroup><col/><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="9" scope="colgroup">Statistics for RACETHX Domains</th>
+</tr>
+<tr>
+<th class="b header" scope="col">RACETHX</th>
+<th class="b header" scope="col">Variable</th>
+<th class="b header" scope="col">Label</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="t rowheader" scope="row">1 HISPANIC</th>
+<th class="rowheader" scope="row">FULL_INSU</th>
+<td class="data">INSURED FOR FULL YEAR</td>
+<td class="r data">8821</td>
+<td class="r data">59354979</td>
+<td class="r data">0.724313</td>
+<td class="r data">0.008930</td>
+<td class="r data">42991584</td>
+<td class="r data">1691390</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">GROUP_INS1</th>
+<td class="data">EVER INSURED BY PRIVATE GROUP</td>
+<td class="r data">8821</td>
+<td class="r data">59354979</td>
+<td class="r data">0.451852</td>
+<td class="r data">0.013436</td>
+<td class="r data">26819677</td>
+<td class="r data">1327103</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">GROUP_INS2</th>
+<td class="data">INSURED BY PRIVATE GROUP FOR FULL YEAR</td>
+<td class="r data">8821</td>
+<td class="r data">59354979</td>
+<td class="r data">0.376110</td>
+<td class="r data">0.013179</td>
+<td class="r data">22324023</td>
+<td class="r data">1170689</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">NG_INS</th>
+<td class="data">EVER INSURED BY PRIVATE NON-GROUP</td>
+<td class="r data">8821</td>
+<td class="r data">59354979</td>
+<td class="r data">0.051326</td>
+<td class="r data">0.004408</td>
+<td class="r data">3046429</td>
+<td class="r data">290411</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">2 WHITE</th>
+<th class="rowheader" scope="row">FULL_INSU</th>
+<td class="data">INSURED FOR FULL YEAR</td>
+<td class="r data">13744</td>
+<td class="r data">194529717</td>
+<td class="r data">0.881940</td>
+<td class="r data">0.004526</td>
+<td class="r data">171563502</td>
+<td class="r data">4122841</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">GROUP_INS1</th>
+<td class="data">EVER INSURED BY PRIVATE GROUP</td>
+<td class="r data">13744</td>
+<td class="r data">194529717</td>
+<td class="r data">0.673288</td>
+<td class="r data">0.007719</td>
+<td class="r data">130974457</td>
+<td class="r data">3771975</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">GROUP_INS2</th>
+<td class="data">INSURED BY PRIVATE GROUP FOR FULL YEAR</td>
+<td class="r data">13744</td>
+<td class="r data">194529717</td>
+<td class="r data">0.592314</td>
+<td class="r data">0.007419</td>
+<td class="r data">115222706</td>
+<td class="r data">3410565</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">NG_INS</th>
+<td class="data">EVER INSURED BY PRIVATE NON-GROUP</td>
+<td class="r data">13744</td>
+<td class="r data">194529717</td>
+<td class="r data">0.100199</td>
+<td class="r data">0.004402</td>
+<td class="r data">19491727</td>
+<td class="r data">923811</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">3 BLACK</th>
+<th class="rowheader" scope="row">FULL_INSU</th>
+<td class="data">INSURED FOR FULL YEAR</td>
+<td class="r data">5100</td>
+<td class="r data">39956567</td>
+<td class="r data">0.808731</td>
+<td class="r data">0.008902</td>
+<td class="r data">32314097</td>
+<td class="r data">1364475</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">GROUP_INS1</th>
+<td class="data">EVER INSURED BY PRIVATE GROUP</td>
+<td class="r data">5100</td>
+<td class="r data">39956567</td>
+<td class="r data">0.531498</td>
+<td class="r data">0.013625</td>
+<td class="r data">21236848</td>
+<td class="r data">989132</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">GROUP_INS2</th>
+<td class="data">INSURED BY PRIVATE GROUP FOR FULL YEAR</td>
+<td class="r data">5100</td>
+<td class="r data">39956567</td>
+<td class="r data">0.435680</td>
+<td class="r data">0.012713</td>
+<td class="r data">17408294</td>
+<td class="r data">851318</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">NG_INS</th>
+<td class="data">EVER INSURED BY PRIVATE NON-GROUP</td>
+<td class="r data">5100</td>
+<td class="r data">39956567</td>
+<td class="r data">0.047604</td>
+<td class="r data">0.004704</td>
+<td class="r data">1902112</td>
+<td class="r data">191877</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">4 ASIAN</th>
+<th class="rowheader" scope="row">FULL_INSU</th>
+<td class="data">INSURED FOR FULL YEAR</td>
+<td class="r data">1897</td>
+<td class="r data">18930051</td>
+<td class="r data">0.863090</td>
+<td class="r data">0.013581</td>
+<td class="r data">16338341</td>
+<td class="r data">928077</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">GROUP_INS1</th>
+<td class="data">EVER INSURED BY PRIVATE GROUP</td>
+<td class="r data">1897</td>
+<td class="r data">18930051</td>
+<td class="r data">0.655940</td>
+<td class="r data">0.021120</td>
+<td class="r data">12416977</td>
+<td class="r data">790009</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">GROUP_INS2</th>
+<td class="data">INSURED BY PRIVATE GROUP FOR FULL YEAR</td>
+<td class="r data">1897</td>
+<td class="r data">18930051</td>
+<td class="r data">0.588091</td>
+<td class="r data">0.022358</td>
+<td class="r data">11132602</td>
+<td class="r data">733516</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">NG_INS</th>
+<td class="data">EVER INSURED BY PRIVATE NON-GROUP</td>
+<td class="r data">1897</td>
+<td class="r data">18930051</td>
+<td class="r data">0.108770</td>
+<td class="r data">0.014041</td>
+<td class="r data">2059028</td>
+<td class="r data">299630</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">5 OTHER RACE</th>
+<th class="rowheader" scope="row">FULL_INSU</th>
+<td class="data">INSURED FOR FULL YEAR</td>
+<td class="r data">1154</td>
+<td class="r data">12008595</td>
+<td class="r data">0.826706</td>
+<td class="r data">0.017679</td>
+<td class="r data">9927575</td>
+<td class="r data">609886</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">GROUP_INS1</th>
+<td class="data">EVER INSURED BY PRIVATE GROUP</td>
+<td class="r data">1154</td>
+<td class="r data">12008595</td>
+<td class="r data">0.545214</td>
+<td class="r data">0.025846</td>
+<td class="r data">6547253</td>
+<td class="r data">484746</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">GROUP_INS2</th>
+<td class="data">INSURED BY PRIVATE GROUP FOR FULL YEAR</td>
+<td class="r data">1154</td>
+<td class="r data">12008595</td>
+<td class="r data">0.463614</td>
+<td class="r data">0.025314</td>
+<td class="r data">5567350</td>
+<td class="r data">431535</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">&#160;</th>
+<th class="rowheader" scope="row">NG_INS</th>
+<td class="data">EVER INSURED BY PRIVATE NON-GROUP</td>
+<td class="r data">1154</td>
+<td class="r data">12008595</td>
+<td class="r data">0.065884</td>
+<td class="r data">0.012704</td>
+<td class="r data">791169</td>
+<td class="r data">159355</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+</div>
+</body>
+</html>

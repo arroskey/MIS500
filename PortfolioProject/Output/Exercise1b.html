@@ -1,0 +1,2928 @@
+<!DOCTYPE html>
+<html class="ods_c2f7c76e-a168-42aa-a179-263557f6f864" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<meta content="SAS 9.4" name="generator"/>
+<title>Results: Exercise1b.sas</title>
+<style>
+/*<![CDATA[*/
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.c section > table, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.c section > pre, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.c div > table,
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.c div > pre, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.c article > table, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.c article > pre,
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.j section > table, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.j section > pre, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.j div > table,
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.j div > pre, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.j article > table, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.j article > pre,
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.c p.note, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.c p.warning, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.c p.error, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.c p.fatal,
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.j p.note, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.j p.warning, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.j p.error, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.j p.fatal,
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.c > table.layoutcontainer, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body.j > table.layoutcontainer { margin-left: auto; margin-right: auto }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.l table, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.l pre, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.l p.note,
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.l p.warning, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.l p.error, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.l p.fatal { margin-left: 0 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.c table, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.c pre, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.c p.note,
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.c p.warning, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.c p.error, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.c p.fatal { margin-left: auto; margin-right: auto }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.r table, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.r pre, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.r p.note,
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.r table, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.r pre, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.r p.note,
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.r p.warning, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.r p.error, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion.r p.fatal { margin-right: 0 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 article, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 aside, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 details, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 figcaption, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 figure, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 footer, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 header, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 hgroup, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 nav, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 section { display: block }
+html.ods_c2f7c76e-a168-42aa-a179-263557f6f864 { font-size: 100% }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body { margin: 1em; font-size: 13px; line-height: 1.231 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 sup { position: relative; vertical-align: baseline; bottom: 0.25em; font-size: 0.8em }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 sub { position: relative; vertical-align: baseline; top: 0.25em; font-size: 0.8em }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 ul, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 ol { margin: 1em 0; padding: 0 0 0 40px }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 dd { margin: 0 0 0 40px }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 nav ul, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 img { border: 0; vertical-align: middle }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 svg:not(:root) { overflow: hidden }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 figure { margin: 0 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 table { border-collapse: collapse; border-spacing: 0 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutcontainer { border-collapse: separate; border-spacing: 0 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 p { margin-top: 0; text-align: left }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 h1.heading1 { text-align: left }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 h2.heading2 { text-align: left }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 h3.heading3 { text-align: left }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 h4.heading4 { text-align: left }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 h5.heading5 { text-align: left }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 h6.heading6 { text-align: left }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 span { text-align: left }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 table { margin-bottom: 1em }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 td, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 th { text-align: left; padding: 3px 6px; vertical-align: top }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 td[class$="fixed"], .ods_c2f7c76e-a168-42aa-a179-263557f6f864 th[class$="fixed"] { white-space: pre }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 section, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 article { padding-top: 1px; padding-bottom: 8px }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 hr.pagebreak { height: 0px; border: 0; border-bottom: 1px solid #c0c0c0; margin: 1em 0 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .stacked-value { text-align: left; display: block }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .stacked-cell > .stacked-value, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 td.data > td.data, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 th.data > td.data, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 th.data > th.data, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 td.data > th.data, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 th.header > th.header { border: 0 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .stacked-cell > div.data { border-width: 0 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systitleandfootercontainer { white-space: nowrap; margin-bottom: 1em }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systitleandfootercontainer > p { margin: 0 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systitleandfootercontainer > p > span { display: inline-block; width: 100%; white-space: normal }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .batch { display: table }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .toc { display: none }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .proc_note_group, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .proc_title_group { margin-bottom: 1em }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 p.proctitle { margin: 0 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 p.note, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 p.warning, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 p.error, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 p.fatal { display: table }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .notebanner, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .warnbanner, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .errorbanner, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .fatalbanner,
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .notecontent, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .warncontent, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .errorcontent, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .fatalcontent { display: table-cell; padding: 0.5em }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .notebanner, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .warnbanner, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .errorbanner, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .fatalbanner { padding-right: 0 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body > div > ol li { text-align: left }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .beforecaption > h4 { margin-top: 0; margin-bottom: 0 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .c { text-align: center }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .r { text-align: right }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .l { text-align: left }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .j { text-align: justify }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .d { text-align: right }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .b { vertical-align: bottom }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .m { vertical-align: middle }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .t { vertical-align: top }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .accessiblecaption {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 a:active { color: #800080 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .aftercaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 4pt;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .batch > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .batch > tbody, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .batch > thead, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .batch > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .batch { border: hidden; }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .batch {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: 'SAS Monospace', 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    padding: 7px;
+    }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .beforecaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .body {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .bodydate {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+    width: 100%;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .bycontentfolder {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .byline {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .bylinecontainer > col, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .bylinecontainer > colgroup > col, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .bylinecontainer > colgroup, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .bylinecontainer > tr, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .bylinecontainer > * > tr, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .bylinecontainer > thead, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .bylinecontainer > tbody, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .bylinecontainer > tfoot { border: none; }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .bylinecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .caption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .cell, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .container {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .contentfolder, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .contentitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .contentproclabel, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .contentprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .contents {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .contentsdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .contenttitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .continued {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    width: 100%;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .data, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .dataemphasis {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .dataemphasisfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .dataempty {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .datafixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .datastrong {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .datastrongfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .date {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .document {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .errorbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .errorcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .errorcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .extendedpage {
+    background-color: #fafbfe;
+    border-style: solid;
+    border-width: 1pt;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+    text-align: center;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .fatalbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .fatalcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .fatalcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .folderaction {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .footer {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .footeremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .footeremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .footerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .footerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .footerstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .footerstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .frame {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .graph > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .graph > tbody, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .graph > thead, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .graph > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .graph { border: hidden; }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .graph {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .header {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .headeremphasis {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .headeremphasisfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .headerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .headerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .headersandfooters {
+    background-color: #edf2f9;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .headerstrong {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .headerstrongfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .heading1, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .heading2, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .heading3, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .heading4, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .heading5, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .heading6 { font-family: Arial, Helvetica, sans-serif }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .index {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .indexaction, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .indexitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .indexprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .indextitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutcontainer, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .layoutregion {
+    border-width: 0;
+    border-spacing: 30px;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .linecontent {
+    background-color: #fafbfe;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 a:link { color: #0000ff }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .list {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .list10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .list2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .list3, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .list4, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .list5, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .list6, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .list7, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .list8, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .list9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .listitem {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .listitem10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .listitem2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .listitem3, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .listitem4, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .listitem5, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .listitem6, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .listitem7, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .listitem8, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .listitem9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .note {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .notebanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .notecontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .notecontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .output > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .output > tbody, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .output > thead, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .output > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .output { border: hidden; }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .output {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .pageno {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    vertical-align: top;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .pages {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .pagesdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .pagesitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .pagesproclabel, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .pagesprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .pagestitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .paragraph {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .parskip > col, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .parskip > colgroup > col, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .parskip > colgroup, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .parskip > tr, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .parskip > * > tr, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .parskip > thead, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .parskip > tbody, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .parskip > tfoot { border: none; }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .parskip {
+    border: none;
+    border-spacing: 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .prepage {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .proctitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .proctitlefixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowfooter {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowfooteremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowfooteremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowfooterempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowfooterfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowfooterstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowfooterstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowheader {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowheaderemphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowheaderemphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowheaderempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowheaderfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowheaderstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .rowheaderstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemfooter, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemfooter10, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemfooter2, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemfooter3, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemfooter4, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemfooter5, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemfooter6, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemfooter7, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemfooter8, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemfooter9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemtitle, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemtitle10, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemtitle2, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemtitle3, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemtitle4, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemtitle5, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemtitle6, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemtitle7, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemtitle8, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systemtitle9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systitleandfootercontainer > col, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systitleandfootercontainer > colgroup > col, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systitleandfootercontainer > colgroup, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systitleandfootercontainer > tr, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systitleandfootercontainer > * > tr, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systitleandfootercontainer > thead, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systitleandfootercontainer > tbody, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systitleandfootercontainer > tfoot { border: none; }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .systitleandfootercontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .table > col, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .table > colgroup > col {
+    border-left: 1px solid #c1c1c1;
+    border-right: 0 solid #c1c1c1;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .table > tr, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .table > * > tr {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 0 solid #c1c1c1;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .table { border: hidden; }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .table {
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .titleandnotecontainer > col, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .titleandnotecontainer > colgroup > col, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .titleandnotecontainer > colgroup, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .titleandnotecontainer > tr, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .titleandnotecontainer > * > tr, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .titleandnotecontainer > thead, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .titleandnotecontainer > tbody, .ods_c2f7c76e-a168-42aa-a179-263557f6f864 .titleandnotecontainer > tfoot { border: none; }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .titleandnotecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .titlesandfooters {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .usertext {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 a:visited { color: #800080 }
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .warnbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .warncontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_c2f7c76e-a168-42aa-a179-263557f6f864 .warncontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+/*]]>*/
+</style>
+</head>
+<body class="body">
+<div id="div_c2f7c76e-a168-42aa-a179-263557f6f864" class="c body">
+<h1 class="body toc">Results: Exercise1b.sas</h1>
+<section data-name="Freq" data-sec-type="proc">
+<div id="IDX" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">Supporting crosstabs for the flag variables</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The FREQ Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Freq Procedure</h1>
+<section>
+<h1 class="contentfolder toc">Table X_ANYSVCE * TOTAL</h1>
+<article aria-label="LIST Frequencies">
+<h1 class="contentitem toc">LIST Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="LIST Frequencies">
+<caption aria-label="LIST Frequencies"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">X_ANYSVCE</th>
+<th class="r b header" scope="col">TOTAL</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">No expense</th>
+<th class="r rowheader" scope="row">$0</th>
+<td class="r data">5824</td>
+<td class="r data">18.27</td>
+<td class="r data">5824</td>
+<td class="r data">18.27</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">Any expense</th>
+<th class="r rowheader" scope="row">&gt;$0</th>
+<td class="r data">26056</td>
+<td class="r data">81.73</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX1">
+<h1 class="contentfolder toc">Table X_HOSPITAL_INPATIENT * HOSPITAL_INPATIENT</h1>
+<article aria-label="LIST Frequencies">
+<h1 class="contentitem toc">LIST Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="LIST Frequencies">
+<caption aria-label="LIST Frequencies"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">X_HOSPITAL_INPATIENT</th>
+<th class="r b header" scope="col">HOSPITAL_INPATIENT</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">No expense</th>
+<th class="r rowheader" scope="row">$0</th>
+<td class="r data">29780</td>
+<td class="r data">93.41</td>
+<td class="r data">29780</td>
+<td class="r data">93.41</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">Any expense</th>
+<th class="r rowheader" scope="row">&gt;$0</th>
+<td class="r data">2100</td>
+<td class="r data">6.59</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX2">
+<h1 class="contentfolder toc">Table X_AMBULATORY * AMBULATORY</h1>
+<article aria-label="LIST Frequencies">
+<h1 class="contentitem toc">LIST Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="LIST Frequencies">
+<caption aria-label="LIST Frequencies"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">X_AMBULATORY</th>
+<th class="r b header" scope="col">AMBULATORY</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">No expense</th>
+<th class="r rowheader" scope="row">$0</th>
+<td class="r data">8743</td>
+<td class="r data">27.42</td>
+<td class="r data">8743</td>
+<td class="r data">27.42</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">Any expense</th>
+<th class="r rowheader" scope="row">&gt;$0</th>
+<td class="r data">23137</td>
+<td class="r data">72.58</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX3">
+<h1 class="contentfolder toc">Table X_PRESCRIBED_MEDICINES * PRESCRIBED_MEDICINES</h1>
+<article aria-label="LIST Frequencies">
+<h1 class="contentitem toc">LIST Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="LIST Frequencies">
+<caption aria-label="LIST Frequencies"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">X_PRESCRIBED_MEDICINES</th>
+<th class="r b header" scope="col">PRESCRIBED_MEDICINES</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">No expense</th>
+<th class="r rowheader" scope="row">$0</th>
+<td class="r data">13794</td>
+<td class="r data">43.27</td>
+<td class="r data">13794</td>
+<td class="r data">43.27</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">Any expense</th>
+<th class="r rowheader" scope="row">&gt;$0</th>
+<td class="r data">18086</td>
+<td class="r data">56.73</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX4">
+<h1 class="contentfolder toc">Table X_DENTAL * DENTAL</h1>
+<article aria-label="LIST Frequencies">
+<h1 class="contentitem toc">LIST Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="LIST Frequencies">
+<caption aria-label="LIST Frequencies"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">X_DENTAL</th>
+<th class="r b header" scope="col">DENTAL</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">No expense</th>
+<th class="r rowheader" scope="row">$0</th>
+<td class="r data">19732</td>
+<td class="r data">61.89</td>
+<td class="r data">19732</td>
+<td class="r data">61.89</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">Any expense</th>
+<th class="r rowheader" scope="row">&gt;$0</th>
+<td class="r data">12148</td>
+<td class="r data">38.11</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX5">
+<h1 class="contentfolder toc">Table X_HOME_HEALTH_OTHER * HOME_HEALTH_OTHER</h1>
+<article aria-label="LIST Frequencies">
+<h1 class="contentitem toc">LIST Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="LIST Frequencies">
+<caption aria-label="LIST Frequencies"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">X_HOME_HEALTH_OTHER</th>
+<th class="r b header" scope="col">HOME_HEALTH_OTHER</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">No expense</th>
+<th class="r rowheader" scope="row">$0</th>
+<td class="r data">25221</td>
+<td class="r data">79.11</td>
+<td class="r data">25221</td>
+<td class="r data">79.11</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">Any expense</th>
+<th class="r rowheader" scope="row">&gt;$0</th>
+<td class="r data">6659</td>
+<td class="r data">20.89</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX6">
+<h1 class="contentfolder toc">Table AGECAT * AGE</h1>
+<article aria-label="LIST Frequencies">
+<h1 class="contentitem toc">LIST Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="LIST Frequencies">
+<caption aria-label="LIST Frequencies"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">AGECAT</th>
+<th class="r b header" scope="col">AGE</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">0-64</th>
+<th class="r rowheader" scope="row">0-64</th>
+<td class="r data">26912</td>
+<td class="r data">84.42</td>
+<td class="r data">26912</td>
+<td class="r data">84.42</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">65+</th>
+<th class="r rowheader" scope="row">65+</th>
+<td class="r data">4968</td>
+<td class="r data">15.58</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section id="IDX7">
+<h1 class="contentfolder toc">Table DIFF</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r b header" scope="col">DIFF</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+<th class="r b header" scope="col">Cumulative<br/>Frequency</th>
+<th class="r b header" scope="col">Cumulative<br/>Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" style="white-space: nowrap" scope="row">-2</th>
+<td class="r data">28</td>
+<td class="r data">0.09</td>
+<td class="r data">28</td>
+<td class="r data">0.09</td>
+</tr>
+<tr>
+<th class="r rowheader" style="white-space: nowrap" scope="row">-1</th>
+<td class="r data">702</td>
+<td class="r data">2.20</td>
+<td class="r data">730</td>
+<td class="r data">2.29</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">0</th>
+<td class="r data">30356</td>
+<td class="r data">95.22</td>
+<td class="r data">31086</td>
+<td class="r data">97.51</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">775</td>
+<td class="r data">2.43</td>
+<td class="r data">31861</td>
+<td class="r data">99.94</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">19</td>
+<td class="r data">0.06</td>
+<td class="r data">31880</td>
+<td class="r data">100.00</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Surveymeans" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX8" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">PERCENTAGE DISTRIBUTION OF EXPENSES BY TYPE OF SERVICE (STAT BRIEF #491 FIGURE 1)</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Surveymeans Procedure</h1>
+<article aria-label="Data Summary">
+<h1 class="contentitem toc">Data Summary</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Summary">
+<caption aria-label="Data Summary"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Data Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Number of Strata</th>
+<td class="r data">282</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Clusters</th>
+<td class="r data">621</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations</th>
+<td class="r data">31880</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations Used</th>
+<td class="r data">30716</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Obs with Nonpositive Weights</th>
+<td class="r data">1164</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Sum of Weights</th>
+<td class="r data">324779909</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX9" aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics">
+<caption aria-label="Statistics"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="3" scope="colgroup">Statistics</th>
+</tr>
+<tr>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">HOSPITAL_INPATIENT</th>
+<td class="r data">422362987770</td>
+<td class="r data">26212174522</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">AMBULATORY</th>
+<td class="r data">641392501659</td>
+<td class="r data">17809605318</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">PRESCRIBED_MEDICINES</th>
+<td class="r data">409408141229</td>
+<td class="r data">14866262625</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">DENTAL</th>
+<td class="r data">106155627287</td>
+<td class="r data">3603610752</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">HOME_HEALTH_OTHER</th>
+<td class="r data">143820276926</td>
+<td class="r data">8519783935</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">TOTAL</th>
+<td class="r data">1.72314E12</td>
+<td class="r data">46588497185</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX10" aria-label="Ratio Analysis">
+<h1 class="contentitem toc">Ratio Analysis</h1>
+<table class="table" style="border-spacing: 0" aria-label="Ratio Analysis">
+<caption aria-label="Ratio Analysis"></caption>
+<colgroup><col/><col/></colgroup><colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="4" scope="colgroup">Ratio Analysis</th>
+</tr>
+<tr>
+<th class="b header" scope="col">Numerator</th>
+<th class="b header" scope="col">Denominator</th>
+<th class="r b header" scope="col">Ratio</th>
+<th class="r b header" scope="col">Std<br/>Error</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">HOSPITAL_INPATIENT</th>
+<th class="rowheader" scope="row">TOTAL</th>
+<td class="r data">0.245112</td>
+<td class="r data">0.011153</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">AMBULATORY</th>
+<th class="rowheader" scope="row">TOTAL</th>
+<td class="r data">0.372223</td>
+<td class="r data">0.008140</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">PRESCRIBED_MEDICINES</th>
+<th class="rowheader" scope="row">TOTAL</th>
+<td class="r data">0.237594</td>
+<td class="r data">0.007159</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">DENTAL</th>
+<th class="rowheader" scope="row">TOTAL</th>
+<td class="r data">0.061606</td>
+<td class="r data">0.002132</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">HOME_HEALTH_OTHER</th>
+<th class="rowheader" scope="row">TOTAL</th>
+<td class="r data">0.083464</td>
+<td class="r data">0.004108</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="Surveymeans" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX11" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">PERCENTAGE OF PERSONS WITH AN EXPENSE, BY TYPE OF SERVICE</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Surveymeans Procedure</h1>
+<article aria-label="Data Summary">
+<h1 class="contentitem toc">Data Summary</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Summary">
+<caption aria-label="Data Summary"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Data Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Number of Strata</th>
+<td class="r data">282</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Clusters</th>
+<td class="r data">621</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations</th>
+<td class="r data">31880</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations Used</th>
+<td class="r data">30716</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Obs with Nonpositive Weights</th>
+<td class="r data">1164</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Sum of Weights</th>
+<td class="r data">324779909</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX12" aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics">
+<caption aria-label="Statistics"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="6" scope="colgroup">Statistics</th>
+</tr>
+<tr>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">X_ANYSVCE</th>
+<td class="r data">30716</td>
+<td class="r data">0.852406</td>
+<td class="r data">0.003416</td>
+<td class="r data">276844299</td>
+<td class="r data">4659983</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">X_HOSPITAL_INPATIENT</th>
+<td class="r data">30716</td>
+<td class="r data">0.064922</td>
+<td class="r data">0.001852</td>
+<td class="r data">21085393</td>
+<td class="r data">692578</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">X_AMBULATORY</th>
+<td class="r data">30716</td>
+<td class="r data">0.762291</td>
+<td class="r data">0.003938</td>
+<td class="r data">247576813</td>
+<td class="r data">4172819</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">X_PRESCRIBED_MEDICINES</th>
+<td class="r data">30716</td>
+<td class="r data">0.598211</td>
+<td class="r data">0.004320</td>
+<td class="r data">194286829</td>
+<td class="r data">3272492</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">X_DENTAL</th>
+<td class="r data">30716</td>
+<td class="r data">0.429230</td>
+<td class="r data">0.005571</td>
+<td class="r data">139405328</td>
+<td class="r data">3139365</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">X_HOME_HEALTH_OTHER</th>
+<td class="r data">30716</td>
+<td class="r data">0.224982</td>
+<td class="r data">0.003624</td>
+<td class="r data">73069795</td>
+<td class="r data">1606304</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="Surveymeans" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX13" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN TOTAL EXPENSE PER PERSON WITH AN EXPENSE, AGE 0-64, AND AGE 65+ (via ODS Output)</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Surveymeans Procedure</h1>
+<article aria-label="Data Summary">
+<h1 class="contentitem toc">Data Summary</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Summary">
+<caption aria-label="Data Summary"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Data Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Number of Strata</th>
+<td class="r data">282</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Clusters</th>
+<td class="r data">621</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations</th>
+<td class="r data">31880</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations Used</th>
+<td class="r data">30716</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Obs with Nonpositive Weights</th>
+<td class="r data">1164</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Sum of Weights</th>
+<td class="r data">324779909</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX14" aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics">
+<caption aria-label="Statistics"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="7" scope="colgroup">Statistics</th>
+</tr>
+<tr>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">TOTAL</th>
+<td class="r data">30716</td>
+<td class="r data">324779909</td>
+<td class="r data">5305.562271</td>
+<td class="r data">125.927920</td>
+<td class="r data">1.72314E12</td>
+<td class="r data">46588497185</td>
+</tr>
+</tbody>
+</table>
+</article>
+<hr class="pagebreak"/>
+<div id="IDX15" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN TOTAL EXPENSE PER PERSON WITH AN EXPENSE, AGE 0-64, AND AGE 65+ (via ODS Output)</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<section>
+<h1 class="contentfolder toc">Domain Analysis for AGECAT</h1>
+<article aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics for AGECAT Domains">
+<caption aria-label="Statistics for AGECAT Domains"></caption>
+<colgroup><col/><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="8" scope="colgroup">Statistics for AGECAT Domains</th>
+</tr>
+<tr>
+<th class="b header" scope="col">AGECAT</th>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="t rowheader" scope="row">0-64</th>
+<th class="rowheader" scope="row">TOTAL</th>
+<td class="r data">25829</td>
+<td class="r data">272065819</td>
+<td class="r data">4104.254934</td>
+<td class="r data">119.828968</td>
+<td class="r data">1.1166275E12</td>
+<td class="r data">36159659869</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">65+</th>
+<th class="rowheader" scope="row">TOTAL</th>
+<td class="r data">4887</td>
+<td class="r data">52714089</td>
+<td class="r data">11506</td>
+<td class="r data">351.766501</td>
+<td class="r data">606512548182</td>
+<td class="r data">24232442940</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<hr class="pagebreak"/>
+<div id="IDX16" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN TOTAL EXPENSE PER PERSON WITH AN EXPENSE, AGE 0-64, AND AGE 65+ (via ODS Output)</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<section>
+<h1 class="contentfolder toc">Domain Analysis for AGECAT*X_ANYSVCE</h1>
+<article aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics for AGECAT*X_ANYSVCE Domains">
+<caption aria-label="Statistics for AGECAT*X_ANYSVCE Domains"></caption>
+<colgroup><col/><col/><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="9" scope="colgroup">Statistics for AGECAT*X_ANYSVCE Domains</th>
+</tr>
+<tr>
+<th class="b header" scope="col">AGECAT</th>
+<th class="r b header" scope="col">X_ANYSVCE</th>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="t rowheader" scope="row">0-64</th>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">TOTAL</th>
+<td class="r data">20661</td>
+<td class="r data">226077223</td>
+<td class="r data">4939.141883</td>
+<td class="r data">142.565902</td>
+<td class="r data">1.1166275E12</td>
+<td class="r data">36159659869</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">65+</th>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">TOTAL</th>
+<td class="r data">4695</td>
+<td class="r data">50767076</td>
+<td class="r data">11947</td>
+<td class="r data">371.283647</td>
+<td class="r data">606512548182</td>
+<td class="r data">24232442940</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Print" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX17" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN TOTAL EXPENSE PER PERSON WITH AN EXPENSE, AGE 0-64, AND AGE 65+ (via ODS Output)</span> </p>
+</div>
+<h1 class="contentprocname toc">The Print Procedure</h1>
+<article aria-label="Data Set WORK.COMBINE">
+<h1 class="contentitem toc">Data Set WORK.COMBINE</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Set WORK.COMBINE">
+<caption aria-label="Data Set WORK.COMBINE"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">Age Group</th>
+<th class="r header" scope="col">Expense<br/>Category<br/>(Flag)</th>
+<th class="r header" scope="col">N</th>
+<th class="r header" scope="col">Population<br/>Size</th>
+<th class="r header" scope="col">Mean($)</th>
+<th class="r header" scope="col">SE of Mean($)</th>
+<th class="r header" scope="col">Total<br/>Expense ($)</th>
+<th class="r header" scope="col">SE of<br/>Total Expense($)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">All Ages</td>
+<td class="r data">No or any expense</td>
+<td class="r data">30,716</td>
+<td class="r data">324,779,909</td>
+<td class="r data">5,306</td>
+<td class="r data">125.928</td>
+<td class="r data">1,723,140,028,956</td>
+<td class="r data">46,588,497,185</td>
+</tr>
+<tr>
+<td class="r data">0-64</td>
+<td class="r data">No or any expense</td>
+<td class="r data">25,829</td>
+<td class="r data">272,065,819</td>
+<td class="r data">4,104</td>
+<td class="r data">119.829</td>
+<td class="r data">1,116,627,480,774</td>
+<td class="r data">36,159,659,869</td>
+</tr>
+<tr>
+<td class="r data">65+</td>
+<td class="r data">No or any expense</td>
+<td class="r data">4,887</td>
+<td class="r data">52,714,089</td>
+<td class="r data">11,506</td>
+<td class="r data">351.767</td>
+<td class="r data">606,512,548,182</td>
+<td class="r data">24,232,442,940</td>
+</tr>
+<tr>
+<td class="r data">0-64</td>
+<td class="r data">Any expense</td>
+<td class="r data">20,661</td>
+<td class="r data">226,077,223</td>
+<td class="r data">4,939</td>
+<td class="r data">142.566</td>
+<td class="r data">1,116,627,480,774</td>
+<td class="r data">36,159,659,869</td>
+</tr>
+<tr>
+<td class="r data">65+</td>
+<td class="r data">Any expense</td>
+<td class="r data">4,695</td>
+<td class="r data">50,767,076</td>
+<td class="r data">11,947</td>
+<td class="r data">371.284</td>
+<td class="r data">606,512,548,182</td>
+<td class="r data">24,232,442,940</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="Surveymeans" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX18" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN HOSPITAL INPATIENT EXPENSE PER PERSON WITH AN INPATIENT EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Surveymeans Procedure</h1>
+<article aria-label="Data Summary">
+<h1 class="contentitem toc">Data Summary</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Summary">
+<caption aria-label="Data Summary"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Data Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Number of Strata</th>
+<td class="r data">282</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Clusters</th>
+<td class="r data">621</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations</th>
+<td class="r data">31880</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations Used</th>
+<td class="r data">30716</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Obs with Nonpositive Weights</th>
+<td class="r data">1164</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Sum of Weights</th>
+<td class="r data">324779909</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX19" aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics">
+<caption aria-label="Statistics"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="7" scope="colgroup">Statistics</th>
+</tr>
+<tr>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">HOSPITAL_INPATIENT</th>
+<td class="r data">30716</td>
+<td class="r data">324779909</td>
+<td class="r data">1300.459101</td>
+<td class="r data">79.885660</td>
+<td class="r data">422362987770</td>
+<td class="r data">26212174522</td>
+</tr>
+</tbody>
+</table>
+</article>
+<hr class="pagebreak"/>
+<div id="IDX20" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN HOSPITAL INPATIENT EXPENSE PER PERSON WITH AN INPATIENT EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<section>
+<h1 class="contentfolder toc">Domain Analysis for X_HOSPITAL_INPATIENT</h1>
+<article aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics for X_HOSPITAL_INPATIENT Domains">
+<caption aria-label="Statistics for X_HOSPITAL_INPATIENT Domains"></caption>
+<colgroup><col/><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="8" scope="colgroup">Statistics for X_HOSPITAL_INPATIENT Domains</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">X_HOSPITAL_INPATIENT</th>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">HOSPITAL_INPATIENT</th>
+<td class="r data">2041</td>
+<td class="r data">21085393</td>
+<td class="r data">20031</td>
+<td class="r data">1049.603420</td>
+<td class="r data">422362987770</td>
+<td class="r data">26212174522</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<hr class="pagebreak"/>
+<div id="IDX21" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN HOSPITAL INPATIENT EXPENSE PER PERSON WITH AN INPATIENT EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<section>
+<h1 class="contentfolder toc">Domain Analysis for AGECAT*X_HOSPITAL_INPATIENT</h1>
+<article aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics for AGECAT*X_HOSPITAL_INPATIENT Domains">
+<caption aria-label="Statistics for AGECAT*X_HOSPITAL_INPATIENT Domains"></caption>
+<colgroup><col/><col/><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="9" scope="colgroup">Statistics for AGECAT*X_HOSPITAL_INPATIENT Domains</th>
+</tr>
+<tr>
+<th class="b header" scope="col">AGECAT</th>
+<th class="r b header" scope="col">X_HOSPITAL_INPATIENT</th>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="t rowheader" scope="row">0-64</th>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">HOSPITAL_INPATIENT</th>
+<td class="r data">1280</td>
+<td class="r data">12777988</td>
+<td class="r data">20274</td>
+<td class="r data">1411.806888</td>
+<td class="r data">259065402699</td>
+<td class="r data">21234263799</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">65+</th>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">HOSPITAL_INPATIENT</th>
+<td class="r data">761</td>
+<td class="r data">8307405</td>
+<td class="r data">19657</td>
+<td class="r data">1352.806487</td>
+<td class="r data">163297585070</td>
+<td class="r data">13683216171</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Surveymeans" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX22" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN AMBULATORY EXPENSE PER PERSON WITH AN AMBULATORY EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Surveymeans Procedure</h1>
+<article aria-label="Data Summary">
+<h1 class="contentitem toc">Data Summary</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Summary">
+<caption aria-label="Data Summary"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Data Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Number of Strata</th>
+<td class="r data">282</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Clusters</th>
+<td class="r data">621</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations</th>
+<td class="r data">31880</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations Used</th>
+<td class="r data">30716</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Obs with Nonpositive Weights</th>
+<td class="r data">1164</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Sum of Weights</th>
+<td class="r data">324779909</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX23" aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics">
+<caption aria-label="Statistics"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="7" scope="colgroup">Statistics</th>
+</tr>
+<tr>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">AMBULATORY</th>
+<td class="r data">30716</td>
+<td class="r data">324779909</td>
+<td class="r data">1974.852769</td>
+<td class="r data">47.622720</td>
+<td class="r data">641392501659</td>
+<td class="r data">17809605318</td>
+</tr>
+</tbody>
+</table>
+</article>
+<hr class="pagebreak"/>
+<div id="IDX24" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN AMBULATORY EXPENSE PER PERSON WITH AN AMBULATORY EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<section>
+<h1 class="contentfolder toc">Domain Analysis for X_AMBULATORY</h1>
+<article aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics for X_AMBULATORY Domains">
+<caption aria-label="Statistics for X_AMBULATORY Domains"></caption>
+<colgroup><col/><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="8" scope="colgroup">Statistics for X_AMBULATORY Domains</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">X_AMBULATORY</th>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">AMBULATORY</th>
+<td class="r data">22595</td>
+<td class="r data">247576813</td>
+<td class="r data">2590.680827</td>
+<td class="r data">61.278710</td>
+<td class="r data">641392501659</td>
+<td class="r data">17809605318</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<hr class="pagebreak"/>
+<div id="IDX25" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN AMBULATORY EXPENSE PER PERSON WITH AN AMBULATORY EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<section>
+<h1 class="contentfolder toc">Domain Analysis for AGECAT*X_AMBULATORY</h1>
+<article aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics for AGECAT*X_AMBULATORY Domains">
+<caption aria-label="Statistics for AGECAT*X_AMBULATORY Domains"></caption>
+<colgroup><col/><col/><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="9" scope="colgroup">Statistics for AGECAT*X_AMBULATORY Domains</th>
+</tr>
+<tr>
+<th class="b header" scope="col">AGECAT</th>
+<th class="r b header" scope="col">X_AMBULATORY</th>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="t rowheader" scope="row">0-64</th>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">AMBULATORY</th>
+<td class="r data">18070</td>
+<td class="r data">198557099</td>
+<td class="r data">2255.046772</td>
+<td class="r data">65.873282</td>
+<td class="r data">447755545433</td>
+<td class="r data">15236020629</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">65+</th>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">AMBULATORY</th>
+<td class="r data">4525</td>
+<td class="r data">49019714</td>
+<td class="r data">3950.185389</td>
+<td class="r data">134.558415</td>
+<td class="r data">193636956226</td>
+<td class="r data">8577570137</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Surveymeans" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX26" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN PRESCRIPTION MEDICINE EXPENSE PER PERSON WITH A PRESCRIPTION MEDICINE EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Surveymeans Procedure</h1>
+<article aria-label="Data Summary">
+<h1 class="contentitem toc">Data Summary</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Summary">
+<caption aria-label="Data Summary"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Data Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Number of Strata</th>
+<td class="r data">282</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Clusters</th>
+<td class="r data">621</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations</th>
+<td class="r data">31880</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations Used</th>
+<td class="r data">30716</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Obs with Nonpositive Weights</th>
+<td class="r data">1164</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Sum of Weights</th>
+<td class="r data">324779909</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX27" aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics">
+<caption aria-label="Statistics"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="7" scope="colgroup">Statistics</th>
+</tr>
+<tr>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">PRESCRIBED_MEDICINES</th>
+<td class="r data">30716</td>
+<td class="r data">324779909</td>
+<td class="r data">1260.571022</td>
+<td class="r data">43.095949</td>
+<td class="r data">409408141229</td>
+<td class="r data">14866262625</td>
+</tr>
+</tbody>
+</table>
+</article>
+<hr class="pagebreak"/>
+<div id="IDX28" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN PRESCRIPTION MEDICINE EXPENSE PER PERSON WITH A PRESCRIPTION MEDICINE EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<section>
+<h1 class="contentfolder toc">Domain Analysis for X_PRESCRIBED_MEDICINES</h1>
+<article aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics for X_PRESCRIBED_MEDICINES Domains">
+<caption aria-label="Statistics for X_PRESCRIBED_MEDICINES Domains"></caption>
+<colgroup><col/><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="8" scope="colgroup">Statistics for X_PRESCRIBED_MEDICINES Domains</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">X_PRESCRIBED_MEDICINES</th>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">PRESCRIBED_MEDICINES</th>
+<td class="r data">17665</td>
+<td class="r data">194286829</td>
+<td class="r data">2107.235698</td>
+<td class="r data">69.415783</td>
+<td class="r data">409408141229</td>
+<td class="r data">14866262625</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<hr class="pagebreak"/>
+<div id="IDX29" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN PRESCRIPTION MEDICINE EXPENSE PER PERSON WITH A PRESCRIPTION MEDICINE EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<section>
+<h1 class="contentfolder toc">Domain Analysis for AGECAT*X_PRESCRIBED_MEDICINES</h1>
+<article aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics for AGECAT*X_PRESCRIBED_MEDICINES Domains">
+<caption aria-label="Statistics for AGECAT*X_PRESCRIBED_MEDICINES Domains"></caption>
+<colgroup><col/><col/><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="9" scope="colgroup">Statistics for AGECAT*X_PRESCRIBED_MEDICINES Domains</th>
+</tr>
+<tr>
+<th class="b header" scope="col">AGECAT</th>
+<th class="r b header" scope="col">X_PRESCRIBED_MEDICINES</th>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="t rowheader" scope="row">0-64</th>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">PRESCRIBED_MEDICINES</th>
+<td class="r data">13275</td>
+<td class="r data">146861374</td>
+<td class="r data">1790.063554</td>
+<td class="r data">77.674022</td>
+<td class="r data">262891192508</td>
+<td class="r data">11693514658</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">65+</th>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">PRESCRIBED_MEDICINES</th>
+<td class="r data">4390</td>
+<td class="r data">47425455</td>
+<td class="r data">3089.415769</td>
+<td class="r data">144.690943</td>
+<td class="r data">146516948721</td>
+<td class="r data">8078828224</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Surveymeans" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX30" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN DENTAL EXPENSE PER PERSON WITH A DENATL EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Surveymeans Procedure</h1>
+<article aria-label="Data Summary">
+<h1 class="contentitem toc">Data Summary</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Summary">
+<caption aria-label="Data Summary"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Data Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Number of Strata</th>
+<td class="r data">282</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Clusters</th>
+<td class="r data">621</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations</th>
+<td class="r data">31880</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations Used</th>
+<td class="r data">30716</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Obs with Nonpositive Weights</th>
+<td class="r data">1164</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Sum of Weights</th>
+<td class="r data">324779909</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX31" aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics">
+<caption aria-label="Statistics"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="7" scope="colgroup">Statistics</th>
+</tr>
+<tr>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">DENTAL</th>
+<td class="r data">30716</td>
+<td class="r data">324779909</td>
+<td class="r data">326.854046</td>
+<td class="r data">8.952682</td>
+<td class="r data">106155627287</td>
+<td class="r data">3603610752</td>
+</tr>
+</tbody>
+</table>
+</article>
+<hr class="pagebreak"/>
+<div id="IDX32" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN DENTAL EXPENSE PER PERSON WITH A DENATL EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<section>
+<h1 class="contentfolder toc">Domain Analysis for X_DENTAL</h1>
+<article aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics for X_DENTAL Domains">
+<caption aria-label="Statistics for X_DENTAL Domains"></caption>
+<colgroup><col/><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="8" scope="colgroup">Statistics for X_DENTAL Domains</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">X_DENTAL</th>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">DENTAL</th>
+<td class="r data">11956</td>
+<td class="r data">139405328</td>
+<td class="r data">761.489027</td>
+<td class="r data">18.257309</td>
+<td class="r data">106155627287</td>
+<td class="r data">3603610752</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<hr class="pagebreak"/>
+<div id="IDX33" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN DENTAL EXPENSE PER PERSON WITH A DENATL EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<section>
+<h1 class="contentfolder toc">Domain Analysis for AGECAT*X_DENTAL</h1>
+<article aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics for AGECAT*X_DENTAL Domains">
+<caption aria-label="Statistics for AGECAT*X_DENTAL Domains"></caption>
+<colgroup><col/><col/><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="9" scope="colgroup">Statistics for AGECAT*X_DENTAL Domains</th>
+</tr>
+<tr>
+<th class="b header" scope="col">AGECAT</th>
+<th class="r b header" scope="col">X_DENTAL</th>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="t rowheader" scope="row">0-64</th>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">DENTAL</th>
+<td class="r data">9861</td>
+<td class="r data">114287241</td>
+<td class="r data">724.046758</td>
+<td class="r data">21.834993</td>
+<td class="r data">82749306326</td>
+<td class="r data">3376886557</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">65+</th>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">DENTAL</th>
+<td class="r data">2095</td>
+<td class="r data">25118087</td>
+<td class="r data">931.851267</td>
+<td class="r data">40.938284</td>
+<td class="r data">23406320961</td>
+<td class="r data">1321300519</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Surveymeans" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX34" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN  OTHER EXPENSE (INCLUDING HOME HEALTH EXPENSE) PER PERSON WITH AN OTHER  EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Surveymeans Procedure</h1>
+<article aria-label="Data Summary">
+<h1 class="contentitem toc">Data Summary</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Summary">
+<caption aria-label="Data Summary"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Data Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Number of Strata</th>
+<td class="r data">282</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Clusters</th>
+<td class="r data">621</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations</th>
+<td class="r data">31880</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Observations Used</th>
+<td class="r data">30716</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Number of Obs with Nonpositive Weights</th>
+<td class="r data">1164</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Sum of Weights</th>
+<td class="r data">324779909</td>
+</tr>
+</tbody>
+</table>
+</article>
+<article id="IDX35" aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics">
+<caption aria-label="Statistics"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="7" scope="colgroup">Statistics</th>
+</tr>
+<tr>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">HOME_HEALTH_OTHER</th>
+<td class="r data">30716</td>
+<td class="r data">324779909</td>
+<td class="r data">442.823811</td>
+<td class="r data">25.430765</td>
+<td class="r data">143820276926</td>
+<td class="r data">8519783935</td>
+</tr>
+</tbody>
+</table>
+</article>
+<hr class="pagebreak"/>
+<div id="IDX36" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN  OTHER EXPENSE (INCLUDING HOME HEALTH EXPENSE) PER PERSON WITH AN OTHER  EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<section>
+<h1 class="contentfolder toc">Domain Analysis for X_HOME_HEALTH_OTHER</h1>
+<article aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics for X_HOME_HEALTH_OTHER Domains">
+<caption aria-label="Statistics for X_HOME_HEALTH_OTHER Domains"></caption>
+<colgroup><col/><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="8" scope="colgroup">Statistics for X_HOME_HEALTH_OTHER Domains</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">X_HOME_HEALTH_OTHER</th>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">HOME_HEALTH_OTHER</th>
+<td class="r data">6513</td>
+<td class="r data">73069795</td>
+<td class="r data">1968.258936</td>
+<td class="r data">111.450421</td>
+<td class="r data">143820276926</td>
+<td class="r data">8519783935</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<hr class="pagebreak"/>
+<div id="IDX37" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">MIS500 Portfolio Project</span> </p>
+<p><span class="c systemtitle2">EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017</span> </p>
+<p><span class="c systemtitle3">MEAN  OTHER EXPENSE (INCLUDING HOME HEALTH EXPENSE) PER PERSON WITH AN OTHER  EXPENSE, AGE 0-64, AND AGE 65+</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The SURVEYMEANS Procedure</p>
+</div>
+<section>
+<h1 class="contentfolder toc">Domain Analysis for AGECAT*X_HOME_HEALTH_OTHER</h1>
+<article aria-label="Statistics">
+<h1 class="contentitem toc">Statistics</h1>
+<table class="table" style="border-spacing: 0" aria-label="Statistics for AGECAT*X_HOME_HEALTH_OTHER Domains">
+<caption aria-label="Statistics for AGECAT*X_HOME_HEALTH_OTHER Domains"></caption>
+<colgroup><col/><col/><col/></colgroup><colgroup><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="9" scope="colgroup">Statistics for AGECAT*X_HOME_HEALTH_OTHER Domains</th>
+</tr>
+<tr>
+<th class="b header" scope="col">AGECAT</th>
+<th class="r b header" scope="col">X_HOME_HEALTH_OTHER</th>
+<th class="b header" scope="col">Variable</th>
+<th class="r b header" scope="col">N</th>
+<th class="r b header" scope="col">Sum of<br/>Weights</th>
+<th class="r b header" scope="col">Mean</th>
+<th class="r b header" scope="col">Std Error<br/>of Mean</th>
+<th class="r b header" scope="col">Sum</th>
+<th class="r b header" scope="col">Std Error<br/>of Sum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="t rowheader" scope="row">0-64</th>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">HOME_HEALTH_OTHER</th>
+<td class="r data">4733</td>
+<td class="r data">53848942</td>
+<td class="r data">1191.595371</td>
+<td class="r data">82.528038</td>
+<td class="r data">64166150589</td>
+<td class="r data">4662785374</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">65+</th>
+<th class="r t rowheader" scope="row">1</th>
+<th class="rowheader" scope="row">HOME_HEALTH_OTHER</th>
+<td class="r data">1780</td>
+<td class="r data">19220853</td>
+<td class="r data">4144.151582</td>
+<td class="r data">346.668322</td>
+<td class="r data">79654126337</td>
+<td class="r data">7049911972</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+</div>
+</body>
+</html>
