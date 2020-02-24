@@ -1,0 +1,256 @@
+/**********************************************************************************
+
+DESCRIPTION:  THIS PROGRAM GENERATES THE FOLLOWING ESTIMATES ON NATIONAL HEALTH CARE EXPENSES BY TYPE OF SERVICE, 2017:
+
+               (1) PERCENTAGE DISTRIBUTION OF EXPENSES BY TYPE OF SERVICE
+               (2) PERCENTAGE OF PERSONS WITH AN EXPENSE, BY TYPE OF SERVICE
+               (3) MEAN EXPENSE PER PERSON WITH AN EXPENSE, BY TYPE OF SERVICE
+
+              DEFINED SERVICE CATEGORIES ARE:
+                 HOSPITAL INPATIENT
+                 AMBULATORY SERVICE: OFFICE-BASED & HOSPITAL OUTPATIENT VISITS
+                 PRESCRIBED MEDICINES
+                 DENTAL VISITS
+                 EMERGENCY ROOM
+                 HOME HEALTH CARE (AGENCY & NON-AGENCY) AND OTHER (TOTAL EXPENDITURES - ABOVE EXPENDITURE CATEGORIES)
+
+             NOTE: EXPENSES INCLUDE BOTH FACILITY AND PHYSICIAN EXPENSES.
+
+ INPUT FILE:   /folders/myfolders/H201.SAS7BDAT (2017 FULL-YEAR FILE)
+
+ *********************************************************************************/
+
+/* set the folder name for the datasets */
+LIBNAME CDATA '/folders/myfolders/MEPS';
+
+/* Create the categories for printing into */
+ PROC FORMAT;
+  VALUE AGEF
+      0-  64 = '0-64'
+     65-HIGH = '65+';
+
+  VALUE AGECAT
+      .  = 'All Ages'
+       1 = '0-64'
+       2 = '65+';
+
+    VALUE GTZERO
+      0         = '$0'
+      0 <- HIGH = '>$0';
+
+    VALUE FLAG
+      .         = 'No or any expense'
+      0         = 'No expense'
+      1         = 'Any expense';
+
+ RUN;
+
+TITLE1 'MIS500 Portfolio Project';
+TITLE2 "EXERCISE1B.SAS: NATIONAL HEALTH CARE EXPENSES, 2017";
+
+
+
+ /* READ IN DATA FROM 2017 CONSOLIDATED DATA FILE (HC-201) */
+ DATA PUF201;
+   SET CDATA.H201 (KEEP= TOTEXP17 IPDEXP17 IPFEXP17 OBVEXP17 RXEXP17
+                          OPDEXP17 OPFEXP17 DVTEXP17 ERDEXP17 ERFEXP17
+                          HHAEXP17 HHNEXP17 OTHEXP17 VISEXP17 AGE17X AGE42X AGE31X
+                          VARSTR   VARPSU   PERWT17f );
+
+
+   /* Define expenditure variables by type of service  */
+
+
+   TOTAL                = TOTEXP17;
+   HOSPITAL_INPATIENT   = IPDEXP17 + IPFEXP17;
+   AMBULATORY           = OBVEXP17 + OPDEXP17 + OPFEXP17 + ERDEXP17 + ERFEXP17;
+   PRESCRIBED_MEDICINES = RXEXP17;
+   DENTAL               = DVTEXP17;
+   HOME_HEALTH_OTHER    = HHAEXP17 + HHNEXP17 + OTHEXP17 + VISEXP17;
+
+
+  /*QC CHECK IF THE SUM OF EXPENDITURES BY TYPE OF SERVICE IS EQUAL TO TOTAL*/
+
+
+   DIFF = TOTAL-HOSPITAL_INPATIENT - AMBULATORY   - PRESCRIBED_MEDICINES
+              - DENTAL            - HOME_HEALTH_OTHER        ;
+
+
+  /* CREATE FLAG (1/0) VARIABLES FOR PERSONS WITH AN EXPENSE, BY TYPE OF SERVICE  */
+   ARRAY EXX  (6) TOTAL     HOSPITAL_INPATIENT   AMBULATORY     PRESCRIBED_MEDICINES
+                  DENTAL    HOME_HEALTH_OTHER      ;
+
+
+   ARRAY ANYX (6) X_ANYSVCE X_HOSPITAL_INPATIENT X_AMBULATORY    X_PRESCRIBED_MEDICINES
+                  X_DENTAL  X_HOME_HEALTH_OTHER    ;
+
+
+   DO II=1 TO 6;
+     ANYX(II) = 0;
+     IF EXX(II) > 0 THEN ANYX(II) = 1;
+   END;
+   DROP II;
+
+   /* CREATE A SUMMARY VARIABLE FROM END OF YEAR, 42, AND 31 VARIABLES*/
+
+
+        IF AGE17X >= 0 THEN AGE = AGE17X ;
+   ELSE IF AGE42X >= 0 THEN AGE = AGE42X ;
+   ELSE IF AGE31X >= 0 THEN AGE = AGE31X ;
+
+        IF 0 LE AGE LE 64 THEN AGECAT=1 ;
+   ELSE IF      AGE  > 64 THEN AGECAT=2 ;
+  ;
+
+
+ RUN;
+ 
+ /* Create the frequency tables by categories of how many have any service vs. none.  NOte
+  * Use the total amounts to determine this */
+ TITLE3 "Supporting crosstabs for the flag variables";
+ PROC FREQ DATA=PUF201;
+    TABLES X_ANYSVCE              * TOTAL
+           X_HOSPITAL_INPATIENT   * HOSPITAL_INPATIENT
+           X_AMBULATORY           * AMBULATORY
+           X_PRESCRIBED_MEDICINES * PRESCRIBED_MEDICINES
+           X_DENTAL               * DENTAL
+           X_HOME_HEALTH_OTHER    * HOME_HEALTH_OTHER
+           AGECAT*AGE
+           DIFF/LIST MISSING;
+
+    FORMAT TOTAL
+           HOSPITAL_INPATIENT
+           AMBULATORY
+           PRESCRIBED_MEDICINES
+           DENTAL
+           HOME_HEALTH_OTHER   gtzero.
+           AGE  agef.
+           X_ANYSVCE
+           X_HOSPITAL_INPATIENT
+           X_AMBULATORY
+           X_PRESCRIBED_MEDICINES
+           X_DENTAL
+           X_HOME_HEALTH_OTHER flag.
+           AGECAT agecat.
+  ;
+RUN;
+
+/* Get the the expenses by type of service */
+ ods graphics off;
+  TITLE3 'PERCENTAGE DISTRIBUTION OF EXPENSES BY TYPE OF SERVICE (STAT BRIEF #491 FIGURE 1)';
+ PROC SURVEYMEANS DATA=PUF201 sum ;
+    STRATUM VARSTR;
+    CLUSTER VARPSU;
+    WEIGHT PERWT17f;
+    VAR   HOSPITAL_INPATIENT
+         AMBULATORY
+         PRESCRIBED_MEDICINES
+          DENTAL
+         HOME_HEALTH_OTHER
+         TOTAL ;
+    RATIO  HOSPITAL_INPATIENT
+          AMBULATORY
+          PRESCRIBED_MEDICINES
+          DENTAL
+          HOME_HEALTH_OTHER   / TOTAL ;
+ RUN;
+ 
+ /* Get the percentage of people that have an expense in a type of service */
+TITLE3 'PERCENTAGE OF PERSONS WITH AN EXPENSE, BY TYPE OF SERVICE';
+PROC SURVEYMEANS DATA= PUF201 NOBS MEAN STDERR SUM;
+    STRATUM VARSTR ;
+    CLUSTER VARPSU ;
+    WEIGHT  PERWT17f ;
+    VAR X_ANYSVCE
+        X_HOSPITAL_INPATIENT
+        X_AMBULATORY
+        X_PRESCRIBED_MEDICINES
+        X_DENTAL
+        X_HOME_HEALTH_OTHER;
+        RUN;
+
+
+/* Use proc surveymeans to create datasets that will be merged and prited with better labels. */
+
+ TITLE3 'MEAN TOTAL EXPENSE PER PERSON WITH AN EXPENSE, AGE 0-64, AND AGE 65+ (via ODS Output)';
+  *ods trace on;
+ PROC SURVEYMEANS DATA= PUF201 MEAN NOBS SUMWGT STDERR SUM;
+    STRATUM VARSTR ;
+    CLUSTER VARPSU ;
+    VAR  TOTAL;
+    DOMAIN  AGECAT AGECAT*X_ANYSVCE('1');
+    WEIGHT  PERWT17f ;
+    FORMAT  AGECAT agecat.;
+    ods output Statistics=work.Overall_results
+               domain= work.domain_results;
+RUN;
+
+/* combine the output of proc surverymeans to be printed in next step */
+data combine;
+  set work.Overall_results
+      work.domain_results;
+run;
+proc print data= combine noobs split='*';
+ var AGECAT  X_ANYSVCE N  SumWgt  mean StdErr  Sum stddev;
+ label AGECAT = 'Age Group'
+       X_ANYSVCE = 'Expense*Category*(Flag)'
+       SumWgt = 'Population*Size'
+       mean = 'Mean($)'
+       StdErr = 'SE of Mean($)'
+       Sum = 'Total*Expense ($)'
+       Stddev = 'SE of*Total Expense($)';
+       format N SumWgt Comma12. mean comma7. stderr 7.3 sum Stddev comma17.
+        X_ANYSVCE flag.;
+run;
+
+TITLE3 'MEAN HOSPITAL INPATIENT EXPENSE PER PERSON WITH AN INPATIENT EXPENSE, AGE 0-64, AND AGE 65+';
+PROC SURVEYMEANS DATA= PUF201 NOBS MEAN SUMWGT STDERR SUM ;
+    STRATUM VARSTR ;
+    CLUSTER VARPSU ;
+    WEIGHT  PERWT17f ;
+    VAR  HOSPITAL_INPATIENT;
+    DOMAIN  X_HOSPITAL_INPATIENT('1') AGECAT*X_HOSPITAL_INPATIENT ('1');
+    FORMAT  AGECAT agecat. ;
+RUN;
+
+TITLE3 'MEAN AMBULATORY EXPENSE PER PERSON WITH AN AMBULATORY EXPENSE, AGE 0-64, AND AGE 65+';
+PROC SURVEYMEANS DATA= PUF201 NOBS MEAN SUMWGT STDERR SUM ;
+    STRATUM VARSTR ;
+    CLUSTER VARPSU ;
+    WEIGHT  PERWT17f ;
+    VAR  AMBULATORY;
+    DOMAIN  X_AMBULATORY('1')  AGECAT*X_AMBULATORY('1') ;
+    FORMAT  AGECAT agecat.;
+ RUN;
+
+ TITLE3 'MEAN PRESCRIPTION MEDICINE EXPENSE PER PERSON WITH A PRESCRIPTION MEDICINE EXPENSE, AGE 0-64, AND AGE 65+';
+PROC SURVEYMEANS DATA= PUF201 MEAN NOBS SUMWGT STDERR SUM ;
+    STRATUM VARSTR ;
+    CLUSTER VARPSU ;
+    WEIGHT  PERWT17f ;
+    VAR  PRESCRIBED_MEDICINES;
+    DOMAIN  X_PRESCRIBED_MEDICINES('1') AGECAT*X_PRESCRIBED_MEDICINES('1');
+    FORMAT  AGECAT agecat.;
+ RUN;
+
+ TITLE3 'MEAN DENTAL EXPENSE PER PERSON WITH A DENATL EXPENSE, AGE 0-64, AND AGE 65+';
+PROC SURVEYMEANS DATA= PUF201 MEAN NOBS SUMWGT STDERR SUM ;
+    STRATUM VARSTR ;
+    CLUSTER VARPSU ;
+    WEIGHT  PERWT17f ;
+    VAR  DENTAL;
+    DOMAIN   X_DENTAL('1') AGECAT*X_DENTAL('1') ;
+    FORMAT  AGECAT agecat.;
+ RUN;
+
+TITLE3 'MEAN  OTHER EXPENSE (INCLUDING HOME HEALTH EXPENSE) PER PERSON WITH AN OTHER  EXPENSE, AGE 0-64, AND AGE 65+';
+ PROC SURVEYMEANS DATA= PUF201 MEAN NOBS SUMWGT STDERR SUM ;
+    STRATUM VARSTR ;
+    CLUSTER VARPSU ;
+    WEIGHT  PERWT17f ;
+    VAR  HOME_HEALTH_OTHER;
+    DOMAIN  X_HOME_HEALTH_OTHER('1') AGECAT*X_HOME_HEALTH_OTHER('1') ;
+    FORMAT  AGECAT agecat.;
+ RUN;
+ PROC PRINTTO;
+ RUN;

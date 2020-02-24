@@ -10,21 +10,12 @@ DESCRIPTION:  THIS PROGRAM GENERATES THE FOLLOWING ESTIMATES ON NATIONAL HEALTH 
 INPUT FILE:   /folders/myfolders/MEPS/H201.SAS7BDAT (2017 FULL-YEAR FILE)
 
 *********************************************************************************/;
-/* IMPORTANT NOTES: Use the next 6 lines of code, if you want to specify an alternative destination for SAS log and
-SAS procedure output.*/
 
-/*********  Portfolio project will not leverage this functionality
-%LET MyFolder= /folders/myfolders/MEPS;
-OPTIONS LS=132 PS=79 NODATE FORMCHAR="|----|+|---+=|-/\<>*" PAGENO=1;
-FILENAME MYLOG "&MyFolder\Exercise1_log.TXT";
-FILENAME MYPRINT "&MyFolder\Exercise1_OUTPUT.TXT";
-PROC PRINTTO LOG=MYLOG PRINT=MYPRINT NEW;
-RUN;
-************/
-
+/* set the library folder */
 proc datasets lib=work nolist kill; quit; /* delete  all files in the WORK library */
 libname CDATA "/folders/myfolders/MEPS";
 
+/* Create the categories for the data */
 PROC FORMAT;
   VALUE AGEF
      .      = 'ALL AGES'
@@ -47,7 +38,7 @@ PROC FORMAT;
 RUN;
 
 TITLE1 'MIS500 Portfolio Project';
-TITLE2 "EXERCISE1.SAS: NATIONAL HEALTH CARE EXPENSES, 2017";
+TITLE2 "EXERCISE1A.SAS: NATIONAL HEALTH CARE EXPENSES, 2017";
 
 /* READ IN DATA FROM 2017 CONSOLIDATED DATA FILE (HC-201) */
 DATA PUF201;
@@ -70,6 +61,13 @@ DATA PUF201;
   ELSE IF      AGE  > 64 THEN AGECAT=2 ;
 RUN;
 
+/* create the summary statistics */
+TITLE3 "Summary Statistics for Selected Columns";
+PROC MEANS DATA=PUF201;
+RUN;
+
+
+/* Tables are created by using categories defined in format above */
 TITLE3 "Supporting crosstabs for the flag variables";
 PROC FREQ DATA=PUF201;
    TABLES X_ANYSVCE*TOTAL
@@ -79,6 +77,11 @@ PROC FREQ DATA=PUF201;
           AGE            agef.
      ;
 RUN;
+
+
+/* Use Proc surveymeans to produce the data into a results dataset that will be input
+ * to the proc print statements that follow.  This allows the labels to be set and to 
+ * seperate the categories of any expense and the total expense */
 ods graphics off;
 ods exclude all; /* Suppress the printing of output */
 TITLE3 'PERCENTAGE OF PERSONS WITH AN EXPENSE & OVERALL EXPENSES';
@@ -115,6 +118,8 @@ var  N  SumWgt  mean StdErr  Sum stddev;
               sum Stddev comma17.;
 run;
 
+/* Same trick used here to put the table into a results dataset that can be then printed by categories in
+ * the subsequent proc print statement.  The printing has the three categories specified in the title */
 ods exclude all; /* suspend all destinations */
 TITLE3 'MEAN EXPENSE PER PERSON WITH AN EXPENSE, FOR OVERALL, AGE 0-64, AND AGE 65+';
 PROC SURVEYMEANS DATA= PUF201 MEAN NOBS SUMWGT STDERR SUM STD;
