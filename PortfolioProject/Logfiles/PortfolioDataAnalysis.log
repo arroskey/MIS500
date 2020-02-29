@@ -1,0 +1,410 @@
+﻿NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+5          OPTIONS LOCALE=en_US DFLANG=LOCALE VALIDVARNAME=V7 VALIDMEMNAME=EXTEND;
+6          
+7          OPTIONS NOSYNTAXCHECK;
+8          DATA _NULL_;
+9          RC=DLGCDIR('/folders/myfolders/MEPS/PortfolioCode');
+10         RUN;
+
+NOTE: The current working directory is now "/folders/myfolders/MEPS/PortfolioCode".
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+11         OPTIONS NOSYNTAXCHECK;
+12         
+13         FILENAME _HTMLOUT %NRSTR("/folders/myfolders/MEPS/PortfolioCode/PortfolioDataPrep.html");
+14         
+15         FILENAME _GSFNAME TEMP;
+16         DATA _NULL_;
+17         CALL SYMPUT("GRAPHINIT","");
+18         CALL SYMPUT("GRAPHTERM","");
+19         RC=TSLVL('SASXGOPT','N');
+20         _ERROR_=0;
+21         IF (RC^=' ') THEN DO;
+22         CALL SYMPUT("GRAPHINIT","GOPTIONS RESET=ALL GSFNAME=_GSFNAME;");
+23         CALL SYMPUT("GRAPHTERM","GOPTIONS NOACCESSIBLE;");
+24         END;
+25         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.01 seconds
+      
+
+26         DATA _NULL_;
+27         RC=SYSPROD("PRODNUM002");
+28         IF (RC^=1) THEN DO;
+29         CALL SYMPUT("GRAPHINIT","");
+30         CALL SYMPUT("GRAPHTERM","");
+31         END;
+32         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+33         %LET SYSCC=0;
+2                                                          The SAS System                    Saturday, February 29, 2020 05:18:00 PM
+
+34         %LET _CLIENTAPP='SAS Studio';
+35         %LET _CLIENTAPPABREV=Studio;
+36         %LET _CLIENTAPPVERSION=3.8;
+37         %LET _CLIENTVERSION=3.8;
+38         %LET _CLIENTMODE=background;
+39         %LET _SASSERVERNAME=%BQUOTE(localhost);
+40         %LET _SASHOSTNAME=%BQUOTE(localhost);
+41         %LET _SASPROGRAMFILEHOST=%BQUOTE(localhost);
+42         %LET _CLIENTUSERID=%BQUOTE(sasdemo);
+43         %LET _CLIENTUSERNAME=%BQUOTE(sasdemo);
+44         %LET CLIENTMACHINE=%BQUOTE(10.0.2.2);
+45         %LET _CLIENTMACHINE=%BQUOTE(10.0.2.2);
+46         %let SASWORKLOCATION="%sysfunc(getoption(work))/";
+47         FILENAME _CWD '.';
+ERROR: The path /media/sf_myfolders/MEPS/PortfolioCode is not in the list of accessible paths when SAS is in the lockdown state.
+ERROR: Error in the FILENAME statement.
+48         DATA _NULL_;
+49         CALL SYMPUT('_SASWORKINGDIR',PATHNAME('_CWD'));
+50         RUN;
+
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+51         FILENAME _CWD;
+WARNING: No logical assign for filename _CWD.
+52         
+53         %LET _SASPROGRAMFILE = %NRQUOTE(%NRSTR(/folders/myfolders/MEPS/PortfolioCode/PortfolioDataPrep.sas));
+54         %LET _EXECENV=SASStudio Background;
+55         %LET _SASWS_ = %BQUOTE(/folders/myfolders);
+56         %LET _SASWSTEMP_=%BQUOTE();
+57         ODS LISTING CLOSE;
+58         ODS AUTONAVIGATE OFF;
+59         ODS GRAPHICS ON;
+60         ODS HTML5 (ID=WEB) DEVICE=PNG GPATH="&_SASWSTEMP_" ENCODING=utf8 FILE=_HTMLOUT (TITLE='Results: PortfolioDataPrep.sas')
+60       ! STYLE=Htmlblue OPTIONS(BITMAP_MODE='INLINE' OUTLINE='ON' SVG_MODE='INLINE'
+60       ! CSS_PREFIX='.ods_a33b4eb1-62ee-420c-a14c-6fc228edfbcc' BODY_ID='div_a33b4eb1-62ee-420c-a14c-6fc228edfbcc' );
+NOTE: Writing HTML5(WEB) Body file: _HTMLOUT
+61         &GRAPHINIT;
+62         OPTIONS FILELOCKS=( '/' FAIL );
+63         /**********************************************************************************
+64         Title: MIS500 Porftolio Project - Data prep and analysis
+65         
+66         Description: This program will go through and create two populations:
+67         	1) Age 20-60 with medical events paid by Medicaid (Public option)
+68         	2) Age 20-60 with medical events paid by private insurance (Private option)
+69         	Then perform the analysis by showing summary statistics and t-test.
+70         	
+71         	All events will be collected from the seperate event files and merged into one data set.
+72         	Then the number of events will be collect per person and merged with the people collected
+73         	from H201(consolidated data file).
+74         	
+75         	Medicines will not be included as an event.
+76         
+77         Input Files:  1) /folders/myfolders/MEPS/H201.SAS7BDAT    (2017 FY PUF DATA)
+78                       4) /folders/myfolders/MEPS/H197D.SAS7BDAT   (2017 INPATIENT VISITS PUF DATA)
+79                       5) /folders/myfolders/MEPS/H197E.SAS7BDAT   (2017 EROM VISITS PUF DATA)
+3                                                          The SAS System                    Saturday, February 29, 2020 05:18:00 PM
+
+80                       6) /folders/myfolders/MEPS/H197F.SAS7BDAT   (2017 OUTPATIENT VISITS PUF DATA)
+81                       7) /folders/myfolders/MEPS/H197G.SASBDAT   (2017 OFFICE-BASED VISITS PUF DATA)
+82                       8) /folders/myfolders/MEPS/H197H.SAS7BDAT   (2017 HOME HEALTH PUF DATA)
+83         
+84         *********************************************************************************/;
+85         
+86         /* Set the library name and the top titles. */
+87         LIBNAME CDATA '/folders/myfolders/MEPS';
+NOTE: Libref CDATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: /folders/myfolders/MEPS
+88         
+89         TITLE1 'MIS500 Portfolio Project';
+90         TITLE2 'Compare access to medical care between public and private payment';
+91         PROC FORMAT;
+92           VALUE GTZERO
+93              0         = '0'
+94              0 <- HIGH = '>0'
+95                        ;
+NOTE: Format GTZERO has been output.
+96           VALUE GEZERO
+97              0 - HIGH = 'GE 0' ;
+NOTE: Format GEZERO has been output.
+98         RUN;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.02 seconds
+      
+
+99         
+100        /***********************************************************************************
+101         The general processing for steps 1 - 5 are:
+102        	1. Select each event by the person's id (DUPERSID)
+103        	2. Only bring over the medicaid and private insurance.
+104        	3. Make sure the event is only paid by one or another.  If both are marked then drop the event.
+105        ************************************************************************************/
+106        
+107        /* Step 1 - Get office based events for each person (DUPERSID) */
+108        ods graphics on;
+109        DATA OB (KEEP=DUPERSID MD PV);
+110         SET CDATA.H197G ;
+111             MD     = OBMD17X ;
+112             PV     = OBPV17X ;
+113             TOTEXP = OBXP17X ;
+114        
+115             IF (MD EQ 0 OR PV EQ 0) AND (MD+PV) GT 0;
+116        RUN ;
+
+NOTE: There were 170491 observations read from the data set CDATA.H197G.
+NOTE: The data set WORK.OB has 108339 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.30 seconds
+      cpu time            0.17 seconds
+      
+
+117        
+118        /* Step 2 - Get Emergency room events */
+4                                                          The SAS System                    Saturday, February 29, 2020 05:18:00 PM
+
+119        DATA EROM (KEEP=DUPERSID MD PV);
+120        SET  CDATA.H197E;
+121             MD     = ERFMD17X + ERDMD17X ;
+122             PV     = ERFPV17X + ERDPV17X ;
+123        
+124             IF (MD EQ 0 OR PV EQ 0) AND (MD+PV) GT 0;
+125        RUN;
+
+NOTE: There were 6609 observations read from the data set CDATA.H197E.
+NOTE: The data set WORK.EROM has 4405 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.00 seconds
+      
+
+126        
+127        /* Step 3 - Get Inpatient hospital events */
+128        DATA IPAT (KEEP=DUPERSID MD PV);
+129        SET  CDATA.H197D ;
+130        
+131             MD    = IPFMD17X + IPDMD17X ;
+132             PV    = IPFPV17X + IPDPV17X ;
+133        
+134             IF (MD EQ 0 OR PV EQ 0) AND (MD+PV) GT 0;
+135        RUN;
+
+NOTE: There were 2853 observations read from the data set CDATA.H197D.
+NOTE: The data set WORK.IPAT has 1846 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+136        
+137        /* Step 4 - Get home health visits events */
+138        DATA HVIS (KEEP=DUPERSID MD PV);
+139        SET  CDATA.H197H;
+140        
+141             MD     = HHMD17X ;
+142             PV     = HHPV17X ;
+143        
+144             IF (MD EQ 0 OR PV EQ 0) AND (MD+PV) GT 0;
+145        RUN;
+
+NOTE: There were 7051 observations read from the data set CDATA.H197H.
+NOTE: The data set WORK.HVIS has 3247 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.02 seconds
+      
+
+146        
+147        /* Step 5 - Get out patient hospital events */
+148        DATA OPAT (KEEP=DUPERSID MD PV);
+149        SET  CDATA.H197F ;
+150        
+151             MD     = OPFMD17X + OPDMD17X ;
+152             PV     = OPFPV17X + OPDPV17X ;
+5                                                          The SAS System                    Saturday, February 29, 2020 05:18:00 PM
+
+153        
+154             IF (MD EQ 0 OR PV EQ 0) AND (MD+PV) GT 0;
+155        RUN;
+
+NOTE: There were 15778 observations read from the data set CDATA.H197F.
+NOTE: The data set WORK.OPAT has 9838 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.02 seconds
+      
+
+156        
+157        /* Step 6 - Combine all the events into one dataset */
+158        DATA ALLEVENT;
+159           SET OB   (KEEP=DUPERSID MD PV)
+160               EROM (KEEP=DUPERSID MD PV)
+161               IPAT (KEEP=DUPERSID MD PV)
+162               HVIS (KEEP=DUPERSID MD PV)
+163               OPAT (KEEP=DUPERSID MD PV);
+164           BY DUPERSID;
+165        
+166              LABEL  PV     = "SOURCE OF PAYMENT: Private Insurance"
+167                     MD     = "SOURCE OF PAYMENT: MEDICAID"
+168                            ;
+169        
+170        RUN;
+
+NOTE: There were 108339 observations read from the data set WORK.OB.
+NOTE: There were 4405 observations read from the data set WORK.EROM.
+NOTE: There were 1846 observations read from the data set WORK.IPAT.
+NOTE: There were 3247 observations read from the data set WORK.HVIS.
+NOTE: There were 9838 observations read from the data set WORK.OPAT.
+NOTE: The data set WORK.ALLEVENT has 127675 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+171        
+172        /* Step 7 - Merge events with consoldated data file but only select the age group 20-60 */
+173        DATA  Population;
+174        MERGE CDATA.H201 (IN=AA KEEP=DUPERSID AGELAST)
+175              ALLEVENT   (IN=BB KEEP=DUPERSID MD PV);
+176           BY DUPERSID;
+177        
+178                   IF (AA AND BB) AND  (20 LE AGELAST LE 60);
+179        RUN;
+
+NOTE: There were 31880 observations read from the data set CDATA.H201.
+NOTE: There were 127675 observations read from the data set WORK.ALLEVENT.
+NOTE: The data set WORK.POPULATION has 63606 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           1.07 seconds
+      cpu time            0.54 seconds
+      
+
+180        
+181        /* Step 8 - Summarize the Population to count number of events per individual */
+6                                                          The SAS System                    Saturday, February 29, 2020 05:18:00 PM
+
+182        PROC SUMMARY DATA=Population NWAY;
+183        CLASS DUPERSID AGELAST;
+184        VAR MD PV;
+185        OUTPUT OUT=PopulationSummarized SUM=;
+186        RUN;
+
+NOTE: There were 63606 observations read from the data set WORK.POPULATION.
+NOTE: The data set WORK.POPULATIONSUMMARIZED has 9138 observations and 6 variables.
+NOTE: PROCEDURE SUMMARY used (Total process time):
+      real time           0.02 seconds
+      cpu time            0.03 seconds
+      
+
+187        
+188        /* Step 9 - Categorize the Population for Public or Private. If there are both medicaid and private
+189        *           payments, then delete the observation
+190        */
+191        DATA PopulationCategorized (KEEP=DUPERSID EVENTCOUNT POPCAT AGELAST AGECAT MD PV) ;
+192        	SET PopulationSummarized;
+193        	IF MD GT 0 AND PV EQ 0 THEN POPCAT = 'Public';
+194        	ELSE IF MD EQ 0 AND PV GT 0 THEN POPCAT = 'Private';
+195        	ELSE DELETE;
+196        	
+197        	IF AGELAST GE 20 AND AGELAST LT 30 THEN AGECAT = '20-29';
+198        	ELSE IF AGELAST GE 30 AND AGELAST LT 40 THEN AGECAT = '30-39';
+199        	ELSE IF AGELAST GE 40 AND AGELAST LT 50 THEN AGECAT = '40-49';
+200        	ELSE AGECAT = '50-59';
+201        	
+202        	EVENTCOUNT = _FREQ_;
+203        	LABEL EVENTCOUNT = "Number of Medical Events";
+204        	LABEL POPCAT = "Payment Method"
+205        RUN;
+206        
+207        /* Step 10 - Analysis of final data set */
+208        
+209        TITLE3 "Sumary Statistics After Summarization and Categorization";
+
+NOTE: There were 9138 observations read from the data set WORK.POPULATIONSUMMARIZED.
+NOTE: The data set WORK.POPULATIONCATEGORIZED has 8915 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+210        PROC MEANS DATA=PopulationCategorized;
+211        RUN;
+
+NOTE: There were 8915 observations read from the data set WORK.POPULATIONCATEGORIZED.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.04 seconds
+      
+
+212        
+213        TITLE3 "Summary Statistics by Payment Category After Summarization and Categorization";
+214        PROC SORT DATA=PopulationCategorized; BY POPCAT;
+
+NOTE: There were 8915 observations read from the data set WORK.POPULATIONCATEGORIZED.
+7                                                          The SAS System                    Saturday, February 29, 2020 05:18:00 PM
+
+NOTE: The data set WORK.POPULATIONCATEGORIZED has 8915 observations and 7 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+215        PROC MEANS; VAR EVENTCOUNT AGELAST; BY POPCAT;
+216        RUN;
+
+NOTE: There were 8915 observations read from the data set WORK.POPULATIONCATEGORIZED.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+      
+
+217        
+218        /* Perform the t-test for the two populations */
+219        TITLE3 "T-Test After Summarization and Categorization";
+220        PROC TTEST;
+221        	CLASS POPCAT;
+222        	VAR EVENTCOUNT;
+223        	Title "Public vs. Private t-Test";
+224        RUN;
+
+ERROR: The path /media/sf_myfolders/MEPS/PortfolioCode/#LN00024 is not in the list of accessible paths when SAS is in the lockdown 
+       state.
+ERROR: The path /media/sf_myfolders/MEPS/PortfolioCode/#LN00024 is not in the list of accessible paths when SAS is in the lockdown 
+       state.
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: PROCEDURE TTEST used (Total process time):
+      real time           3.31 seconds
+      cpu time            0.24 seconds
+      
+225        
+226        ods graphics off;
+227        
+228        QUIT;
+229        
+230        
+231        
+232        
+233        
+234        
+235        
+236        
+237        
+238        
+239        
+240        OPTIONS NOSYNTAXCHECK;
+241        &GRAPHTERM; ;*';*";*/;RUN;QUIT;
+242        ODS HTML5 (ID=WEB) CLOSE;
+243        
+8                                                          The SAS System                    Saturday, February 29, 2020 05:18:00 PM
+
+
